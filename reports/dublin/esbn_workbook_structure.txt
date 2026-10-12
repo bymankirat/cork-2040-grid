@@ -1,0 +1,166 @@
+=== demand-capacity-headroom-report-2025.xlsx (8 sheets) ===
+
+--- sheet '1. Introduction - Demand': 127 rows x 10 columns
+  r16:  | Demand Capacity Headroom |  |  |  |  |  |  |  | 
+  r18:  | Version: | 1.6 |  |  |  |  |  |  | 
+  r19:  | Date: | 12/12/2025 |  |  |  |  |  |  | 
+  r21:  | Overview: | This workbook is for ind |  |  |  |  |  |  | 
+  r22:  |  | All connections are subj |  |  |  |  |  |  | 
+  r23:  |  | The workbook provides a  |  |  |  |  |  |  | 
+  r24:  |  | The indicative headroom  |  |  |  |  |  |  | 
+  r25:  |  | For indicative generatio |  |  |  |  |  |  | 
+  r26:  |  | Capacity results are dis |  |  |  |  |  |  | 
+  r29:  | Disclaimer: | The capacity headroom re |  |  |  |  |  |  | 
+  r31:  | Assumptions |  |  |  |  |  |  |  | 
+  r32:  | The headroom capacity re |  |  |  |  |  |  |  | 
+
+--- sheet '2. Master Demand Capacity List': 5436 rows x 27 columns
+  r2:  |  |  |  |  |  |  |  | Years (Year) |  |  |  |  |  |  |  |  |  |  |  |  | 
+  r3: Trafo Type | Substation | Connection Voltage | Connection Method | Scenario | Values | Transformer Layout Rules | Connection Method Identi | 2025 | 2026.0 | 2027.0 | 2028.0 | 2029.0 | 2030.0 | 2031.0 | 2032.0 | 2033.0 | 2034.0 | 2035.0 | 2036.0 | 2037.0 | 2038.0
+  r4: 110 - 38 kV | ARDNACRUSHA | 38 | 1 | Conservative | Firm Capacity [MVA]  |  |  | 6.768719999999988 | 5.203799999999987 | 3.5695799999999878 | 1.8887399999999843 | 0.18647999999997467 | -0.0001 | 4.163039999999995 | 3.777479999999997 | 1.5636599999999845 | -0.0001 | -0.0001 | -0.0001 | -0.0001 | -0.0001
+  r5:  |  |  |  |  | Non-Firm Capacity [MVA]  |  |  | 31.968720000000005 | 30.403800000000004 | 28.769580000000005 | 27.08874 | 25.38647999999999 | 23.653980000000004 | 29.363040000000012 | 28.977480000000014 | 26.76366 | 24.481800000000007 | 22.129380000000012 | 19.708920000000006 | 17.191440000000014 | 14.517720000000011
+  r6:  |  |  |  | Best View | Firm Capacity [MVA]  |  |  | 6.768719999999988 | 5.062679999999986 | 3.27221999999999 | 1.428839999999994 | -0.0001 | -0.0001 | 2.5628400000000084 | 1.270079999999993 | -0.0001 | -0.0001 | -0.0001 | -0.0001 | -0.0001 | -0.0001
+  r7:  |  |  |  |  | Non-Firm Capacity [MVA]  |  |  | 31.968720000000005 | 30.262680000000003 | 28.472220000000007 | 26.62884000000001 | 24.77034000000002 | 22.863960000000006 | 27.762840000000025 | 26.47008000000001 | 23.28480000000002 | 19.964699999999993 | 16.448040000000006 | 12.691979999999987 | 8.899380000000008 | 4.934159999999991
+  r8:  |  |  |  | Base Case | Firm Capacity [MVA]  |  |  | 6.768719999999988 | 4.4213399999999865 | 1.9466999999999928 | -0.0001 | -0.0001 | -0.0001 | -0.0001 | -0.0001 | -0.0001 | -0.0001 | -0.0001 | 0.0 | 0.0 | 0.0
+  r9:  |  |  |  |  | Non-Firm Capacity [MVA]  |  |  | 31.968720000000005 | 29.621340000000004 | 27.14670000000001 | 24.61536000000001 | 22.000860000000003 | 19.279259999999994 | 23.73588000000001 | 21.89754000000002 | 18.12384 | 14.02254000000002 | 9.814140000000009 | 0.0 | 0.0 | 0.0
+  r10:  |  |  |  | Aggressive | Firm Capacity [MVA]  |  |  | 6.768719999999988 | 2.9673000000000087 | -0.0001 | -0.0001 | -0.0001 | -0.0001 | -0.0001 | -0.0001 | -0.0001 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0
+  r11:  |  |  |  |  | Non-Firm Capacity [MVA]  |  |  | 31.968720000000005 | 28.167300000000026 | 24.139080000000007 | 19.89540000000001 | 15.379560000000012 | 10.585260000000005 | 14.448420000000013 | 11.692800000000005 | 7.0459200000000095 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0
+  r12:  | ARDNAGAPPARY | 38 | 1 | Conservative | Firm Capacity [MVA]  |  |  | 12.180420000000002 | 11.994570000000003 | 11.806515000000001 | 11.615939999999998 | 11.423160000000003 | 11.228175000000004 | 10.773000000000003 | 10.30491 | 9.82422 | 9.329985 | 8.820945000000002 | 8.297415 | 7.759395000000001 | 7.205625000000001
+  r13:  |  |  |  |  | Non-Firm Capacity [MVA]  |  |  | 12.180420000000002 | 11.994570000000003 | 11.806515000000001 | 11.615939999999998 | 11.423160000000003 | 11.228175000000004 | 10.773000000000003 | 10.30491 | 9.82422 | 9.329985 | 8.820945000000002 | 8.297415 | 7.759395000000001 | 7.205625000000001
+
+--- sheet '3. Demand Capacity Search': 567 rows x 46 columns
+  r0:  | Substation Selector |  |  |  |  |  |  |  |  |  |  |  |  |  |  | Geographical Substation  |  |  |  |  | 
+  r1:  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | Leave "Select Substation |  |  |  |  | 
+  r2:  | Select Substation |  | Firm/Non-Firm Connection | Substation Connection Vo | Connection Method Select |  |  |  |  |  |  |  |  |  |  |  | Latitude | Longitude |  |  | 
+  r3: Select Station here → | - |  | Firm | 10 | 1 |  |  |  |  |  |  |  |  |  |  | Enter Coordinates here → | 54.365744 | -8.51421 |  |  | 
+  r6:  | Nth Closest Substation | Substation Configuration | Normal Feeding
+110 kV No |  |  |  |  |  |  |  |  |  |  |  |  |  | Coordinate System | Nth closest |  |  | 
+  r7: Search Result: | AGHAGAD 38 KV | 38/10 kV - 2 x 5 MVA | SLIGO |  |  |  |  |  |  |  |  |  |  |  |  |  | Latitude/Longitude | 1 |  |  | 
+  r11:  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | Easting | Northing |  |  | 
+  r12:  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | Enter Irish Grid Referen | 316711 | 233306 |  |  | 
+  r15: Substation Demand Headro |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+  r16: AGHAGAD 38 KV substation |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+  r17: 38/MV Transformer | 2025 | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 | 2032 | 2033 | 2034 | 2035 | 2036 | 2037 | 2038 | 2039 | 2040 | 2045 | 2050 |  |  | 
+  r18: conservative | 4.0793 | 4.0323 | 3.9845 | 3.9362 | 3.8871 | 3.8374 | 3.7412 | 3.6423 | 3.5407 | 3.4365 | 3.3294 | 3.2193 | 3.1063 | 2.9905 | 2.876566666666662 | 2.7621666666666727 | 2.19016666666667 | 1.6181666666666672 |  |  | 
+
+--- sheet 'Connection methods': 1108 rows x 17 columns
+  r1: Station Name | Connection Method Identi | Substation Voltage Level | Transformer Type | ConnectionMethodID | Node Name | Element Name | Element_ID | Vn1 [kV] | Vn2 [kV] | Present in demand result | Present in generation re | Comment | Gen Result Sheet | Demand Result Sheet | Connection Configuration | Consumer type
+  r2: ABBEYFEALE | ABBEYFEALE-T42_5_MVA | 38 KV | 38 kV - MV | 1 | ABBEYFEALE | T42_5_MVA | 3809 | 41.6 | 10.7 | 48 | 64 |  | Mixed-Standalone-38-MV | Demand Standalone 38-MV | 38/10 kV - 1 x 5 MVA | Mixed Gen/Demand
+  r3: ABBEYFEALE | ABBEYFEALE_T421-T421_10_ | 38 KV | 38 kV - MV | 1 | ABBEYFEALE_T421 | T421_10_MVA | 3810 | 41.6 | 21.4 | 48 | 64 |  | Mixed-Standalone-38-MV | Demand Standalone 38-MV | 38/20 kV - 1 x 10 MVA | Mixed Gen/Demand
+  r4: ABBEYLAND | ABBEYLANDS-T42_10_MVA_AB | 38 KV | 38 kV - MV | 1 | ABBEYLANDS | T42_10_MVA_ABBEYLANDS | 3449 | 41.6 | 10.7 | 48 | 64 |  | Mixed-Dual-38-MV | Demand Couplable 38-MV | 38/10 kV - 2 x 10 MVA | Mixed Gen/Demand
+  r5: ABBEYLEIX | ABBEYLEIX-T422_5_MVA | 38 KV | 38 kV - MV | 1 | ABBEYLEIX | T422_5_MVA | 4846 | 41.6 | 21.4 | 48 | 64 |  | Mixed-Standalone-38-MV | Demand Standalone 38-MV | 38/20 kV - 1 x 5 MVA | Mixed Gen/Demand
+  r6: ACADEMY STREET | ACADEMY_STREET-T422_5_MV | 38 KV | 38 kV - MV | 1 | ACADEMY_STREET | T422_5_MVA_ACADEMY | 4082 | 41.6 | 21.4 | 48 | 64 |  | Mixed-Dual-38-MV | Demand Couplable 38-MV | 38/20 kV - 2 x 5 MVA | Mixed Gen/Demand
+  r7: ACADEMY STREET | ACADEMY_STREET_T44-T44_1 | 38 KV | 38 kV - MV | 1 | ACADEMY_STREET_T44 | T44_10_MVA_ACADEMY | 4080 | 41.6 | 10.7 | 48 | 64 |  | Mixed-Standalone-38-MV | Demand Standalone 38-MV | 38/10 kV - 1 x 10 MVA | Mixed Gen/Demand
+  r8: ACHILL | ACHILL-T422_5_MVA | 38 KV | 38 kV - MV | 1 | ACHILL | T422_5_MVA | 3925 | 41.6 | 21.4 | 48 | 64 |  | Mixed-Standalone-38-MV | Demand Standalone 38-MV | 38/20 kV - 1 x 5 MVA | Mixed Gen/Demand
+  r9: ADAMSTOWN | ADAMSTOWN-T122_20MVA | 110 KV | 110 kV - MV | 1 | ADAMSTOWN | T122_20MVA | 7960 | 110 | 21.4 | 48 | 64 |  | Mixed-Dual-110-MV | Demand Couplable 110-MV | 110/20 kV - 2 x 20 MVA | Mixed Gen/Demand
+  r10: AGANNYGAL | AGANNYGAL | 110 KV |  |  | AGANNYGAL |  |  |  |  | 0 | 0 | 110 kV switching station |  |  |  | 
+  r11: AGHADA | AGHADA | 220 KV |  |  | AGHADA |  |  |  |  | 0 | 0 | 220/110 + gen only |  |  |  | 
+  r12: AGHADA 110KV | AGHADA 110KV | 110 KV |  |  | AGHADA 110KV |  |  |  |  | 0 | 0 | 220/110 + gen only |  |  |  | 
+
+--- sheet 'Demand Master Results Sheet': 32467 rows x 20 columns
+  r0: BSP Station | Substation Name | Element Name | Variant | Year | Sb [MVA] | P [MW] | I/Ib [%] | Scenario | Non-Firm Capacity [MVA] | Firm Capacity [MVA] | Sheet Name | Trafo Type | ElementID | Vn1 [kV] | Vn2 [kV] | Connection Method Identi | Node2 | Substation Name | Connection Method
+  r1: ARDNACRUSHA | ARDNACRUSHA_110 | T142_63MVA | Normal Feeding_Capacity  | 2025-01-01 00:00:00 | 63 | -37.438 | 64.628 | Aggressive | 31.968720000000005 | 6.768719999999988 | Demand Couplable 110-38 | 110 - 38 kV | 2773 | 110 | 41.6 | ARDNACRUSHA_110-T142_63M | ARDNA_38_2 | ARDNACRUSHA | 1
+  r2: ARDNACRUSHA | ARDNACRUSHA_110 | T142_63MVA | Normal Feeding_Capacity  | 2026-01-01 00:00:00 | 63 | -39.013 | 67.645 | Aggressive | 28.167300000000026 | 2.9673000000000087 | Demand Couplable 110-38 | 110 - 38 kV | 2773 | 110 | 41.6 | ARDNACRUSHA_110-T142_63M | ARDNA_38_2 | ARDNACRUSHA | 1
+  r3: ARDNACRUSHA | ARDNACRUSHA_110 | T142_63MVA | Normal Feeding_Capacity  | 2027-01-01 00:00:00 | 63 | -40.671 | 70.842 | Aggressive | 24.139080000000007 | -1.06092000000001 | Demand Couplable 110-38 | 110 - 38 kV | 2773 | 110 | 41.6 | ARDNACRUSHA_110-T142_63M | ARDNA_38_2 | ARDNACRUSHA | 1
+  r4: ARDNACRUSHA | ARDNACRUSHA_110 | T142_63MVA | Normal Feeding_Capacity  | 2028-01-01 00:00:00 | 63 | -42.413 | 74.21 | Aggressive | 19.89540000000001 | -5.304600000000008 | Demand Couplable 110-38 | 110 - 38 kV | 2773 | 110 | 41.6 | ARDNACRUSHA_110-T142_63M | ARDNA_38_2 | ARDNACRUSHA | 1
+  r5: ARDNACRUSHA | ARDNACRUSHA_110 | T142_63MVA | Normal Feeding_Capacity  | 2029-01-01 00:00:00 | 63 | -44.248 | 77.794 | Aggressive | 15.379560000000012 | -9.820440000000005 | Demand Couplable 110-38 | 110 - 38 kV | 2773 | 110 | 41.6 | ARDNACRUSHA_110-T142_63M | ARDNA_38_2 | ARDNACRUSHA | 1
+  r6: ARDNACRUSHA | ARDNACRUSHA_110 | T142_63MVA | Normal Feeding_Capacity  | 2030-01-01 00:00:00 | 63 | -46.181 | 81.599 | Aggressive | 10.585260000000005 | -14.614740000000012 | Demand Couplable 110-38 | 110 - 38 kV | 2773 | 110 | 41.6 | ARDNACRUSHA_110-T142_63M | ARDNA_38_2 | ARDNACRUSHA | 1
+  r7: ARDNACRUSHA | ARDNACRUSHA_110 | T142_63MVA | Normal Feeding_Capacity  | 2031-01-01 00:00:00 | 63 | -43.532 | 78.533 | Aggressive | 14.448420000000013 | -10.751580000000004 | Demand Couplable 110-38 | 110 - 38 kV | 2773 | 110 | 41.6 | ARDNACRUSHA_110-T142_63M | ARDNA_38_2 | ARDNACRUSHA | 1
+  r8: ARDNACRUSHA | ARDNACRUSHA_110 | T142_63MVA | Normal Feeding_Capacity  | 2032-01-01 00:00:00 | 63 | -44.295 | 80.72 | Aggressive | 11.692800000000005 | -13.507200000000012 | Demand Couplable 110-38 | 110 - 38 kV | 2773 | 110 | 41.6 | ARDNACRUSHA_110-T142_63M | ARDNA_38_2 | ARDNACRUSHA | 1
+  r9: ARDNACRUSHA | ARDNACRUSHA_110 | T142_63MVA | Normal Feeding_Capacity  | 2033-01-01 00:00:00 | 63 | -46.142 | 84.408 | Aggressive | 7.0459200000000095 | -18.154080000000008 | Demand Couplable 110-38 | 110 - 38 kV | 2773 | 110 | 41.6 | ARDNACRUSHA_110-T142_63M | ARDNA_38_2 | ARDNACRUSHA | 1
+  r10: ARDNACRUSHA | ARDNACRUSHA_110 | T142_63MVA | Normal Feeding_Capacity  | 2025-01-01 00:00:00 | 63 | -37.438 | 64.628 | Base Case | 31.968720000000005 | 6.768719999999988 | Demand Couplable 110-38 | 110 - 38 kV | 2773 | 110 | 41.6 | ARDNACRUSHA_110-T142_63M | ARDNA_38_2 | ARDNACRUSHA | 1
+  r11: ARDNACRUSHA | ARDNACRUSHA_110 | T142_63MVA | Normal Feeding_Capacity  | 2026-01-01 00:00:00 | 63 | -38.416 | 66.491 | Base Case | 29.621340000000004 | 4.4213399999999865 | Demand Couplable 110-38 | 110 - 38 kV | 2773 | 110 | 41.6 | ARDNACRUSHA_110-T142_63M | ARDNA_38_2 | ARDNACRUSHA | 1
+
+--- sheet 'Station Coordinates': 908 rows x 20 columns
+  r0: Station Name | Present in demand result | Present in generation re | Functional Location | Google Maps | Latitude | Longitude | Substation Voltage Level | Distance in km from Sele | Distance in km from Sele | Easting (X) | Northing (Y) |  |  |  |  | Latitude | Longitude | Easting | Northing
+  r1: ABBEYFEALE | 48 | 64 | 429000 | Google Maps | 52.392686 | -9.30287 | 38 KV | 225.54039011873706 | 230.99112300043046 | 111355 | 127543 |  |  |  |  | 51.935328 | -10.2319 | 46524.37910629701 | 83209.40885120517
+  r2: ABBEYLAND | 48 | 64 | 270000 | Google Maps | 53.663228 | -6.69492 | 38 KV | 142.22903252581585 | 46.83000106769163 | 286321 | 268936 |  |  |  |  |  |  |  | 
+  r3: ABBEYLEIX | 48 | 64 | 565000 | Google Maps | 52.91085 | -7.35862 | 38 KV | 178.811002462475 | 88.18243338103116 | 243200 | 184600 |  |  |  |  |  |  |  | 
+  r4: ACADEMY STREET | 48 | 64 | 617000 | Google Maps | 53.647135 | -6.677707 | 38 KV | 144.17335203880472 | 44.72414963976397 | 287492 | 267166 |  |  |  |  |  |  |  | 
+  r5: ACHILL | 48 | 64 | 495000 | Google Maps | 53.941064 | -9.89343 | 38 KV | 101.4670081755097 | 250.25166719324767 | 75713 | 300729 |  |  |  |  |  |  |  | 
+  r6: ADAMSTOWN | 48 | 64 | 497000 | Google Maps | 53.340315 | -6.47892 | 110 KV | 175.54826573866092 | 15.3590143563967 | 301352 | 233285 |  |  |  |  |  |  |  | 
+  r7: AGANNYGAL | 0 | 0 | 984000 | Google Maps | 53.036209 | -8.54967 | 110 KV | 147.85596809876847 | 157.4307907018192 | 163176 | 198500 |  |  |  |  |  |  |  | 
+  r8: AGHADA | 0 | 0 | 631000 | Google Maps | 51.835037 | -8.228031 | 220 KV | 282.048988906625 | 214.35184935288055 | 184331 | 64717 |  |  |  |  |  |  |  | 
+  r9: AGHADA 110KV | 0 | 0 | 637000 | Google Maps | 51.835036 | -8.22803 | 110 KV | 282.0491043788636 | 214.35184935288055 | 184331 | 64717 |  |  |  |  |  |  |  | 
+  r10: AGHAGAD | 48 | 64 | 645000 | Google Maps | 54.365744 | -8.51421 | 38 KV | 0 | 187.96379413333835 | 166624 | 346462 |  |  |  |  |  |  |  | 
+  r11: AGHAMORE | 48 | 64 | 124000 | Google Maps | 53.673576 | -7.97584 | 38 KV | 84.62009734430478 | 120.56215958998081 | 201646 | 269296 |  |  |  |  |  |  |  | 
+
+--- sheet 'Traffo Lookup': 1852 rows x 9 columns
+  r0: Element_ID | Node 1 | Node 2 | Element Name | Vn1 [kV] | Vn2 [kV] | Frequency of occurrence | Orig order | present in Master result
+  r1: 2589 | DEANSGRANGE | DEANSGR2_10 | T41_10_MVA | 41.6 | 10.7 | 0 | 1 | 0
+  r2: 2602 | PORTLAOI3_10 | PORTLAOI1_20 | IFT_5_MVA | 10.7 | 21.4 | 0 | 2 | 0
+  r3: 2612 | DONEGAL1_10 | DONEGAL2_20 | T22_5MVA | 10.7 | 21.4 | 0 | 3 | 0
+  r4: 2613 | DONEGAL2_10 | DONEGAL1_20 | T21_5MVA | 10.7 | 21.4 | 0 | 4 | 0
+  r5: 2614 | STRANORL2_20 | STRANORL_10 | T21_5_MVA | 21.4 | 10.7 | 0 | 5 | 0
+  r6: 2620 | Mount Merrion | MT MERRI1_10 | T41_10_MVA | 41.6 | 10.7 | 0 | 6 | 0
+  r7: 2621 | Mount Merrion | MT MERRI2_10 | T42_10_MVA | 41.6 | 10.7 | 1 | 7 | 64
+  r8: 2637 | GRANBY ROW | GRANBY RW_10 | T41_15_MVA | 41.6 | 10.7 | 1 | 8 | 64
+  r9: 2656 | CAMDEN ROW | CAMDEN RW_10 | T41_15_MVA | 41.6 | 10.7 | 1 | 9 | 64
+  r10: 2689 | Merrion Square | MERRION 1_10 | T41_10_MVA | 41.6 | 10.7 | 0 | 10 | 0
+  r11: 2690 | Merrion Square | MERRION 2_10 | T42_10_MVA | 41.6 | 10.7 | 1 | 11 | 64
+
+--- sheet 'Generation Master Results Sheet': 45545 rows x 32 columns
+  r0: BSP Station | Substation Name | Element Name | Variant | Year | Sb [MVA] | P [MW] | I/Ib [%] | Scenario | Q [MVAR] | Station Capacity [MVA] | Firm Gen Capacity withou | Micro Gen [MVA] | Mini Gen [MVA] | Small Scale Gen [MVA] | Firm-Capacity [MVA] | MicroMiniSSGen/ Transfor | Sheet Name | Trafo Type | ElementID | Vn1 [kV] | Vn2 [kV]
+  r1: ARDNAGAPPARY | CLADY | T42_5MVA | Transformer Outage-NDP C | 2025-01-01 00:00:00 | 5 | 4.28 | 92.406 | Aggressive | -1.7403367748800815 | 5 | 0.38052796152641266 | - | - | - | 0.38052796152641266 | - | Generation-Standalone-38 | 38 kV - MV | 3829 | 41.6 | 10.7
+  r2: ARDNAGAPPARY | CLADY | T42_5MVA | Transformer Outage-NDP C | 2026-01-01 00:00:00 | 5 | 4.28 | 92.41 | Aggressive | -1.7408676715936793 | 5 | 0.38033013424746215 | - | - | - | 0.38033013424746215 | - | Generation-Standalone-38 | 38 kV - MV | 3829 | 41.6 | 10.7
+  r3: ARDNAGAPPARY | CLADY | T42_5MVA | Transformer Outage-NDP C | 2027-01-01 00:00:00 | 5 | 4.28 | 92.413 | Aggressive | -1.7412657529797122 | 5 | 0.3801817641750358 | - | - | - | 0.3801817641750358 | - | Generation-Standalone-38 | 38 kV - MV | 3829 | 41.6 | 10.7
+  r4: ARDNAGAPPARY | CLADY | T42_5MVA | Transformer Outage-NDP C | 2028-01-01 00:00:00 | 5 | 4.28 | 92.415 | Aggressive | -1.7415310971957987 | 5 | 0.38008285097571476 | - | - | - | 0.38008285097571476 | - | Generation-Standalone-38 | 38 kV - MV | 3829 | 41.6 | 10.7
+  r5: ARDNAGAPPARY | CLADY | T42_5MVA | Transformer Outage-NDP C | 2029-01-01 00:00:00 | 5 | 4.28 | 92.417 | Aggressive | -1.7417964067307081 | 5 | 0.37998393792103474 | - | - | - | 0.37998393792103474 | - | Generation-Standalone-38 | 38 kV - MV | 3829 | 41.6 | 10.7
+  r6: ARDNAGAPPARY | CLADY | T42_5MVA | Transformer Outage-NDP C | 2030-01-01 00:00:00 | 5 | 4.28 | 92.42 | Aggressive | -1.7421943060405183 | 5 | 0.379835568608 | - | - | - | 0.379835568608 | - | Generation-Standalone-38 | 38 kV - MV | 3829 | 41.6 | 10.7
+  r7: ARDNAGAPPARY | CLADY | T42_5MVA | Transformer Outage-NDP C | 2031-01-01 00:00:00 | 5 | 4.28 | 92.422 | Aggressive | -1.7424595289417772 | 5 | 0.37973665591047584 | - | - | - | 0.37973665591047584 | - | Generation-Standalone-38 | 38 kV - MV | 3829 | 41.6 | 10.7
+  r8: ARDNAGAPPARY | CLADY | T42_5MVA | Transformer Outage-NDP C | 2032-01-01 00:00:00 | 5 | 4.28 | 92.425 | Aggressive | -1.7428572983752855 | 5 | 0.37958828712842213 | - | - | - | 0.37958828712842213 | - | Generation-Standalone-38 | 38 kV - MV | 3829 | 41.6 | 10.7
+  r9: ARDNAGAPPARY | CLADY | T42_5MVA | Transformer Outage-NDP C | 2033-01-01 00:00:00 | 5 | 4.28 | 92.428 | Aggressive | -1.743254989954136 | 5 | 0.37943991866033155 | - | - | - | 0.37943991866033155 | - | Generation-Standalone-38 | 38 kV - MV | 3829 | 41.6 | 10.7
+  r10: ARDNAGAPPARY | CLADY | T42_5MVA | Transformer Outage-NDP C | 2034-01-01 00:00:00 | 5 | 4.28 | 92.431 | Aggressive | -1.7436526037316038 | 5 | 0.3792915505027758 | - | - | - | 0.3792915505027758 | - | Generation-Standalone-38 | 38 kV - MV | 3829 | 41.6 | 10.7
+  r11: ARDNAGAPPARY | CLADY | T42_5MVA | Transformer Outage-NDP C | 2035-01-01 00:00:00 | 5 | 4.28 | 92.434 | Aggressive | -1.744050139760895 | 5 | 0.37914318265239266 | - | - | - | 0.37914318265239266 | - | Generation-Standalone-38 | 38 kV - MV | 3829 | 41.6 | 10.7
+
+>>> detected in demand-capacity-headroom-report-2025.xlsx:
+  sheet '2. Master Demand Capacity List' [block list]: header row 3, station column 'Substation', areas [], location no, 564 rows, static [], forecast 38352 values, years [2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035, 2036], scenarios ['Aggressive', 'Base', 'Best View', 'Conservative'], metrics ['headroom']
+  sheet 'Connection methods' [table]: header row 1, station column 'Station Name', areas [], location no, 1106 rows, static ['demand_now'], forecast none
+      columns: Station Name | Connection Method Identifier | Substation Voltage Level | Transformer Type | ConnectionMethodID | Node Name | Element Name | Element_ID | Vn1 [kV] | Vn2 [kV] | Present in demand results? | Present in generation results? | Comment | Gen Result Sheet | Demand Result Sheet | Connection Configuration | Consumer type
+  sheet 'Demand Master Results Sheet' [table]: header row 0, station column 'Substation Name', areas [], location no, 32466 rows, static ['capacity_now'], forecast none
+      columns: BSP Station | Substation Name | Element Name | Variant | Year | Sb [MVA] | P [MW] | I/Ib [%] | Scenario | Non-Firm Capacity [MVA] | Firm Capacity [MVA] | Sheet Name | Trafo Type | ElementID | Vn1 [kV] | Vn2 [kV] | Connection Method Identifier | Node2 | Substation Name #1 | Connection Method
+  sheet 'Station Coordinates' [table]: header row 0, station column 'Station Name', areas ['Functional Location'], location yes, 907 rows, static ['demand_now'], forecast none
+      columns: Station Name | Present in demand results? | Present in generation results? | Functional Location | Google Maps | Latitude | Longitude | Substation Voltage Level | Distance in km from Selected L | Distance in km from Selected E | Easting (X) | Northing (Y) | Latitude #1 | Longitude #1 | Easting | Northing
+  sheet 'Traffo Lookup' [table]: header row 0, station column 'Element Name', areas [], location no, 1851 rows, static [], forecast none
+      columns: Element_ID | Node 1 | Node 2 | Element Name | Vn1 [kV] | Vn2 [kV] | Frequency of occurrence | Orig order | present in Master results?
+  sheet 'Generation Master Results Sheet' [table]: header row 0, station column 'Substation Name', areas [], location no, 45544 rows, static ['capacity_now', 'demand_now'], forecast 91088 values, years [1012, 1012, 1013, 1013, 1014, 1014, 1015, 1015, 1016, 1016, 1017, 1017], scenarios ['Aggressive', 'Base', 'Best View', 'Conservative'], metrics ['demand']
+      columns: BSP Station | Substation Name | Element Name | Variant | Year | Sb [MVA] | P [MW] | I/Ib [%] | Scenario | Q [MVAR] | Station Capacity [MVA] | Firm Gen Capacity without Micr | Micro Gen [MVA] | Mini Gen [MVA] | Small Scale Gen [MVA] | Firm-Capacity [MVA] | MicroMiniSSGen/ Transformer ca | Sheet Name | Trafo Type | ElementID | Vn1 [kV] | Vn2 [kV] | Connection Method Identifier | Node2 | Pload Total | Qload Total | Pgen [MW] | Qgen [MVAR] | Complex Total [MVA] | Substation
+
+=== customer-heatmap-download-july-2026.xlsx (3 sheets) ===
+
+--- sheet 'Heatmap data': 46529 rows x 26 columns
+  r0:  |  | Transformer Available Ca |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+  r1: Station Name | Transformer GroupID | Primary kV | Secondary voltage(s) | Voltage Class | Transformer Configuratio | Installed Capacity MVA | Demand Data | Demand FirmCapacity MVA | Demand Available MVA | Parent Available MVA | Demand Parent Constraint | Generation Data | Generation Firm Capacity | Generation NonFirm Capac | Generation Total Committ | Gen Available Firm MW | Gen Available NonFirm MW | Generation Parent Constr | General Data | Parent Feeder | Parent Station
+  r2: MV/LV Substation HA***15 |  | 10 kV | _ | LV | 630 kVA  :Building Struc | 0.63 |  --> | 0.63 | 0 | 0 | Constrained, otherwise c |  --> | 0.598 | 0 | 0 | 0.5 | 0 |  |  --> | C15 ex DUNDRUM | Dundrum [T41,T42]
+  r3: MV/LV Substation WY***15 |  | 10 kV | _ | LV | 400 kVA  :Kiosk Substati | 0.4 |  --> | 0.4 | 0.208 | 1.16 |  |  --> | 0.38 | 0 | 0.06 | 0.361 | 0 |  |  --> | C19 ex DEANSGRANGE | Deansgrange [T41,T42]
+  r4: MV/LV Substation MA***16 |  | 10 kV | _ | LV | 400 kVA  :Kiosk Substati | 0.4 |  --> | 0.4 | 0 | 0 | Constrained, otherwise c |  --> | 0.38 | 0 | 0.006 | 0.412 | 0 |  |  --> | C18 ex DUNDRUM | Dundrum [T41,T42]
+  r5: MV/LV Substation NE***16 |  | 10 kV | _ | LV | 400 kVA  :Building Struc | 0.4 |  --> | 0.4 | 0.295 | 4.01 |  |  --> | 0.38 | 0 | 0.034 | 0.369 | 0 |  |  --> | C15 ex BALLINCLEA | Ballinclea [T41]
+  r6: MV/LV Substation BR***16 |  | 10 kV | _ | LV | 400 kVA  :Kiosk Substati | 0.4 |  --> | 0.4 | 0.309 | 1.55 |  |  --> | 0.38 | 0 | 0.025 | 0.374 | 0 |  |  --> | C11 ex MONKSTOWN | Monkstown [T41,T42]
+  r7: MV/LV Substation FL***16 |  | 10 kV | _ | LV | 400 kVA  :Kiosk Substati | 0.4 |  --> | 0.4 | 0.155 | 13.42 |  |  --> | 0.38 | 0 | 0.046 | 0.378 | 0 |  |  --> | C20 ex POTTERY ROAD | Pottery Road [T101,T102]
+  r8: MV/LV Substation TR***16 |  | 10 kV | _ | LV | 400 kVA  :Kiosk Substati | 0.4 |  --> | 0.4 | 0.377 | 1.23 |  |  --> | 0.38 | 0 | 0 | 0.383 | 0 |  |  --> | C21 ex SALLYNOGGIN ROAD | Sallynoggin Road [T41,T4
+  r9: MV/LV Substation GL***16 |  | 10 kV | _ | LV | 200 kVA  :Kiosk Substati | 0.2 |  --> | 0.2 | 0.041 | 0.04 | Constrained, otherwise c |  --> | 0.19 | 0 | 0 | 0.19 | 0 |  |  --> | C11 ex LITTLE BRAY | Little Bray [T41,T42]
+  r10: MV/LV Substation LA***16 |  | 10 kV | _ | LV | 200 kVA  :Kiosk Substati | 0.2 |  --> | 0.2 | 0.149 | 0.86 |  |  --> | 0.19 | 0 | 0.049 | 0.16 | 0 |  |  --> | C21 ex BELFIELD | Belfield [T41,T42]
+  r11: MV/LV Substation AL***16 |  | 10 kV | _ | LV | 400 kVA  :Kiosk Substati | 0.4 |  --> | 0.4 | 0.306 | 1.16 |  |  --> | 0.38 | 0 | 0.061 | 0.347 | 0 |  |  --> | C18 ex BREWERY ROAD | Brewery Road [T41,T42]
+
+--- sheet 'Disclaimer': 5 rows x 2 columns
+  r1:  | Disclaimer 
+  r3:  | This capacity heatmap pr
+  r4:  | The legal disclaimer ter
+
+--- sheet 'Notes & FAQs': 89 rows x 2 columns
+  r1:  | What is the Available Ca
+  r3:  | At ESB Networks we are c
+  r5:  | We envisage that the map
+  r7:  | If the Available Capacit
+  r9:  | Generation customer quer
+  r10:  | Demand customer queries 
+  r16:  | What can I learn from th
+  r18:  | The Capacity Heatmap pro
+  r19:  | In the map HV substation
+  r20:  | The map also gives the l
+  r21:  | Available capacity for L
+  r22:  | The pins on the map are 
+
+>>> detected in customer-heatmap-download-july-2026.xlsx:
+  sheet 'Heatmap data' [table]: header row 1, station column 'Station Name', areas [], location yes, 46525 rows, static ['capacity_now', 'demand_now', 'headroom_now'], forecast none
+      columns: Station Name | Transformer GroupID | Primary kV | Secondary voltage(s) | Voltage Class | Transformer Configuration | Installed Capacity MVA | Demand Data | Demand FirmCapacity MVA | Demand Available MVA | Parent Available MVA | Demand Parent Constraint | Generation Data | Generation Firm Capacity MW | Generation NonFirm Capacity MW | Generation Total Committed MW | Gen Available Firm MW | Gen Available NonFirm MW | Generation Parent Constraint | General Data | Parent Feeder | Parent Station | TSO Interface Station | Latitude | Longitude

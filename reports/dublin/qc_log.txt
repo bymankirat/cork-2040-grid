@@ -1,0 +1,21 @@
+Quality control log - 2026-10-12 16:11
+QC PASSED: 12 passed, 0 warnings, 0 failures
+
+[PASS] Dublin metered consumption found (CSO MEC03): 2015–2025, latest total 6,500 GWh
+[PASS] Sectors add up to the total: largest gap 6 GWh
+[PASS] Dublin electoral divisions found: 322 EDs: Dublin City 162, Dún Laoghaire–Rathdown 69, South Dublin 49, Fingal 42
+[PASS] Population close to Census 2022 total for Dublin: 1,458,154 vs 1,458,154 headline (0.0% apart; area-level census tables use a slightly different population definition from the headline figure)
+[PASS] Electric heating share plausible: 16.5% of homes
+[PASS] Cars per household plausible: 1.09
+[PASS] Boundaries matched to EDs: 100.0%
+[PASS] ESB Networks headroom workbook read: 6 sheet(s) with station data
+[PASS] ESB Networks heatmap workbook read: 1 sheet(s) with station data
+[PASS] Station names matched between ESB Networks workbooks: 5 matched by near-identical names (listed in reports/name_matches.csv)
+[PASS] Dublin substations identified: 431 stations (location inside Dublin's electoral divisions); 431 with location, 406 with spare capacity
+[PASS] ESB Networks forecasts for Dublin stations: scenarios ['Aggressive', 'Base', 'Best View', 'Conservative'], years 2025–2050
+
+Heating categories: ['coal (incl. anthracite)', 'electricity', 'liquid petroleum gas (lpg)', 'natural gas', 'no central heating', 'not stated', 'oil', 'other', 'peat (incl. turf)', 'total', 'wood (incl. wood pellets)']
+Car categories: {'1 motor car': 1, '2 motor cars': 2, '3 motor cars': 3, '4 or more motor cars': 4, 'no motor car': 0}
+All car columns: ['1 motor car', '2 motor cars', '3 motor cars', '4 or more motor cars', 'no motor car']
+Population total columns: ['total']
+Dublin area labels: {'Dublin City': 162, 'Dún Laoghaire-Rathdown': 69, 'South Dublin': 49, 'Fingal': 42}

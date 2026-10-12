@@ -1,0 +1,174 @@
+{
+  "demo": false,
+  "headline": {
+    "base_year": 2025,
+    "base_gwh": 6500.0,
+    "base_peak": 1124.2562612425625,
+    "peak_2040": {
+      "low": 1519.335416760567,
+      "central": 2414.3918814041517,
+      "high": 3840.581785933755
+    },
+    "peak_2040_flex": 2083.1605168109536,
+    "growth_pct": 114.75458617732683,
+    "extra_central": 1290.135620161589,
+    "heat_pumps": 317739.6893333334,
+    "evs": 459866.3148499999,
+    "top_driver": "heat_pumps_mw",
+    "stations_short": 77,
+    "stations_total": 113,
+    "new_p50": 24.0,
+    "new_range": [
+      16.0,
+      46.0
+    ],
+    "new_flex_p50": 12.0,
+    "uprates_p50": 80.0,
+    "cost": {
+      "10": 379.4251090998436,
+      "50": 556.5712967907749,
+      "90": 816.6280998975494
+    },
+    "cost_flex": {
+      "10": 249.66213107813493,
+      "50": 353.84910689455734,
+      "90": 501.8803988859316
+    },
+    "saving": 202.72218989621757,
+    "method": "spatial",
+    "esbn_2040": [
+      {
+        "scenario": "Aggressive",
+        "negative": 74,
+        "deficit": -0.0
+      },
+      {
+        "scenario": "Base",
+        "negative": 70,
+        "deficit": -0.0
+      },
+      {
+        "scenario": "Best View",
+        "negative": 67,
+        "deficit": -0.0
+      },
+      {
+        "scenario": "Conservative",
+        "negative": 60,
+        "deficit": -0.0
+      }
+    ]
+  },
+  "esbn": {
+    "method": "location inside Dublin's electoral divisions",
+    "heatmap_sheets": 1,
+    "headroom_sheets": 6,
+    "name_matches": [
+      [
+        "ballylicky",
+        "ballylickey"
+      ],
+      [
+        "barnahely",
+        "barnahelya"
+      ],
+      [
+        "batterlanetemporary",
+        "batterlane"
+      ],
+      [
+        "bellacorick",
+        "bellacorrick"
+      ],
+      [
+        "finea",
+        "finnea"
+      ]
+    ],
+    "name_aliases": 1,
+    "headroom_source": "ESB Networks workbook (Best View 2025)",
+    "headroom_from_workbook": 113,
+    "not_demand": [
+      "Airton",
+      "Bancroft",
+      "Bayside",
+      "Cheeverstown",
+      "Cloghban",
+      "Cromcastle",
+      "Dalkey",
+      "Dardistown",
+      "Drynam",
+      "Dublin Airport",
+      "Harbour",
+      "Iig",
+      "Inchicore Central",
+      "Inchicore North",
+      "Leixlip Generator",
+      "Mv/Lv Substation E ***4038",
+      "Mv/Lv Substation Fu***138X",
+      "Mv/Lv Substation Li***381",
+      "Mv/Lv Substation No***380",
+      "Mv/Lv Substation Sy***110X",
+      "Mv/Lv Substation Ta***238",
+      "Newbury",
+      "Parkview",
+      "Pearse Street",
+      "Portmarnock",
+      "Raheny",
+      "Rock Hill",
+      "Serpentine Avenue",
+      "Whitebank"
+    ],
+    "n_cork": 431,
+    "with_location": 431,
+    "with_headroom": 406
+  },
+  "summary": {
+    "cost_m": {
+      "10": 379.4251090998436,
+      "50": 556.5712967907749,
+      "90": 816.6280998975494
+    },
+    "cost_m_flex": {
+      "10": 249.66213107813493,
+      "50": 353.84910689455734,
+      "90": 501.8803988859316
+    },
+    "stations_new": {
+      "10": 16.0,
+      "50": 24.0,
+      "90": 46.0
+    },
+    "stations_new_flex": {
+      "10": 5.0,
+      "50": 12.0,
+      "90": 21.0
+    },
+    "uprates": {
+      "10": 75.0,
+      "50": 80.0,
+      "90": 84.0
+    },
+    "n110": {
+      "10": 0.0,
+      "50": 1.0,
+      "90": 1.0
+    },
+    "n38": {
+      "10": 16.0,
+      "50": 23.0,
+      "90": 45.0
+    },
+    "extra_mw": {
+      "10": 1112.6475035529538,
+      "50": 1351.5606051423351,
+      "90": 1608.3805435384909
+    },
+    "extra_mw_flex": {
+      "10": 797.8445454049559,
+      "50": 984.5528669323448,
+      "90": 1185.0284857400177
+    },
+    "saving_m": 202.72218989621757
+  }
+}
