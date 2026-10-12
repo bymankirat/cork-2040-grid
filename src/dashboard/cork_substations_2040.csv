@@ -1,0 +1,66 @@
+Station,Voltage,Latitude,Longitude,Spare capacity today (MW),Extra load by 2040 (MW),Shortfall by 2040 (MW),Verdict,New stations,Upgrades
+Ballincollig,38 kV,51.88,-8.62,7.09,2.45,0.0,Enough spare capacity,0,0
+Ballydehob,38 kV,51.57,-9.47,0.0,5.65,5.65,Upgrade needed,0,1
+Ballylickey,110 kV,51.72,-9.43,41.46,2.43,0.0,Enough spare capacity,0,0
+Bandon,110 kV,51.77,-8.73,1.66,13.42,11.75,Upgrade needed,0,1
+Bantry,38 kV,51.69,-9.43,0.0,4.19,4.19,Upgrade needed,0,1
+Barrymore,110 kV,52.1,-8.25,0.0,4.06,4.06,Upgrade needed,0,1
+Bealnablath,38 kV,51.83,-8.88,0.0,2.54,2.54,Upgrade needed,0,1
+Bishopstown,38 kV,51.89,-8.54,0.0,31.99,31.99,New station(s) needed,2,1
+Buttevant,38 kV,52.24,-8.66,2.01,5.31,3.3,Upgrade needed,0,1
+Caroline Street,38 kV,51.9,-8.47,0.0,8.01,8.01,Upgrade needed,0,1
+Carrigaline,38 kV,51.83,-8.38,0.0,4.89,4.89,Upgrade needed,0,1
+Carrigshane,38 kV,51.91,-8.14,6.85,12.39,5.54,Upgrade needed,0,1
+Carrigtwohill,38 kV,51.9,-8.25,10.01,0.0,0.0,Enough spare capacity,0,0
+Castlelyons,38 kV,52.08,-8.22,0.25,3.6,3.35,Upgrade needed,0,1
+Castletownbere,38 kV,51.66,-9.9,4.37,3.93,0.0,Enough spare capacity,0,0
+Castletownroche,38 kV,52.16,-8.45,2.2,4.64,2.44,Upgrade needed,0,1
+Castleview,110 kV,51.9,-8.37,10.07,3.87,0.0,Enough spare capacity,0,0
+Charleville,38 kV,52.33,-8.69,6.28,4.81,0.0,Enough spare capacity,0,0
+Clonakilty,38 kV,51.64,-8.89,0.0,8.28,8.28,Upgrade needed,0,1
+Cloonbannin,38 kV,52.13,-9.04,4.63,4.17,0.0,Enough spare capacity,0,0
+Cloonlough,38 kV,52.26,-8.28,0.89,2.57,1.69,Upgrade needed,0,1
+Cloyne,38 kV,51.86,-8.11,0.0,10.3,10.3,New station(s) needed,1,1
+Coolcarron,38 kV,52.13,-8.28,0.0,0.0,0.0,Enough spare capacity,0,0
+Coolroe,110 kV,51.89,-8.64,17.73,4.82,0.0,Enough spare capacity,0,0
+Cow Cross,110 kV,51.87,-8.3,10.88,18.83,7.95,Upgrade needed,0,1
+Curraglass,38 kV,52.09,-8.07,2.05,2.38,0.33,Upgrade needed,0,1
+Curraleigh,38 kV,51.91,-8.67,0.0,9.12,9.12,Upgrade needed,0,1
+Dennehys Cross,38 kV,51.89,-8.5,6.07,11.62,5.55,Upgrade needed,0,1
+Douglas,38 kV,51.88,-8.44,0.0,32.85,32.85,New station(s) needed,2,1
+Dunmanway,38 kV,51.72,-9.09,10.26,1.75,0.0,Enough spare capacity,0,0
+Eastmont,110 kV,51.9,-8.37,0.0,0.0,0.0,Enough spare capacity,0,0
+Enniskeane,38 kV,51.74,-8.93,5.38,3.38,0.0,Enough spare capacity,0,0
+Fairhill,38 kV,51.91,-8.48,1.69,18.15,16.46,New station(s) needed,1,1
+Fermoy,110 kV,52.15,-8.26,0.0,5.73,5.73,Upgrade needed,0,1
+Fermoy North,38 kV,52.15,-8.29,0.0,3.52,3.52,Upgrade needed,0,1
+Foxhole,38 kV,51.97,-7.87,0.0,9.73,9.73,New station(s) needed,1,1
+Glengarriff,38 kV,51.76,-9.52,3.28,2.23,0.0,Enough spare capacity,0,0
+Glenlara,110 kV,52.21,-9.02,37.61,2.18,0.0,Enough spare capacity,0,0
+Hartnetts Cross,110 kV,51.89,-8.95,13.52,6.51,0.0,Enough spare capacity,0,0
+Kanturk,38 kV,52.15,-8.9,0.0,7.22,7.22,Upgrade needed,0,1
+Kilbarry,110 kV,51.92,-8.48,0.0,7.55,7.55,Upgrade needed,0,1
+Killacloyne,110 kV,51.91,-8.28,0.0,6.26,6.26,Upgrade needed,0,1
+Kilmoney,38 kV,51.81,-8.42,0.0,5.38,5.38,Upgrade needed,0,1
+Kilnap,110 kV,51.92,-8.48,0.0,4.06,4.06,Upgrade needed,0,1
+Kilshanny,38 kV,52.27,-8.24,0.16,4.6,4.44,Upgrade needed,0,1
+Kinsale,38 kV,51.73,-8.54,7.31,12.14,4.82,Upgrade needed,0,1
+Lake,38 kV,51.72,-9.11,0.0,3.6,3.6,Upgrade needed,0,1
+Liberty Street,110 kV,51.9,-8.48,14.73,12.53,0.0,Enough spare capacity,0,0
+Macroom,38 kV,51.9,-8.89,0.58,3.05,2.47,Upgrade needed,0,1
+Mallow,38 kV,52.14,-8.62,4.61,11.09,6.49,Upgrade needed,0,1
+Marina,110 kV,51.9,-8.45,8.99,18.5,9.51,Upgrade needed,0,1
+Mayfield,38 kV,51.92,-8.43,4.02,14.93,10.9,New station(s) needed,1,1
+Midleton,110 kV,51.94,-8.18,8.67,2.2,0.0,Enough spare capacity,0,0
+Milford (Mwr),38 kV,52.34,-8.86,7.92,3.07,0.0,Enough spare capacity,0,0
+Newmarket (Sr),38 kV,52.21,-9.01,3.89,2.24,0.0,Enough spare capacity,0,0
+Rathmore,38 kV,52.08,-9.18,3.95,2.32,0.0,Enough spare capacity,0,0
+Riverstown,38 kV,51.94,-8.38,0.0,8.37,8.37,Upgrade needed,0,1
+Ross Carbery,38 kV,51.6,-9.02,1.72,4.39,2.68,Upgrade needed,0,1
+Scarteen,38 kV,52.14,-8.68,0.0,6.84,6.84,Upgrade needed,0,1
+Skibbereen,38 kV,51.56,-9.24,0.0,8.77,8.77,Upgrade needed,0,1
+Timoleague,38 kV,51.67,-8.76,0.0,4.85,4.85,Upgrade needed,0,1
+Togher,38 kV,51.88,-8.5,3.07,9.24,6.17,Upgrade needed,0,1
+Trabeg,110 kV,51.88,-8.46,10.14,12.72,2.58,Upgrade needed,0,1
+Whitechurch,38 kV,51.98,-8.51,1.84,6.57,4.73,Upgrade needed,0,1
+Wilton,38 kV,51.88,-8.51,0.0,9.6,9.6,New station(s) needed,1,1
