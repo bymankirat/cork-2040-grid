@@ -1,0 +1,66 @@
+key,station,kv,lat,lon,headroom_mw,extra_mw,deficit_mw,action,level,n_new,n_uprate
+ballincollig,BALLINCOLLIG,38.00,51.88,-8.62,7.09,2.45,0.00,none,38kv,0,0
+ballydehob,BALLYDEHOB,38.00,51.57,-9.47,0.00,5.65,5.65,upgrade,38kv,0,1
+ballylickey,BALLYLICKEY,110.00,51.72,-9.43,41.46,2.43,0.00,none,110kv,0,0
+bandon,BANDON,110.00,51.77,-8.73,1.66,13.42,11.75,upgrade,110kv,0,1
+bantry,BANTRY,38.00,51.69,-9.43,0.00,4.19,4.19,upgrade,38kv,0,1
+barrymore,BARRYMORE,110.00,52.10,-8.25,0.00,4.06,4.06,upgrade,110kv,0,1
+bealnablath,BEALNABLATH,38.00,51.83,-8.88,0.00,2.54,2.54,upgrade,38kv,0,1
+bishopstown,BISHOPSTOWN,38.00,51.89,-8.54,0.00,31.99,31.99,new station,38kv,2,1
+buttevant,BUTTEVANT,38.00,52.24,-8.66,2.01,5.31,3.30,upgrade,38kv,0,1
+carolinestreet,CAROLINE STREET,38.00,51.90,-8.47,0.00,8.01,8.01,upgrade,38kv,0,1
+carrigaline,CARRIGALINE,38.00,51.83,-8.38,0.00,4.89,4.89,upgrade,38kv,0,1
+carrigshane,CARRIGSHANE,38.00,51.91,-8.14,6.85,12.39,5.54,upgrade,38kv,0,1
+carrigtwohill,CARRIGTWOHILL,38.00,51.90,-8.25,10.01,0.00,0.00,none,38kv,0,0
+castlelyons,CASTLELYONS,38.00,52.08,-8.22,0.25,3.60,3.35,upgrade,38kv,0,1
+castletownbere,CASTLETOWNBERE,38.00,51.66,-9.90,4.37,3.93,0.00,none,38kv,0,0
+castletownroche,CASTLETOWNROCHE,38.00,52.16,-8.45,2.20,4.64,2.44,upgrade,38kv,0,1
+castleview,CASTLEVIEW,110.00,51.90,-8.37,10.07,3.87,0.00,none,110kv,0,0
+charleville,CHARLEVILLE,38.00,52.33,-8.69,6.28,4.81,0.00,none,38kv,0,0
+clonakilty,CLONAKILTY,38.00,51.64,-8.89,0.00,8.28,8.28,upgrade,38kv,0,1
+cloonbannin,CLOONBANNIN,38.00,52.13,-9.04,4.63,4.17,0.00,none,38kv,0,0
+cloonlough,CLOONLOUGH,38.00,52.26,-8.28,0.89,2.57,1.69,upgrade,38kv,0,1
+cloyne,CLOYNE,38.00,51.86,-8.11,0.00,10.30,10.30,new station,38kv,1,1
+coolcarron,COOLCARRON,38.00,52.13,-8.28,0.00,0.00,0.00,none,38kv,0,0
+coolroe,COOLROE,110.00,51.89,-8.64,17.73,4.82,0.00,none,110kv,0,0
+cowcross,COW CROSS,110.00,51.87,-8.30,10.88,18.83,7.95,upgrade,110kv,0,1
+curraglass,CURRAGLASS,38.00,52.09,-8.07,2.05,2.38,0.33,upgrade,38kv,0,1
+curraleigh,CURRALEIGH,38.00,51.91,-8.67,0.00,9.12,9.12,upgrade,38kv,0,1
+dennehyscross,DENNEHYS CROSS,38.00,51.89,-8.50,6.07,11.62,5.55,upgrade,38kv,0,1
+douglas,DOUGLAS,38.00,51.88,-8.44,0.00,32.85,32.85,new station,38kv,2,1
+dunmanway,DUNMANWAY,38.00,51.72,-9.09,10.26,1.75,0.00,none,38kv,0,0
+eastmont,EASTMONT,110.00,51.90,-8.37,0.00,0.00,0.00,none,110kv,0,0
+enniskeane,ENNISKEANE,38.00,51.74,-8.93,5.38,3.38,0.00,none,38kv,0,0
+fairhill,FAIRHILL,38.00,51.91,-8.48,1.69,18.15,16.46,new station,38kv,1,1
+fermoy,FERMOY,110.00,52.15,-8.26,0.00,5.73,5.73,upgrade,110kv,0,1
+fermoynorth,FERMOY NORTH,38.00,52.15,-8.29,0.00,3.52,3.52,upgrade,38kv,0,1
+foxhole,FOXHOLE,38.00,51.97,-7.87,0.00,9.73,9.73,new station,38kv,1,1
+glengarriff,GLENGARRIFF,38.00,51.76,-9.52,3.28,2.23,0.00,none,38kv,0,0
+glenlara,GLENLARA,110.00,52.21,-9.02,37.61,2.18,0.00,none,110kv,0,0
+hartnettscross,HARTNETTS CROSS,110.00,51.89,-8.95,13.52,6.51,0.00,none,110kv,0,0
+kanturk,KANTURK,38.00,52.15,-8.90,0.00,7.22,7.22,upgrade,38kv,0,1
+kilbarry,KILBARRY,110.00,51.92,-8.48,0.00,7.55,7.55,upgrade,110kv,0,1
+killacloyne,KILLACLOYNE,110.00,51.91,-8.28,0.00,6.26,6.26,upgrade,110kv,0,1
+kilmoney,KILMONEY,38.00,51.81,-8.42,0.00,5.38,5.38,upgrade,38kv,0,1
+kilnap,KILNAP,110.00,51.92,-8.48,0.00,4.06,4.06,upgrade,110kv,0,1
+kilshanny,KILSHANNY,38.00,52.27,-8.24,0.16,4.60,4.44,upgrade,38kv,0,1
+kinsale,KINSALE,38.00,51.73,-8.54,7.31,12.14,4.82,upgrade,38kv,0,1
+lake,LAKE,38.00,51.72,-9.11,0.00,3.60,3.60,upgrade,38kv,0,1
+libertystreet,LIBERTY STREET,110.00,51.90,-8.48,14.73,12.53,0.00,none,110kv,0,0
+macroom,MACROOM,38.00,51.90,-8.89,0.58,3.05,2.47,upgrade,38kv,0,1
+mallow,MALLOW,38.00,52.14,-8.62,4.61,11.09,6.49,upgrade,38kv,0,1
+marina,MARINA,110.00,51.90,-8.45,8.99,18.50,9.51,upgrade,110kv,0,1
+mayfield,MAYFIELD,38.00,51.92,-8.43,4.02,14.93,10.90,new station,38kv,1,1
+midleton,MIDLETON,110.00,51.94,-8.18,8.67,2.20,0.00,none,110kv,0,0
+milfordmwr,MILFORD (MWR),38.00,52.34,-8.86,7.92,3.07,0.00,none,38kv,0,0
+newmarketsr,NEWMARKET (SR),38.00,52.21,-9.01,3.89,2.24,0.00,none,38kv,0,0
+rathmore,RATHMORE,38.00,52.08,-9.18,3.95,2.32,0.00,none,38kv,0,0
+riverstown,RIVERSTOWN,38.00,51.94,-8.38,0.00,8.37,8.37,upgrade,38kv,0,1
+rosscarbery,ROSS CARBERY,38.00,51.60,-9.02,1.72,4.39,2.68,upgrade,38kv,0,1
+scarteen,SCARTEEN,38.00,52.14,-8.68,0.00,6.84,6.84,upgrade,38kv,0,1
+skibbereen,SKIBBEREEN,38.00,51.56,-9.24,0.00,8.77,8.77,upgrade,38kv,0,1
+timoleague,TIMOLEAGUE,38.00,51.67,-8.76,0.00,4.85,4.85,upgrade,38kv,0,1
+togher,TOGHER,38.00,51.88,-8.50,3.07,9.24,6.17,upgrade,38kv,0,1
+trabeg,TRABEG,110.00,51.88,-8.46,10.14,12.72,2.58,upgrade,110kv,0,1
+whitechurch,WHITECHURCH,38.00,51.98,-8.51,1.84,6.57,4.73,upgrade,38kv,0,1
+wilton,WILTON,38.00,51.88,-8.51,0.00,9.60,9.60,new station,38kv,1,1

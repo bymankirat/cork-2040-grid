@@ -1,0 +1,183 @@
+{
+  "demo": false,
+  "headline": {
+    "base_year": 2025,
+    "base_gwh": 3055.0,
+    "base_peak": 581.2404870624049,
+    "peak_2040": {
+      "low": 756.6904628189438,
+      "central": 1109.6593736805971,
+      "high": 1702.0017538537436
+    },
+    "peak_2040_flex": 964.5296490659596,
+    "growth_pct": 90.91226409378783,
+    "extra_central": 528.4188866181922,
+    "heat_pumps": 128535.6535,
+    "evs": 232905.00549999997,
+    "top_driver": "heat_pumps_mw",
+    "stations_short": 45,
+    "stations_total": 65,
+    "new_p50": 10.0,
+    "new_range": [
+      5.0,
+      16.0
+    ],
+    "new_flex_p50": 3.0,
+    "uprates_p50": 45.0,
+    "cost": {
+      "10": 194.2689537104041,
+      "50": 260.97764118105283,
+      "90": 345.5224644783485
+    },
+    "cost_flex": {
+      "10": 153.80504162734877,
+      "50": 192.9739345391817,
+      "90": 243.97697106247895
+    },
+    "saving": 68.00370664187113,
+    "method": "spatial",
+    "esbn_2040": [
+      {
+        "scenario": "Aggressive",
+        "negative": 33,
+        "deficit": -0.0
+      },
+      {
+        "scenario": "Base",
+        "negative": 29,
+        "deficit": -0.0
+      },
+      {
+        "scenario": "Best View",
+        "negative": 29,
+        "deficit": -0.0
+      },
+      {
+        "scenario": "Conservative",
+        "negative": 26,
+        "deficit": -0.0
+      }
+    ]
+  },
+  "esbn": {
+    "method": "location inside Cork's electoral divisions",
+    "heatmap_sheets": 1,
+    "headroom_sheets": 6,
+    "name_matches": [
+      [
+        "ballylicky",
+        "ballylickey"
+      ],
+      [
+        "barnahely",
+        "barnahelya"
+      ],
+      [
+        "batterlanetemporary",
+        "batterlane"
+      ],
+      [
+        "bellacorick",
+        "bellacorrick"
+      ],
+      [
+        "finea",
+        "finnea"
+      ]
+    ],
+    "name_aliases": 1,
+    "headroom_source": "ESB Networks workbook (Best View 2025)",
+    "headroom_from_workbook": 65,
+    "not_demand": [
+      "Annabella",
+      "Avoncore",
+      "Ballineen",
+      "Blackwater Bridge",
+      "Boggeragh",
+      "Brinny",
+      "Carrigadrohid",
+      "Carrigcannon",
+      "Carrigthomas",
+      "Castlefarm",
+      "Centre Park Road",
+      "Cobh",
+      "Dunderrow",
+      "Flaxfort",
+      "Forest",
+      "Glanta Commons",
+      "Gneeves",
+      "Haulbowline",
+      "Holly Hill",
+      "Inchera",
+      "Inchinashing",
+      "Inniscarra",
+      "Kealkill",
+      "Knockacummer",
+      "Knockafutera",
+      "Knockbrogan",
+      "Lacka",
+      "Lee Bridge",
+      "Little Island",
+      "Milane Hill",
+      "Mv/Lv Substation Ec***338Z",
+      "Oldcourt",
+      "Rathgoggin",
+      "Saint Josephs Road",
+      "Seafield",
+      "Streamhill",
+      "Taurbeg",
+      "Whitegate"
+    ],
+    "n_cork": 187,
+    "with_location": 187,
+    "with_headroom": 146
+  },
+  "summary": {
+    "cost_m": {
+      "10": 194.2689537104041,
+      "50": 260.97764118105283,
+      "90": 345.5224644783485
+    },
+    "cost_m_flex": {
+      "10": 153.80504162734877,
+      "50": 192.9739345391817,
+      "90": 243.97697106247895
+    },
+    "stations_new": {
+      "10": 5.0,
+      "50": 10.0,
+      "90": 16.0
+    },
+    "stations_new_flex": {
+      "10": 3.0,
+      "50": 3.0,
+      "90": 5.0
+    },
+    "uprates": {
+      "10": 45.0,
+      "50": 45.0,
+      "90": 48.0
+    },
+    "n110": {
+      "10": 0.0,
+      "50": 0.0,
+      "90": 0.0
+    },
+    "n38": {
+      "10": 5.0,
+      "50": 10.0,
+      "90": 16.0
+    },
+    "extra_mw": {
+      "10": 465.6175032996522,
+      "50": 554.9176210066673,
+      "90": 653.5004516110512
+    },
+    "extra_mw_flex": {
+      "10": 325.95779878359076,
+      "50": 391.0723436480131,
+      "90": 464.41714831994653
+    },
+    "saving_m": 68.00370664187113
+  }
+}
