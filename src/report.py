@@ -9,7 +9,7 @@ from pathlib import Path
 import pandas as pd
 
 from config import ASSUMPTIONS as A
-from config import ESBN_PAGE, NETWORK, SCENARIO_NAMES, SCENARIOS, TARGET_YEAR
+from config import AREAS, DOCS_DIR, ESBN_PAGE, NAME, NETWORK, REGION_KEY, REGIONS, SCENARIO_NAMES, SCENARIOS, SITE_ROOT, TARGET_YEAR, R
 
 AUTHOR = "Mankirat Singh"
 REPO = "https://github.com/bymankirat/cork-2040-grid"
@@ -52,9 +52,9 @@ def build(cons, base, eds, scen, plan, sens, view, qc, figs, esbn_info, demo) ->
     hl = headline(base, scen, plan, view)
     s = plan["summary"]
     cause = {"homes_mw": "new homes and population", "business_mw": "business growth", "heat_pumps_mw": "heat pumps",
-             "evs_mw": "electric cars", "large_loads_mw": "new large loads"}
+             "evs_mw": "electric cars", "large_loads_mw": R["large_label"].lower()}
     findings = [
-        f"Co. Cork used <b>{hl['base_gwh']:,.0f} GWh</b> of electricity in {hl['base_year']}, equivalent to a winter "
+        f"{R['full']} used <b>{hl['base_gwh']:,.0f} GWh</b> of electricity in {hl['base_year']}, equivalent to a winter "
         f"peak of about <b>{hl['base_peak']:,.0f} MW</b>.",
         f"By {TARGET_YEAR} the peak could reach <b>{hl['peak_2040']['central']:,.0f} MW</b> in the central case "
         f"(+{hl['growth_pct']:.0f}%), and {hl['peak_2040']['low']:,.0f}–{hl['peak_2040']['high']:,.0f} MW across "
@@ -62,7 +62,7 @@ def build(cons, base, eds, scen, plan, sens, view, qc, figs, esbn_info, demo) ->
         f"{hl['heat_pumps']:,.0f} extra heat pumps and {hl['evs']:,.0f} extra electric cars.",
     ]
     if hl["stations_short"] is not None:
-        findings.append(f"<b>{hl['stations_short']} of {hl['stations_total']}</b> Cork 110 kV / 38 kV substations "
+        findings.append(f"<b>{hl['stations_short']} of {hl['stations_total']}</b> {NAME} 110 kV / 38 kV substations "
                         f"would run short of capacity by {TARGET_YEAR} (central case).")
     findings.append(
         f"Meeting it needs about <b>{hl['new_p50']:.0f} new substations</b> (10–90% range "
@@ -78,7 +78,7 @@ def build(cons, base, eds, scen, plan, sens, view, qc, figs, esbn_info, demo) ->
         r = hl["esbn_2040"]
         findings.append("ESB Networks' own station forecasts point the same way: in 2040 "
                         + ", ".join(f"{x['scenario']} {int(x['negative'])}" for x in r)
-                        + " Cork stations have no firm spare capacity left.")
+                        + f" {NAME} stations have no firm spare capacity left.")
         if hl["stations_short"] is not None:
             near = min(r, key=lambda x: abs(x["negative"] - hl["stations_short"]))
             more = hl["stations_short"] > max(x["negative"] for x in r)
@@ -123,9 +123,9 @@ def build(cons, base, eds, scen, plan, sens, view, qc, figs, esbn_info, demo) ->
                             f"<td class='num'>{r['headroom']:,.0f}</td></tr>"
                             for _, r in t.sort_values(["year", "scenario"]).iterrows())
     asum = [
-        ("Population growth 2022–2040, Cork City", A["pop_growth_2040"]["Cork City"], "{:.0%}",
-         "Revised National Planning Framework 2025: +950,000 nationally, half in the five cities"),
-        ("Population growth 2022–2040, Cork County", A["pop_growth_2040"]["Cork County"], "{:.0%}", "As above"),
+        (f"Population growth 2022–2040, {a}", A["pop_growth_2040"][a], "{:.0%}",
+         "Revised National Planning Framework 2025: +950,000 nationally, half in the five cities" if i == 0
+         else "Assumption, as above") for i, a in enumerate(AREAS)] + [
         ("Homes with a heat pump in 2040", A["heat_pump_share_2040"], "{:.0%}",
          "Climate Action Plan: ~680,000 heat pumps by 2030"),
         ("Cars that are electric in 2040", A["ev_share_2040"], "{:.0%}", "Climate Action Plan / PR6: up to 1m EVs by 2030"),
@@ -134,7 +134,7 @@ def build(cons, base, eds, scen, plan, sens, view, qc, figs, esbn_info, demo) ->
         ("Peak per electric car (kW)", A["ev_peak_kw"], "{:.2f}",
          f"Assumption: ~1 kW unmanaged, {A['ev_peak_kw_smart']} kW smart; ESB Networks base: 85% smart by 2040"),
         ("Business growth per year", A["nonres_growth_pa"], "{:.1%}", "Assumption; CSO trend 2015–2025"),
-        ("New large loads (MW)", A["large_loads_mw"], "{:.0f}", "Assumption (industrial electrification, ports)"),
+        (f"{R['large_label']} (extra MW at peak)", A["large_loads_mw"], "{:.0f}", R["large_source"]),
         ("Efficiency gain per home by 2040", A["res_efficiency_2040"], "{:.0%}", "Assumption"),
     ]
     a_rows = "".join(f"<tr><td>{n}</td>" + "".join(f"<td class='num'>{f.format(v[k])}</td>" for k in SCENARIOS)
@@ -153,17 +153,40 @@ def build(cons, base, eds, scen, plan, sens, view, qc, figs, esbn_info, demo) ->
         "station (for example larger transformers); a larger one is met by upgrading it and adding new station(s) "
         "nearby for the rest.</p>"
         if plan["method"] == "spatial" else
-        f"<p>Station locations or spare capacity were not available, so new capacity is sized for Cork as a whole: the "
+        f"<p>Station locations or spare capacity were not available, so new capacity is sized for {NAME} as a whole: the "
         f"extra peak minus today's total spare capacity ({plan.get('headroom_total', 0):,.0f} MW), split between "
         f"110 kV and 38 kV stations. This is cruder than a station-by-station plan.</p>")
 
+    # switch between regions that have a published report
+    import os
+    tabs = []
+    for k, reg in REGIONS.items():
+        target = (SITE_ROOT / "index.html") if k == "cork" else (SITE_ROOT / k / "index.html")
+        if k == REGION_KEY:
+            tabs.append(f'<a class="tab on" href="index.html">{reg["name"]}</a>')
+        elif target.exists():
+            tabs.append(f'<a class="tab" href="{os.path.relpath(target, DOCS_DIR)}">{reg["name"]}</a>')
+    switch = f'<span class="switch">{"".join(tabs)}</span>' if len(tabs) > 1 else ""
+    large_note = ""
+    if REGION_KEY == "dublin":
+        large_note = ("<p class='note'><b>Data centres.</b> The CSO reports that data centres used 23% of Ireland's "
+                      "metered electricity in 2025, much of it in the Dublin area. This model does not try to split "
+                      "existing data-centre use out of the CSO county figure above; the separate data-centre driver "
+                      "covers only <b>new</b> data-centre and large-user load from 2025 (central +"
+                      f"{A['large_loads_mw']['central']:,.0f} MW by {TARGET_YEAR}). It counts towards Dublin's peak, "
+                      "but these sites connect mostly to the transmission grid (EirGrid), so it is not assigned to "
+                      "ESB Networks' 110 kV and 38 kV distribution stations below.</p>")
+    dc_tip = ("<li><b>Treat data centres as a transmission and flexibility question.</b> New large users need "
+              "EirGrid connections and, under the CRU's large energy user policy, on-site generation or demand "
+              "flexibility; shared planning with ESB Networks keeps them from crowding out homes and heat pumps.</li>"
+              if REGION_KEY == "dublin" else "")
     banner = ('<div class="banner">DEMO DATA: simulated numbers for testing. Run without --demo to use the real '
               'CSO and ESB Networks data before publishing.</div>') if demo else ""
     links = " · ".join(f'<a href="{u}">{k}</a>' for k, u in LINKS.items())
 
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cork 2040 Grid</title>
+<title>{NAME} 2040 Grid</title>
 <style>
 :root{{--bg:#fcfcfb;--card:#fff;--ink:#0b0b0b;--ink-2:#52514e;--line:#e4e3df;--accent:#2a78d6;--hl:#eef4fc;--warn-bg:#fff4e5;--warn-ink:#7a3d00}}
 @media (prefers-color-scheme:dark){{:root:not([data-theme="light"]){{--bg:#1a1a19;--card:#232322;--ink:#f0efec;--ink-2:#c3c2b7;--line:#3a3a38;--accent:#3987e5;--hl:#1f2a3a;--warn-bg:#3a2a12;--warn-ink:#ffd08a}}:root:not([data-theme="light"]) img{{background:#fcfcfb}}}}
@@ -187,34 +210,37 @@ td.qc-pass{{color:#008300;font-weight:700}}td.qc-warn{{color:#b06f00;font-weight
 .topnav .brand{{font-weight:700;margin-right:auto}}
 .tab{{padding:6px 12px;border-radius:999px;border:1px solid var(--line);text-decoration:none;color:var(--ink);font-weight:600;font-size:.9rem}}
 .tab.on{{background:var(--accent);border-color:var(--accent);color:#fff}}
+.switch{{display:flex;gap:4px;margin-right:10px;padding-right:12px;border-right:1px solid var(--line)}}
+.switch .tab.on{{background:var(--hl);color:var(--accent);border-color:var(--accent)}}
 .mapcta{{display:flex;gap:14px;align-items:center;background:var(--hl);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:14px 0}}
 .mapcta a.btn{{background:var(--accent);color:#fff;text-decoration:none;padding:8px 14px;border-radius:8px;font-weight:700;white-space:nowrap}}
 footer{{margin-top:52px;padding-top:16px;border-top:1px solid var(--line);color:var(--ink-2);font-size:.9rem}}
 </style></head><body>
-<nav class="topnav"><div class="in"><span class="brand">Cork 2040 Grid</span>
+<nav class="topnav"><div class="in"><span class="brand">{NAME} 2040 Grid</span>{switch}
 <a class="tab on" href="index.html">Report</a><a class="tab" href="map.html">Interactive map →</a></div></nav>
 <main>
 {banner}
 <div class="kicker">Network planning to 2040 · open data</div>
-<h1>Cork 2040: How Much Power, How Many Substations, What Budget?</h1>
+<h1>{NAME} 2040: How Much Power, How Many Substations, What Budget?</h1>
 <p class="byline">{AUTHOR} · {links}</p>
-<p class="note">Co. Cork (Cork City and Cork County). Data: CSO metered electricity consumption and Census 2022 (heating,
+<p class="note">{R['full']} ({R['parts']}). Data: CSO metered electricity consumption and Census 2022 (heating,
 cars, population by electoral division); ESB Networks Demand Capacity Headroom Report and customer heatmap. 2040 is the
 year of ESB's Net Zero strategy. Independent analysis, not an ESB or ESB Networks publication.</p>
 
 <h2>Key findings</h2>
 <ul class="findings">{''.join(f'<li>{f}</li>' for f in findings)}</ul>
 
-<h2>1. Where Cork starts</h2>
-{_img(figs.get('history'), 'Cork electricity consumption')}
+<h2>1. Where {NAME} starts</h2>
+{_img(figs.get('history'), f'{NAME} electricity consumption')}
 <p>Yearly consumption is turned into a winter peak with a load factor of {A['load_factor']:.2f} (average ÷ peak), the
 quantity that sizes substations.</p>
 
-<h2>2. How much power Cork will need</h2>
+<h2>2. How much power {NAME} will need</h2>
 <p>The model adds, year by year: new homes and people, business growth, heat pumps (new homes plus conversions of
 oil-, gas- and solid-fuel-heated homes, mapped from Census 2022), electric cars (from Census car ownership), and new
 large loads, minus efficiency gains. Heat pumps and EVs follow an S-shaped uptake curve.</p>
-{_img(figs.get('paths'), 'Cork peak demand to 2040')}
+{large_note}
+{_img(figs.get('paths'), f'{NAME} peak demand to 2040')}
 {_img(figs.get('drivers'), 'Drivers of growth')}
 <div class="table-wrap"><table><thead><tr><th>{TARGET_YEAR}</th><th class="num">Peak (MW)</th><th class="num">Energy (GWh)</th>
 <th class="num">Extra heat pumps</th><th class="num">Extra EVs</th><th class="num">Households</th></tr></thead>
@@ -222,7 +248,7 @@ large loads, minus efficiency gains. Heat pumps and EVs follow an S-shaped uptak
 
 <h2>3. Where the new demand lands</h2>
 {_img(figs.get('map'), 'Map of extra demand and substations')}
-{'<div class="mapcta"><div>Explore every Cork substation on the <b>interactive map</b>: play 2025–2050 under ESB Networks\' four scenarios, switch to this project\'s 2040 verdicts, and click any station for its numbers.</div><a class="btn" href="map.html">Open map →</a></div>' if figs.get('webmap') else ''}
+{'<div class="mapcta"><div>Explore every {NAME} substation on the <b>interactive map</b>: play 2025–2050 under ESB Networks\' four scenarios, switch to this project\'s 2040 verdicts, and click any station for its numbers.</div><a class="btn" href="map.html">Open map →</a></div>' if figs.get('webmap') else ''}
 
 <h2>4. Which substations run out</h2>
 {method_txt}
@@ -244,14 +270,14 @@ Networks capital investment nationally for 2026–2030 (PR6), including 69 new o
 
 {f'''<h2>7. ESB Networks' own view</h2>
 <p>The Demand Capacity Headroom Report gives ESB Networks' forecast headroom for each station under its four
-scenarios. Counting Cork's stations is an independent cross-check on the bottom-up model above.</p>
+scenarios. Counting {NAME}'s stations is an independent cross-check on the bottom-up model above.</p>
 {_img(figs.get('esbn'), 'ESB Networks headroom forecasts')}
 <div class="table-wrap"><table><thead><tr><th>Scenario</th><th class="num">Year</th><th class="num">Stations with no firm headroom</th>
 <th class="num">Spare capacity left ({view['unit'] or 'as published'})</th></tr></thead>
 <tbody>{esbn_rows}</tbody></table></div>
 {compare}''' if view else ''}
 
-<h2>8. How Cork can accommodate it</h2>
+<h2>8. How {NAME} can accommodate it</h2>
 <ul>
 <li><b>Flexibility first.</b> Smart EV charging and heat-pump flexibility are the cheapest "capacity": they defer or
 avoid stations (section 5). Time-of-use tariffs and managed charging should be in place before EV numbers peak.</li>
@@ -259,8 +285,8 @@ avoid stations (section 5). Time-of-use tariffs and managed charging should be i
 consenting a 110 kV station takes years, so decisions are needed well before the year a station is full.</li>
 <li><b>Upgrade before building.</b> Where the shortfall is small, a larger transformer at an existing site is faster
 and cheaper than a new station.</li>
-<li><b>Plan with the city.</b> Growth is concentrated in Cork City and its expansion areas; reserving sites and cable
-routes in development plans now avoids costly retrofits later.</li>
+<li><b>Plan with the councils.</b> Growth is concentrated in {R['city']} and its expansion areas; reserving sites and
+cable routes in development plans now avoids costly retrofits later.</li>{dc_tip}
 <li><b>Keep the plan live.</b> Re-run yearly as ESB Networks updates its workbooks and CSO publishes new data.</li>
 </ul>
 

@@ -1,7 +1,7 @@
-"""Interactive Cork capacity heatmap (docs/map.html): every Cork substation coloured by spare capacity, with a
+"""Interactive capacity heatmap (docs/map.html): every substation in the region coloured by spare capacity, with a
 year slider and scenario picker (ESB Networks' own forecasts), this project's 2040 verdicts, and the extra 2040
 load per electoral division. One fully self-contained page: Leaflet is embedded (src/vendor, BSD-2 licence) and
-the base map is drawn from Cork's own electoral-division boundaries, so it works offline and needs no map
+the base map is drawn from the region's own electoral-division boundaries, so it works offline and needs no map
 service or API key."""
 
 from __future__ import annotations
@@ -12,18 +12,14 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from config import DOCS_DIR
+from config import DOCS_DIR, NAME, R
 
 
 def _r(x, n=2):
     return None if x is None or (isinstance(x, float) and np.isnan(x)) else round(float(x), n)
 
 
-TOWNS = [["Cork City", 51.8985, -8.4756, 1], ["Mallow", 52.1345, -8.6450, 0], ["Fermoy", 52.1386, -8.2756, 0],
-         ["Midleton", 51.9153, -8.1750, 0], ["Youghal", 51.9536, -7.8506, 0], ["Bandon", 51.7460, -8.7425, 0],
-         ["Clonakilty", 51.6231, -8.8706, 0], ["Skibbereen", 51.5500, -9.2667, 0], ["Bantry", 51.6800, -9.4520, 0],
-         ["Macroom", 51.9046, -8.9568, 0], ["Kinsale", 51.7059, -8.5222, 0], ["Cobh", 51.8503, -8.2967, 0],
-         ["Mitchelstown", 52.2656, -8.2683, 0], ["Kanturk", 52.1719, -8.9050, 0], ["Charleville", 52.3556, -8.6833, 0]]
+TOWNS = R["towns"]
 
 
 def build(cork: pd.DataFrame, forecast: pd.DataFrame | None, plan: dict, scen: dict, geojson: Path | None,
@@ -48,7 +44,8 @@ def build(cork: pd.DataFrame, forecast: pd.DataFrame | None, plan: dict, scen: d
             continue
         if pd.isna(r.get("kv")) and k not in fc:   # neither a known 110/38 kV station nor in ESB's forecast
             continue
-        if not (51.3 <= r["lat"] <= 52.5 and -10.4 <= r["lon"] <= -7.5):  # keep the view on Cork
+        k0 = R["keep"]
+        if not (k0[0] <= r["lat"] <= k0[2] and k0[1] <= r["lon"] <= k0[3]):  # keep the view on the region
             continue
         p = st_plan.loc[k] if st_plan is not None and k in st_plan.index else None
         stations.append({
@@ -72,9 +69,9 @@ def build(cork: pd.DataFrame, forecast: pd.DataFrame | None, plan: dict, scen: d
                 feats.append(f)
         eds = {"type": "FeatureCollection", "features": feats}
     payload = {"stations": stations, "years": years, "scenarios": scenarios, "eds": eds, "demo": demo,
-               "towns": TOWNS}
+               "towns": R["towns"], "view": R["view"]}
     vendor = Path(__file__).resolve().parent / "vendor"
-    html = (PAGE.replace("/*LEAFLET_CSS*/", (vendor / "leaflet.css").read_text(encoding="utf-8"))
+    html = (PAGE.replace("{NAME}", NAME).replace("/*LEAFLET_CSS*/", (vendor / "leaflet.css").read_text(encoding="utf-8"))
             .replace("/*LEAFLET_JS*/", (vendor / "leaflet.js").read_text(encoding="utf-8"))
             .replace("/*DATA*/", json.dumps(payload, separators=(",", ":"))))
     DOCS_DIR.mkdir(exist_ok=True)
@@ -85,7 +82,7 @@ def build(cork: pd.DataFrame, forecast: pd.DataFrame | None, plan: dict, scen: d
 
 PAGE = r"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cork Capacity Heatmap</title>
+<title>{NAME} Capacity Heatmap</title>
 <style>/*LEAFLET_CSS*/</style>
 <style>
 :root{--bg:#f6f6f3;--panel:#fcfcfb;--card:#fff;--ink:#0b0b0b;--ink-2:#52514e;--ink-3:#8a8984;--line:#e4e3df;--accent:#2a78d6;
@@ -141,8 +138,8 @@ footer{margin-top:auto;font-size:11px;color:var(--ink-3)}
 <aside>
  <div class="tabs"><a href="index.html">← Report</a><a class="on" href="map.html">Interactive map</a></div>
  <div id="banner"></div>
- <div><div class="kicker">Cork 2040 · grid capacity</div><h1>Cork Capacity Heatmap</h1>
- <div class="muted small">Every Cork 110 kV and 38 kV substation, coloured by spare capacity for new demand. Click a station for details.</div></div>
+ <div><div class="kicker">{NAME} 2040 · grid capacity</div><h1>{NAME} Capacity Heatmap</h1>
+ <div class="muted small">Every {NAME} 110 kV and 38 kV substation, coloured by spare capacity for new demand. Click a station for details.</div></div>
  <div class="seg" id="seg"><button data-v="esbn" class="on">ESB Networks forecast</button><button data-v="plan">2040 plan</button></div>
  <div class="field" id="scenF"><label for="scen">Scenario</label><select id="scen"></select></div>
  <div class="field" id="yearF"><label for="year">Year</label><div class="yearrow"><button class="play" id="play" title="Play">▶</button><input id="year" type="range"><b id="yv"></b></div></div>
@@ -167,7 +164,7 @@ const ACT={none:['Enough spare capacity',COL.green],upgrade:['Upgrade needed',CO
 if(D.demo)document.getElementById('banner').innerHTML='<div class="banner">DEMO DATA: simulated, not real.</div>';
 const map=L.map('map',{zoomSnap:0.25,zoomControl:true,attributionControl:true,preferCanvas:false});
 map.attributionControl.setPrefix('<a href="https://leafletjs.com">Leaflet</a>');
-// base map: Cork's electoral divisions
+// base map: the region's electoral divisions
 const RAMP=['#eaf2fc','#c3dbf6','#8fbbee','#4f93e0','#2a78d6','#174f96'];
 let breaks=[];let shade=false;
 function edStyle(f){const x=f.properties.x;let fill=css('--land'),op=1;
@@ -229,8 +226,8 @@ function stopPlay(){if(timer){clearInterval(timer);timer=null;playB.textContent=
 playB.onclick=()=>{if(timer){stopPlay();return;}if(+yr.value>=+yr.max)yr.value=0;playB.textContent='❚❚';
   timer=setInterval(()=>{if(+yr.value>=+yr.max){stopPlay();return;}yr.value=+yr.value+1;draw();},700);};
 document.getElementById('edl').onchange=e=>{shade=e.target.checked;if(base)base.setStyle(edStyle);document.getElementById('ramp').style.display=shade?'':'none';};
-// view locked to Cork
-const CORK=L.latLngBounds([[51.42,-10.25],[52.40,-7.80]]);
+// view locked to the region
+const CORK=L.latLngBounds([[D.view[0],D.view[1]],[D.view[2],D.view[3]]]);
 let bounds=base?base.getBounds():L.latLngBounds(D.stations.map(s=>[s.lat,s.lon]));
 if(!bounds.isValid()||bounds.getEast()-bounds.getWest()>3.5||bounds.getNorth()-bounds.getSouth()>2.2)bounds=CORK;
 function fit(){map.invalidateSize();map.fitBounds(bounds,{padding:[16,16]});}

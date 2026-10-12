@@ -9,7 +9,32 @@ import math
 import numpy as np
 import pandas as pd
 
-from config import DEMO_DIR, ESBN
+from config import DEMO_DIR, ESBN, REGION_KEY
+
+# Simulated geography per region: (area label in Census ED names, number of EDs, lat box, lon box, dense?)
+DEMO = {
+    "cork": {"areas": [("Cork City", 90, (51.86, 51.94), (-8.55, -8.39), True),
+                       ("Cork County", 260, (51.55, 52.30), (-9.80, -7.90), False)],
+              "cso": [("CKC", "Co. Cork", 1.0)], "res": 1000, "nonres": 1810,
+              "other": ("Kerry", (52.6, 53.4), (-9.0, -6.5)),
+              "stations": ["Kilbarry", "Marina", "Trabeg", "Blackpool", "Ballincollig", "Carrigaline", "Ringaskiddy",
+                           "Glanmire", "Douglas", "Bishopstown", "Midleton", "Cobh", "Mallow", "Fermoy", "Bandon",
+                           "Clonakilty", "Macroom", "Youghal", "Kinsale", "Skibbereen", "Bantry", "Kanturk",
+                           "Charleville", "Dunmanway", "Mitchelstown"], "county": "Cork"},
+    "dublin": {"areas": [("Dublin City", 120, (53.32, 53.39), (-6.33, -6.18), True),
+                         ("Fingal", 60, (53.40, 53.62), (-6.45, -6.10), False),
+                         ("South Dublin", 50, (53.25, 53.34), (-6.50, -6.30), False),
+                         ("D\u00fan Laoghaire-Rathdown", 40, (53.22, 53.30), (-6.27, -6.11), False)],
+                "cso": [("DNC", "Co. Dublin", 0.19)] + [(f"D{k}", f"Dublin {k}", w) for k, w in (
+                    ("1", .06), ("2", .08), ("4", .06), ("8", .05), ("12", .05), ("15", .12), ("18", .05), ("22", .14),
+                    ("24", .20))],
+                "res": 2300, "nonres": 4100, "other": ("Meath", (53.6, 53.9), (-6.9, -6.4)),
+                "stations": ["Ringsend", "North Wall", "Inchicore", "Finglas", "Cabra", "Ballsbridge", "Rathmines",
+                             "Clontarf", "Drumcondra", "Kilmainham", "Swords", "Balbriggan", "Blanchardstown",
+                             "Corduff", "Tallaght", "Clondalkin", "Lucan", "Citywest", "Sandyford", "Dun Laoghaire",
+                             "Cherrywood", "Malahide", "Howth", "Skerries", "Kilshane"], "county": "Dublin"},
+}
+RD = DEMO[REGION_KEY]
 
 
 def _wgs_to_itm(lat, lon):
@@ -24,14 +49,15 @@ def make(seed: int = 3) -> dict:
     rng = np.random.default_rng(seed)
     DEMO_DIR.mkdir(parents=True, exist_ok=True)
 
-    # ---------------- electoral divisions: Cork City (dense) and Cork County (spread), plus a few elsewhere
+    # ---------------- electoral divisions: the city (dense) and the rest of the region (spread), plus a few elsewhere
     eds = []
-    for i in range(90):
-        eds.append(("City", 51.90 + rng.normal(0, 0.025), -8.47 + rng.normal(0, 0.04), "Cork City"))
-    for i in range(260):
-        eds.append(("Cty", rng.uniform(51.55, 52.3), rng.uniform(-9.8, -7.9), "Cork County"))
+    for lab, n, la, lo, dense in RD["areas"]:
+        for i in range(n):
+            eds.append(("City" if dense else "Cty", rng.uniform(*la), rng.uniform(*lo), lab))
+    o_lab, o_la, o_lo = RD["other"]
     for i in range(40):
-        eds.append(("Oth", rng.uniform(52.6, 53.4), rng.uniform(-9.0, -6.5), "Kerry"))
+        eds.append(("Oth", rng.uniform(*o_la), rng.uniform(*o_lo), o_lab))
+    region_labels = {a[0] for a in RD["areas"]}
     guids = [f"G{i:05d}" for i in range(len(eds))]
     labels = [f"ED {i}, {e[3]}" for i, e in enumerate(eds)]
 
@@ -77,14 +103,14 @@ def make(seed: int = 3) -> dict:
     # ---------------- consumption (MEC03 layout)
     rows = []
     for y in range(2015, 2026):
-        r = 1000 + 8 * (y - 2015) + rng.normal(0, 10)
-        nr = 1810 + 18 * (y - 2015) + rng.normal(0, 15)
-        for code, lab, v in (("-", "All sectors", r + nr), ("10", "10 Residential", r), ("20", "20 Non-residential", nr)):
-            rows.append({"STATISTIC": "MEC03", "Statistic Label": "Metered Electricity Consumption", "TLIST(A1)": y,
-                         "Year": y, "C03815V04565": "CKC", "Counties & Dublin Postal Districts": "Co. Cork",
-                         "C03816V04566": code, "Sector": lab, "UNIT": "Gigawatt Hours", "VALUE": round(v)})
-            rows.append({**rows[-1], "C03815V04565": "KYC", "Counties & Dublin Postal Districts": "Co. Kerry",
-                         "VALUE": round(v * 0.4)})
+        r0 = RD["res"] * (1 + 0.008 * (y - 2015)) + rng.normal(0, 10)
+        nr0 = RD["nonres"] * (1 + 0.010 * (y - 2015)) + rng.normal(0, 15)
+        for ccode, clab, w in RD["cso"] + [("KYC", "Co. Kerry", 0.4)]:
+            r, nr = r0 * w, nr0 * w
+            for code, lab, v in (("-", "All sectors", r + nr), ("10", "10 Residential", r), ("20", "20 Non-residential", nr)):
+                rows.append({"STATISTIC": "MEC03", "Statistic Label": "Metered Electricity Consumption", "TLIST(A1)": y,
+                             "Year": y, "C03815V04565": ccode, "Counties & Dublin Postal Districts": clab,
+                             "C03816V04566": code, "Sector": lab, "UNIT": "Gigawatt Hours", "VALUE": round(v)})
     cons = pd.DataFrame(rows)
 
     paths = {}
@@ -100,30 +126,31 @@ def make(seed: int = 3) -> dict:
         lat, lon = e[1], e[2]
         ring = [[lon - d, lat - d * 0.6], [lon + d, lat - d * 0.6], [lon + d, lat + d * 0.6],
                 [lon - d, lat + d * 0.6], [lon - d, lat - d * 0.6]]
-        if e[3].startswith("Cork"):
+        if e[3] in region_labels:
             feats.append({"type": "Feature", "properties": {"ED_GUID": g, "ED_ENGLISH": lab, "COUNTY_ENGLISH": e[3]},
                           "geometry": {"type": "Polygon", "coordinates": [ring]}})
-    bpath = DEMO_DIR / "cork_ed_boundaries.geojson"
+    bpath = DEMO_DIR / f"{REGION_KEY}_ed_boundaries.geojson"
     bpath.write_text(json.dumps({"type": "FeatureCollection", "features": feats}))
 
     # ---------------- ESB Networks-style workbooks
-    names = ["Kilbarry", "Marina", "Trabeg", "Blackpool", "Ballincollig", "Carrigaline", "Ringaskiddy", "Glanmire",
-             "Douglas", "Bishopstown", "Midleton", "Cobh", "Mallow", "Fermoy", "Bandon", "Clonakilty", "Macroom",
-             "Youghal", "Kinsale", "Skibbereen", "Bantry", "Kanturk", "Charleville", "Dunmanway", "Mitchelstown"]
+    names = RD["stations"]
+    city_box = RD["areas"][0]
+    lat_all = (min(a[2][0] for a in RD["areas"]), max(a[2][1] for a in RD["areas"]))
+    lon_all = (min(a[3][0] for a in RD["areas"]), max(a[3][1] for a in RD["areas"]))
     st = []
     for i, nm in enumerate(names):
         city = i < 10
-        lat = 51.90 + rng.normal(0, 0.03) if city else rng.uniform(51.6, 52.25)
-        lon = -8.47 + rng.normal(0, 0.05) if city else rng.uniform(-9.6, -8.0)
+        lat = rng.uniform(*city_box[2]) if city else rng.uniform(*lat_all)
+        lon = rng.uniform(*city_box[3]) if city else rng.uniform(*lon_all)
         kv = 110 if i in (0, 1, 2, 6, 10, 12, 14, 18) else 38
         firm = rng.choice([63, 80, 126]) if kv == 110 else rng.choice([10, 15, 20])
         load = firm * rng.uniform(0.55, 0.97)
-        st.append({"name": f"{nm} {kv}kV", "kv": kv, "county": "Cork", "lat": lat, "lon": lon, "firm": firm,
+        st.append({"name": f"{nm} {kv}kV", "kv": kv, "county": RD["county"], "lat": lat, "lon": lon, "firm": firm,
                    "load": load})
-    for i in range(35):  # other counties
+    for i in range(35):  # other counties, well away from the region
         st.append({"name": f"Station{i} {38 if i % 3 else 110}kV", "kv": 38 if i % 3 else 110,
-                   "county": rng.choice(["Kerry", "Limerick", "Waterford", "Dublin"]),
-                   "lat": rng.uniform(52.4, 53.5), "lon": rng.uniform(-9.5, -6.3), "firm": 20, "load": 12})
+                   "county": rng.choice(["Kerry", "Limerick", "Waterford", "Galway"]),
+                   "lat": rng.uniform(52.4, 53.0), "lon": rng.uniform(-9.5, -8.8), "firm": 20, "load": 12})
 
     def band(x):
         if x < 1:
@@ -137,7 +164,9 @@ def make(seed: int = 3) -> dict:
     heat_rows = []
     for s_ in st:
         nm = s_["name"].upper()
-        nm = {"GLANMIRE 38KV": "GLANMIRE TOWN 38KV", "DOUGLAS 38KV": "DOUGLASS 38KV"}.get(nm, nm)
+        # spellings differ slightly between the workbooks, as in the real files
+        nm = {names[7].upper() + " 38KV": names[7].upper() + " TOWN 38KV",
+              names[8].upper() + " 38KV": names[8].upper() + names[8][-1].upper() + " 38KV"}.get(nm, nm)
         heat_rows.append({"Station Name": nm, "Station Type": "HV",
                           "Voltage (kV)": s_["kv"], "Latitude": s_["lat"], "Longitude": s_["lon"],
                           "Demand Available Capacity (MVA)": round(max(0, (s_["firm"] - s_["load"]) * 0.9), 1)})
@@ -147,7 +176,7 @@ def make(seed: int = 3) -> dict:
                           "Latitude": la, "Longitude": lo, "Demand Available MVA": None})
     for i in range(300):  # MV/LV substations with numeric names
         heat_rows.append({"Station Name": f"{100000 + i}", "Station Type": "MV/LV", "Voltage (kV)": 10,
-                          "Latitude": 51.9 + rng.normal(0, 0.1), "Longitude": -8.5 + rng.normal(0, 0.2),
+                          "Latitude": rng.uniform(*city_box[2]), "Longitude": rng.uniform(*city_box[3]),
                           "Demand Available Capacity (MVA)": 0.2})
     hm = DEMO_DIR / ESBN["heatmap"][0]
     with pd.ExcelWriter(hm, engine="openpyxl") as w:

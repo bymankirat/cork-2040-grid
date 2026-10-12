@@ -1,12 +1,16 @@
-"""Cork 2040: how much power, how many substations, what budget?
+"""2040 grid plan for an Irish county: how much power, how many substations, what budget?
 
-    python run_pipeline.py            # downloads CSO + ESB Networks data (first run a few minutes)
-    python run_pipeline.py --demo     # simulated data for testing (outputs marked DEMO)
-    python run_pipeline.py --refresh  # re-download everything (run yearly when new data is published)
+    python run_pipeline.py                     # Cork (downloads CSO + ESB Networks data; first run a few minutes)
+    python run_pipeline.py --county dublin     # Dublin, with data centres as their own driver
+    python run_pipeline.py --county both       # Dublin then Cork, with links between the two reports
+    python run_pipeline.py --demo              # simulated data for testing (outputs marked DEMO)
+    python run_pipeline.py --refresh           # re-download everything (run yearly when new data is published)
 """
 
 import argparse
 import json
+import os
+import subprocess
 import sys
 import warnings
 from pathlib import Path
@@ -14,6 +18,27 @@ from pathlib import Path
 ROOT = Path(__file__).parent
 sys.path.insert(0, str(ROOT / "src"))
 warnings.filterwarnings("ignore")
+
+
+def _args():
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--county", default="cork", choices=["cork", "dublin", "both"])
+    ap.add_argument("--demo", action="store_true")
+    ap.add_argument("--refresh", action="store_true")
+    return ap.parse_args()
+
+
+ARGS = _args()
+if ARGS.county == "both":  # run each region in its own process (settings are fixed per run)
+    for c in ("dublin", "cork"):
+        print(f"\n#################### {c.upper()} ####################")
+        cmd = [sys.executable, str(Path(__file__).resolve()), "--county", c] + (["--demo"] if ARGS.demo else []) \
+            + (["--refresh"] if ARGS.refresh and c == "dublin" else [])
+        rc = subprocess.call(cmd)
+        if rc:
+            sys.exit(rc)
+    sys.exit(0)
+os.environ["GRID_REGION"] = ARGS.county
 
 import charts  # noqa: E402
 import data  # noqa: E402
@@ -23,14 +48,13 @@ import quality  # noqa: E402
 import report  # noqa: E402
 import scenarios  # noqa: E402
 import webmap  # noqa: E402
-from config import DOCS_DIR, REPORTS_DIR, SCENARIO_NAMES, TARGET_YEAR  # noqa: E402
+from config import (DOCS_DIR, NAME, REGION_KEY, REPORTS_DIR, R, SCENARIO_NAMES,  # noqa: E402
+                    TARGET_YEAR)
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--demo", action="store_true")
-    ap.add_argument("--refresh", action="store_true")
-    args = ap.parse_args()
+    args = ARGS
+    print(f"=== {NAME} 2040 ===")
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
 
     print("1/7  Getting data ...")
@@ -46,7 +70,7 @@ def main() -> None:
         bpath = data.download_boundaries(force=args.refresh)
         wb = data.download_esbn(force=args.refresh)
 
-    print("2/7  Reading Cork's consumption, homes, heating and cars ...")
+    print(f"2/7  Reading {NAME}'s consumption, homes, heating and cars ...")
     cons = data.read_consumption(cso["consumption"])
     eds, ed_meta = data.build_eds(cso)
     pl = charts.polys(bpath)
@@ -69,7 +93,7 @@ def main() -> None:
     print(f"     Station names matched across workbooks: {len(info.get('name_matches', []))}")
     if info.get("not_demand"):
         print(f"     Not on ESB's demand list (generation/dedicated, excluded from planning): {len(info['not_demand'])}")
-    print(f"     Cork stations found: {info.get('n_cork', 0)} ({info.get('method')}); with location "
+    print(f"     {NAME} stations found: {info.get('n_cork', 0)} ({info.get('method')}); with location "
           f"{info.get('with_location', 0)}, with spare capacity {info.get('with_headroom', 0)}")
 
     if info.get("name_matches"):
@@ -107,14 +131,14 @@ def main() -> None:
     (DOCS_DIR / "index.html").write_text(report.build(cons, base, eds, scen, plan, sens, view, qc, figs, info,
                                                       args.demo), encoding="utf-8")
     for sname, r in scen.items():
-        r["yearly"].to_csv(REPORTS_DIR / f"cork_{sname}_yearly.csv", float_format="%.1f")
+        r["yearly"].to_csv(REPORTS_DIR / f"{REGION_KEY}_{sname}_yearly.csv", float_format="%.1f")
     if plan.get("stations"):
         plan["stations"][("central", False)].to_csv(REPORTS_DIR / "stations_central_2040.csv", float_format="%.2f")
     hl = report.headline(base, scen, plan, view)
     (REPORTS_DIR / "results.json").write_text(json.dumps({"demo": args.demo, "headline": hl, "esbn": info,
                                                           "summary": plan["summary"]}, indent=2, default=str))
 
-    cv = (f"**Cork 2040 Grid Capacity Plan (Python, Monte Carlo):** bottom-up model of Co. Cork's electricity peak to "
+    cv = (f"**{NAME} 2040 Grid Capacity Plan (Python, Monte Carlo):** bottom-up model of {R['full']}'s electricity peak to "
           f"2040 from CSO consumption and Census 2022 data for {len(eds)} electoral divisions (heat pumps, EVs, housing, "
           f"business): central peak +{hl['growth_pct']:.0f}% to {hl['peak_2040']['central']:,.0f} MW; "
           + (f"mapped new load onto {hl['stations_total']} ESB Networks substations ({hl['stations_short']} run short); "
@@ -125,7 +149,7 @@ def main() -> None:
 
     s = plan["summary"]
     print("\n================ RESULTS ================" + ("  (DEMO DATA - NOT REAL)" if args.demo else ""))
-    print(f"Cork today ({base['year']}): {base['total_gwh']:,.0f} GWh (homes {base['res_gwh']:,.0f}, business "
+    print(f"{NAME} today ({base['year']}): {base['total_gwh']:,.0f} GWh (homes {base['res_gwh']:,.0f}, business "
           f"{base['nonres_gwh']:,.0f}) -> peak ≈ {base['peak_mw']:,.0f} MW")
     print(f"Census: {len(eds)} EDs, {eds['population'].sum():,.0f} people, {eds['households'].sum():,.0f} homes, "
           f"{100 * eds['hh_electric_heat'].sum() / eds['households'].sum():.0f}% electric heat, "

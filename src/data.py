@@ -1,4 +1,4 @@
-"""Download public data and build Cork's starting point: consumption history and one row per electoral division."""
+"""Download public data and build the region's starting point: consumption history and one row per electoral division."""
 
 from __future__ import annotations
 
@@ -12,7 +12,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from config import BOUNDARY_URL, CORK_AREAS, CSO_API, CSO_TABLES, ESBN, ESBN_PAGE, RAW_DIR
+from config import BOUNDARY_URL, CSO_API, CSO_TABLES, ESBN, ESBN_PAGE, RAW_DIR, REGION_KEY, R
 
 STANDARD = {"STATISTIC", "Statistic Label", "TLIST(A1)", "Census Year", "Sex", "UNIT", "VALUE"}
 
@@ -68,12 +68,12 @@ def download_esbn(folder: Path = RAW_DIR, force: bool = False) -> dict[str, Path
 
 
 def download_boundaries(folder: Path = RAW_DIR, force: bool = False) -> Path | None:
-    """Cork electoral division polygons (WGS84) for the maps."""
-    p = folder / "cork_ed_boundaries.geojson"
+    """The region's electoral division polygons (WGS84) for the maps."""
+    p = folder / f"{REGION_KEY}_ed_boundaries.geojson"
     if p.exists() and not force:
         return p
     try:
-        q = urllib.parse.urlencode({"where": "UPPER(COUNTY_ENGLISH) LIKE '%CORK%'", "outFields": "ED_GUID,ED_ENGLISH,COUNTY_ENGLISH", "outSR": 4326,
+        q = urllib.parse.urlencode({"where": R["boundary_where"], "outFields": "ED_GUID,ED_ENGLISH,COUNTY_ENGLISH", "outSR": 4326,
                                     "f": "geojson", "resultRecordCount": 2000, "geometryPrecision": 5,
                                     "maxAllowableOffset": 0.0008})
         gj = json.loads(_fetch(f"{BOUNDARY_URL}?{q}"))
@@ -88,16 +88,25 @@ def download_boundaries(folder: Path = RAW_DIR, force: bool = False) -> Path | N
 
 # --------------------------------------------------------------------------- CSO readers
 def read_consumption(path: Path) -> pd.DataFrame:
-    """Cork metered electricity by year and sector (GWh). Columns: residential, non_residential, total."""
+    """The region's metered electricity by year and sector (GWh). Columns: residential, non_residential, total.
+    Several MEC03 rows can make one region (Dublin = "Co. Dublin" plus postal districts Dublin 1-24)."""
     raw = pd.read_csv(path, dtype=str, encoding="utf-8-sig")
     county = next(c for c in raw.columns if "count" in c.lower() and not c.startswith("C0"))
     sector = next(c for c in raw.columns if "sector" in c.lower() and not c.startswith("C0"))
     year = next(c for c in raw.columns if c.lower() in ("year", "tlist(a1)"))
-    d = raw[raw[county].str.strip().str.lower() == "co. cork"].copy()
+    lab = raw[county].str.strip().str.lower()
+    keep = lab.isin(R["cso_labels"])
+    for pre in R["cso_prefixes"]:
+        keep |= lab.str.startswith(pre)
+    d = raw[keep].copy()
     d["value"] = pd.to_numeric(d["VALUE"], errors="coerce")
     d["sector"] = d[sector].str.lower().map(
         lambda s: "residential" if "non" not in s and "resid" in s else "non_residential" if "non" in s else "total")
-    w = d.pivot_table(index=pd.to_numeric(d[year]), columns="sector", values="value", aggfunc="first")
+    # sum the parts of the region; a year counts only if every part reported it
+    parts = d[county].nunique()
+    w = d.pivot_table(index=pd.to_numeric(d[year]), columns="sector", values="value", aggfunc="sum")
+    n = d.dropna(subset=["value"]).groupby([pd.to_numeric(d[year]), "sector"])[county].nunique().unstack()
+    w = w.where(n.reindex_like(w) >= parts)
     w.index.name = "year"
     if "total" not in w:
         w["total"] = w.sum(axis=1)
@@ -129,7 +138,7 @@ def _cols(w: pd.DataFrame, *keys, exclude=()) -> list[str]:
 
 
 def build_eds(paths: dict[str, Path]) -> tuple[pd.DataFrame, dict]:
-    """One row per Cork electoral division: population, households, heating fuel, cars."""
+    """One row per electoral division in the region: population, households, heating fuel, cars."""
     heat, names = _read_ed(paths["heating"])
     cars, _ = _read_ed(paths["cars"])
     pop, _ = _read_ed(paths["population"])
@@ -154,10 +163,15 @@ def build_eds(paths: dict[str, Path]) -> tuple[pd.DataFrame, dict]:
         "cars": car_count,
     })
     suffix = eds["ed"].str.rsplit(",", n=1).str[-1].str.strip()
-    is_cork = suffix.str.lower().str.contains("cork")
-    eds["area"] = np.where(suffix.str.lower().str.contains("city"), CORK_AREAS[0], CORK_AREAS[1])
-    area_labels = suffix[is_cork].value_counts().to_dict()
-    eds = eds[is_cork].copy()
+    low = suffix.str.lower()
+    in_region = low.str.contains("|".join(map(re.escape, R["region_terms"])))
+    area = pd.Series(None, index=eds.index, dtype=object)
+    for name, terms in R["areas"]:  # first rule that matches wins
+        hit = area.isna() & in_region & low.apply(lambda x, t=terms: any(k in x for k in t))
+        area[hit] = name
+    eds["area"] = area
+    area_labels = suffix[in_region].value_counts().to_dict()
+    eds = eds[in_region & area.notna()].copy()
     eds["hh_convertible"] = (eds["households"] - eds["hh_electric_heat"] - eds["hh_heat_not_stated"]).clip(lower=0)
     eds.index.name = "ed_guid"
     meta = {"heating_categories": list(heat.columns), "car_categories": car_cols, "area_labels": area_labels,

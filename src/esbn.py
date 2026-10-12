@@ -1,8 +1,8 @@
 """Read the ESB Networks workbooks without knowing their exact layout in advance.
 
 For each sheet: find the header row (or two-row header), work out which columns are station names, locations,
-voltage, today's capacity or headroom, and which are forecasts by scenario and year. Then keep Cork's stations
-(by county/area column, or by location inside Cork's electoral-division boundaries).
+voltage, today's capacity or headroom, and which are forecasts by scenario and year. Then keep the region's stations
+(by county/area column, or by location inside the region's electoral-division boundaries).
 
 A plain-text description of every sheet is always written to reports/esbn_workbook_structure.txt, so the
 mapping can be checked or overridden (config.ESBN_OVERRIDE).
@@ -17,7 +17,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from config import ESBN_OVERRIDE, REPORTS_DIR
+from config import ESBN_OVERRIDE, NAME, REPORTS_DIR, R
 
 KEY = re.compile(r"\b(?:station|substation|name|county|region|area|capacity|headroom|available|demand|load|"
                  r"forecast|mva|mw|kv|voltage|firm|scenario|years?|latitude|longitude|lat|lon|long|easting|"
@@ -324,7 +324,7 @@ def parse_workbook(path: Path, key: str) -> tuple[list[dict], str]:
     return parsed, text + "\n" + "\n".join(lines)
 
 
-# --------------------------------------------------------------------------- Cork selection
+# --------------------------------------------------------------------------- region selection
 def _in_polys(lat: np.ndarray, lon: np.ndarray, polys) -> np.ndarray:
     from matplotlib.path import Path as MPath
     pts = np.c_[lon, lat]
@@ -337,7 +337,8 @@ def _in_polys(lat: np.ndarray, lon: np.ndarray, polys) -> np.ndarray:
 
 
 def cork_stations(parsed: dict[str, list[dict]], polys) -> tuple[pd.DataFrame, pd.DataFrame | None, dict]:
-    """Combine both workbooks into one table of Cork stations, plus ESB Networks' own forecasts for them."""
+    """Combine both workbooks into one table of the region's stations, plus ESB Networks' own forecasts for them.
+    (Named for the original Cork project; works for any region in config.REGIONS.)"""
     info = {"method": None, "heatmap_sheets": 0, "headroom_sheets": 0}
     frames = []
     for key, items in parsed.items():
@@ -381,12 +382,12 @@ def cork_stations(parsed: dict[str, list[dict]], polys) -> tuple[pd.DataFrame, p
     for c in ["headroom_now", "capacity_now", "demand_now"]:
         if c in allst:  # the heatmap has one row per transformer group: a station's total is their sum
             st[c] = allst.groupby("key")[c].sum(min_count=1)
-    is_cork = st["area"].fillna("").str.lower().str.contains("cork")
+    is_cork = st["area"].fillna("").str.lower().str.contains("|".join(map(re.escape, R["region_terms"])))
     info["method"] = "county/area column" if is_cork.any() else None
     if polys is not None and st["lat"].notna().any():
         in_poly = _in_polys(st["lat"].to_numpy(), st["lon"].to_numpy(), polys)
         if not is_cork.any():
-            info["method"] = "location inside Cork's electoral divisions"
+            info["method"] = f"location inside {NAME}'s electoral divisions"
         is_cork = is_cork | in_poly
     cork = st[is_cork].copy()
     cork["kv"] = cork["voltage"].fillna("").str.extract(r"(110|38)")[0].astype(float)
@@ -453,3 +454,6 @@ def cork_stations(parsed: dict[str, list[dict]], polys) -> tuple[pd.DataFrame, p
     info["with_location"] = int(cork["lat"].notna().sum())
     info["with_headroom"] = int(cork["headroom_now"].notna().sum()) if "headroom_now" in cork else 0
     return cork, forecast, info
+
+
+region_stations = cork_stations

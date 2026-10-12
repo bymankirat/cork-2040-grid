@@ -3,7 +3,7 @@
 Spatial method (when station locations and spare capacity are available): each electoral division's extra
 2040 peak is assigned to its nearest 110 kV / 38 kV station. Where the extra load exceeds the station's spare
 capacity, the shortfall is met by an upgrade (if small) or new station(s) (if large). Otherwise an aggregate
-method sizes new capacity for Cork as a whole. Costs are Monte Carlo ranges, never single numbers.
+method sizes new capacity for the region as a whole. Costs are Monte Carlo ranges, never single numbers.
 """
 
 from __future__ import annotations
@@ -102,7 +102,7 @@ def plan(scen: dict, mc: pd.DataFrame, cork: pd.DataFrame, centroids: pd.DataFra
         out["stations"] = per
         base_load = assign(scen["central"]["ed2040"]["extra_mw"], centroids, st).reindex(st.index).fillna(0)
         base_flex = assign(scen["central"]["ed2040_flex"]["extra_mw"], centroids, st).reindex(st.index).fillna(0)
-        # year each station runs out (central): station load grows in proportion to Cork's extra peak
+        # year each station runs out (central): station load grows in proportion to the region's extra peak
         yearly = scen["central"]["yearly"]["extra_peak_mw"]
         frac = (yearly / central_extra).clip(lower=0)
         def first_year(i):
@@ -169,7 +169,7 @@ def plan(scen: dict, mc: pd.DataFrame, cork: pd.DataFrame, centroids: pd.DataFra
 
 
 def esbn_view(forecast: pd.DataFrame | None, cork: pd.DataFrame) -> dict | None:
-    """What ESB Networks' own workbook says about Cork's stations, by scenario and year."""
+    """What ESB Networks' own workbook says about the region's stations, by scenario and year."""
     if forecast is None or not len(forecast):
         return None
     f = forecast.copy()

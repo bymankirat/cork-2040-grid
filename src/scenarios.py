@@ -1,6 +1,6 @@
-"""Bottom-up model of Cork's electricity need to 2040, by cause and by electoral division.
+"""Bottom-up model of a region's electricity need to 2040, by cause and by electoral division.
 
-Start: Cork's metered consumption (CSO) turned into a winter peak. Then add, year by year:
+Start: the region's metered consumption (CSO) turned into a winter peak. Then add, year by year:
   population and housing growth, business growth, heat pumps, electric cars, new large loads,
 minus efficiency. Adoption of heat pumps and EVs follows an S-curve from today to the 2040 share.
 """
@@ -11,11 +11,11 @@ import numpy as np
 import pandas as pd
 
 from config import ASSUMPTIONS as A
-from config import BASE_YEAR, MC_RUNS, RANDOM_STATE, SCENARIOS, TARGET_YEAR, YEARS
+from config import AREAS, BASE_YEAR, MC_RUNS, RANDOM_STATE, SCENARIOS, TARGET_YEAR, YEARS, R
 
 CENSUS_YEAR = 2022
 CURRENT_EV_SHARE = 0.03   # electric share of cars around 2025 (already inside today's consumption)
-CURRENT_HP_SHARE = 0.04   # heat-pump share of Cork homes around 2025 (already inside today's consumption)
+CURRENT_HP_SHARE = 0.04   # heat-pump share of homes around 2025 (already inside today's consumption)
 
 
 def s_curve(year, start=BASE_YEAR, end=TARGET_YEAR, mid=2033, k=0.45) -> float:
@@ -29,7 +29,7 @@ def linear(year, start, end=TARGET_YEAR) -> float:
 
 
 def baseline(cons: pd.DataFrame) -> dict:
-    """Latest complete year of Cork consumption, and its peak equivalent."""
+    """Latest complete year of the region's consumption, and its peak equivalent."""
     last = int(cons.dropna(subset=["total"]).index.max())
     row = cons.loc[last]
     res = float(row.get("residential", np.nan))
@@ -49,7 +49,7 @@ def scenario_params(s: str) -> dict:
 
 
 def project(eds: pd.DataFrame, base: dict, p: dict, flexible: bool = False) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Returns (yearly Cork totals by cause, 2040 extra peak per electoral division)."""
+    """Returns (yearly regional totals by cause, 2040 extra peak per electoral division)."""
     lf = A["load_factor"]
     rows = []
     ed2040 = None
@@ -127,8 +127,7 @@ def monte_carlo(eds: pd.DataFrame, base: dict, n: int = MC_RUNS) -> pd.DataFrame
     the 2040 extra peak; heavy model runs are avoided by using the scenario model's linear structure."""
     rng = np.random.default_rng(RANDOM_STATE)
     draws = {
-        "pop_city": _tri(rng, *[A["pop_growth_2040"]["Cork City"][s] for s in SCENARIOS], n),
-        "pop_county": _tri(rng, *[A["pop_growth_2040"]["Cork County"][s] for s in SCENARIOS], n),
+        **{f"pop_{i}": _tri(rng, *[A["pop_growth_2040"][a][s] for s in SCENARIOS], n) for i, a in enumerate(AREAS)},
         "hp_share": _tri(rng, *[A["heat_pump_share_2040"][s] for s in SCENARIOS], n),
         "ev_share": _tri(rng, *[A["ev_share_2040"][s] for s in SCENARIOS], n),
         "hp_kw": _tri(rng, *[A["hp_peak_kw"][s] for s in SCENARIOS], n),
@@ -140,7 +139,7 @@ def monte_carlo(eds: pd.DataFrame, base: dict, n: int = MC_RUNS) -> pd.DataFrame
     # Evaluate the 2040 model per draw (vectorised over draws, using 2040 only)
     out = []
     for i in range(n):
-        p = {"pop": {"Cork City": draws["pop_city"][i], "Cork County": draws["pop_county"][i]},
+        p = {"pop": {a: draws[f"pop_{j}"][i] for j, a in enumerate(AREAS)},
              "hp_share": draws["hp_share"][i], "ev_share": draws["ev_share"][i], "hp_kw": draws["hp_kw"][i],
              "ev_kw": draws["ev_kw"][i], "nonres_g": draws["nonres_g"][i], "large_mw": draws["large_mw"][i],
              "eff": draws["eff"][i]}
@@ -179,7 +178,7 @@ def sensitivity(eds: pd.DataFrame, base: dict) -> pd.DataFrame:
     """Tornado: swing in 2040 extra peak when one input moves from low to high, others central."""
     names = {"pop": "Population growth", "hp_share": "Heat pump uptake", "ev_share": "EV uptake",
              "hp_kw": "Heat pump peak per home", "ev_kw": "EV peak per car (charging behaviour)",
-             "nonres_g": "Business growth", "large_mw": "New large loads", "eff": "Efficiency"}
+             "nonres_g": "Business growth", "large_mw": R["large_label"], "eff": "Efficiency"}
     central = scenario_params("central")
     rows = []
     for k, label in names.items():

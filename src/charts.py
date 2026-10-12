@@ -15,16 +15,17 @@ from matplotlib.collections import PolyCollection  # noqa: E402
 from matplotlib.lines import Line2D  # noqa: E402
 from matplotlib.patches import Patch  # noqa: E402
 
-from config import FIG_DIR, SCENARIO_NAMES, TARGET_YEAR  # noqa: E402
+from config import FIG_DIR, NAME, SCENARIO_NAMES, TARGET_YEAR, R  # noqa: E402
 
 BLUE, ORANGE, AQUA, GREY, LIGHT = "#2a78d6", "#eb6834", "#1baf7a", "#9a9a95", "#9fc3ee"
 PURPLE, YELLOW = "#8b5cf6", "#e0a100"
 INK, INK_2, GRID, SURFACE = "#0b0b0b", "#52514e", "#e4e3df", "#fcfcfb"
 SEQ = ["#eaf2fc", "#c3dbf6", "#8fbbee", "#4f93e0", "#2a78d6", "#174f96"]
+LAT0 = (R["view"][0] + R["view"][2]) / 2   # latitude for map scaling
 SCOL = {"low": AQUA, "central": BLUE, "high": ORANGE}
 CAUSE = {"homes_mw": ("New homes & population", GREY), "business_mw": ("Business growth", PURPLE),
          "heat_pumps_mw": ("Heat pumps", ORANGE), "evs_mw": ("Electric cars", BLUE),
-         "large_loads_mw": ("New large loads", YELLOW)}
+         "large_loads_mw": (R["large_label"], YELLOW)}
 ACTION = {"none": ("Enough spare capacity", AQUA), "upgrade": ("Upgrade needed", YELLOW),
           "new station": ("New station(s) needed", ORANGE)}
 
@@ -81,8 +82,10 @@ def history(cons: pd.DataFrame) -> str:
     ax.legend(loc="upper left", ncol=2, bbox_to_anchor=(0, 0.98))
     ax.set_ylim(0, cons["total"].max() * 1.22)
     g = 100 * (cons["total"].iloc[-1] / cons["total"].iloc[0] - 1)
-    ax.set_title(f"Cork used {cons['total'].iloc[-1]:,.0f} GWh in {x[-1]}, {g:+.0f}% since {x[0]}", pad=26)
-    _sub(ax, "Metered electricity consumption, Co. Cork (CSO). About two-thirds is business and industry.")
+    ax.set_title(f"{NAME} used {cons['total'].iloc[-1]:,.0f} GWh in {x[-1]}, {g:+.0f}% since {x[0]}", pad=26)
+    share = (cons["non_residential"].iloc[-1] / cons["total"].iloc[-1]) if "non_residential" in cons else np.nan
+    _sub(ax, f"Metered electricity consumption, {R['full']}{R.get('cso_note', '')}, CSO."
+         + (f" About {share:.0%} is business and industry." if pd.notna(share) else ""))
     return _save(fig, "01_history.png")
 
 
@@ -107,9 +110,9 @@ def paths(scen: dict, base: dict, plan: dict) -> str:
                 textcoords="offset points", va="center", fontsize=9, color=INK_2)
     ax.set_xlim(2025, 2045.5)
     ax.set_xticks(range(2025, 2041, 5))
-    ax.set_ylabel("Winter peak demand, Co. Cork (MW)")
+    ax.set_ylabel(f"Winter peak demand, {R['full']} (MW)")
     c = scen["central"]["yearly"]["peak_mw"]
-    ax.set_title(f"Cork's winter peak could grow {100 * (c.iloc[-1] / base['peak_mw'] - 1):.0f}% by 2040 "
+    ax.set_title(f"{NAME}'s winter peak could grow {100 * (c.iloc[-1] / base['peak_mw'] - 1):.0f}% by 2040 "
                  f"(central case)", pad=26)
     _sub(ax, "Three scenarios; dashed = central with smart EV charging, heat-pump flexibility and demand response; "
              "bar = 10–90% Monte Carlo range")
@@ -142,7 +145,7 @@ def drivers(scen: dict) -> str:
 
 
 # --------------------------------------------------------------------------- 4. map
-def cork_map(scen: dict, eds: pd.DataFrame, pl, plan: dict) -> str | None:
+def region_map(scen: dict, eds: pd.DataFrame, pl, plan: dict) -> str | None:
     if pl is None:
         return None
     ed = scen["central"]["ed2040"]["extra_mw"]
@@ -150,7 +153,7 @@ def cork_map(scen: dict, eds: pd.DataFrame, pl, plan: dict) -> str | None:
     for g, rings in pl:
         a = 0.0
         for r in rings:
-            x, y = r[:, 0] * 111.32 * np.cos(np.radians(51.9)), r[:, 1] * 110.57
+            x, y = r[:, 0] * 111.32 * np.cos(np.radians(LAT0)), r[:, 1] * 110.57
             a += 0.5 * abs(np.dot(x, np.roll(y, 1)) - np.dot(y, np.roll(x, 1)))
         area_km2[g] = a
     dens = (ed / pd.Series(area_km2).reindex(ed.index)).replace([np.inf, -np.inf], np.nan)
@@ -161,7 +164,7 @@ def cork_map(scen: dict, eds: pd.DataFrame, pl, plan: dict) -> str | None:
     fig = plt.figure(figsize=(11.5, 7.6))
     ax = fig.add_axes([0.0, 0.0, 0.58, 0.88])
     ax2 = fig.add_axes([0.60, 0.30, 0.39, 0.55])
-    for a, bbox in ((ax, None), (ax2, (-8.62, -8.30, 51.83, 51.97))):
+    for a, bbox in ((ax, None), (ax2, R["closeup"])):
         verts, cols = [], []
         for g, rings in pl:
             for r in rings:
@@ -175,7 +178,7 @@ def cork_map(scen: dict, eds: pd.DataFrame, pl, plan: dict) -> str | None:
         if bbox:
             a.set_xlim(bbox[0], bbox[1])
             a.set_ylim(bbox[2], bbox[3])
-        a.set_aspect(1 / np.cos(np.radians(51.9)))
+        a.set_aspect(1 / np.cos(np.radians(LAT0)))
         a.set_xticks([])
         a.set_yticks([])
         a.grid(False)
@@ -189,10 +192,10 @@ def cork_map(scen: dict, eds: pd.DataFrame, pl, plan: dict) -> str | None:
             for sp in a.spines.values():
                 sp.set_visible(True)
                 sp.set_color(GRID)
-            a.set_title("Cork City close-up", fontsize=10, loc="left")
+            a.set_title(f"{R['city']} close-up", fontsize=10, loc="left")
         else:
             a.axis("off")
-    fig.text(0.01, 0.975, "Where Cork's new demand lands by 2040, and which substations can take it",
+    fig.text(0.01, 0.975, f"Where {NAME}'s new demand lands by 2040, and which substations can take it",
              fontsize=13, fontweight="bold", color=INK, va="top")
     fig.text(0.01, 0.94, "Extra winter peak per km² (central scenario); dots = 110 kV (large) and 38 kV (small) "
              "stations, coloured by verdict", fontsize=10, color=INK_2, va="top")
@@ -232,7 +235,7 @@ def stations(plan: dict) -> str | None:
     ax.legend(loc="lower right", fontsize=9)
     ax.set_xlabel("MW")
     n_short = int((st["deficit_mw"] > 0).sum())
-    ax.set_title(f"{n_short} of {len(st)} Cork substations run short of capacity by 2040 (central case)", pad=26)
+    ax.set_title(f"{n_short} of {len(st)} {NAME} substations run short of capacity by 2040 (central case)", pad=26)
     _sub(ax, "Stations with the largest shortfall: extra load assigned from nearby areas versus today's spare capacity")
     return _save(fig, "05_stations.png")
 
@@ -250,7 +253,7 @@ def budget(plan: dict) -> str:
         ax.axvline(s["cost_m"][p], color=INK, lw=1, ls=ls)
     ax.text(s["cost_m"][50], ax.get_ylim()[1] * 0.95, f"  median €{s['cost_m'][50]:,.0f}m", fontsize=9.5,
             va="top", color=INK, fontweight="bold")
-    ax.set_xlabel("Station investment needed in Cork by 2040 (€ million, 2026 prices)")
+    ax.set_xlabel(f"Station investment needed in {NAME} by 2040 (€ million, 2026 prices)")
     ax.set_ylabel("Simulations")
     ax.legend(loc="upper right")
     ax.grid(axis="x", visible=False)
@@ -291,12 +294,15 @@ def esbn_chart(view: dict | None) -> str | None:
         ax.plot(g["year"], g["negative"], "o-", color=cols.get(scn, GREY), lw=2, ms=4)
         ax.annotate(scn, (g["year"].iloc[-1], g["negative"].iloc[-1]), xytext=(5, 0), textcoords="offset points",
                     va="center", fontsize=9.5, color=cols.get(scn, GREY), fontweight="bold")
-    ax.set_ylabel("Cork stations with no firm headroom")
+    ax.set_ylabel(f"{NAME} stations with no firm headroom")
     ax.set_xlim(t["year"].min() - 0.5, t["year"].max() + 4)
     g40 = t[t["year"] == 2040]
-    msg = (f"by 2040, {int(g40['negative'].min())}–{int(g40['negative'].max())} Cork stations are full"
-           if len(g40) else "Cork stations over capacity, by scenario")
+    msg = (f"by 2040, {int(g40['negative'].min())}–{int(g40['negative'].max())} {NAME} stations are full"
+           if len(g40) else f"{NAME} stations over capacity, by scenario")
     ax.set_title("ESB Networks' own forecasts: " + msg, pad=26)
-    _sub(ax, f"Cork stations (of {int(t['stations'].max())}) with no firm demand headroom left, by scenario; "
+    _sub(ax, f"{NAME} stations (of {int(t['stations'].max())}) with no firm demand headroom left, by scenario; "
              "Demand Capacity Headroom Report 2025")
     return _save(fig, "08_esbn_view.png")
+
+
+cork_map = region_map
