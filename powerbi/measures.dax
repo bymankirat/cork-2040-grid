@@ -89,7 +89,7 @@ IF ( HASONEVALUE ( dim_county[County] ), CALCULATE ( SUM ( fact_cost[CostEURm] )
 Cost Range =
 IF (
     HASONEVALUE ( dim_county[County] ),
-    FORMAT ( [Cost P10 EURm], "€#,0m" ) & " – " & FORMAT ( [Cost P90 EURm], "€#,0m" ),
+    "€" & FORMAT ( [Cost P10 EURm], "#,0" ) & "m – €" & FORMAT ( [Cost P90 EURm], "#,0" ) & "m",
     "Pick one county"
 )
 

@@ -62,7 +62,7 @@ DEFINE
     MEASURE '_Measures'[Cost Range] =
         IF (
             HASONEVALUE ( dim_county[County] ),
-            FORMAT ( [Cost P10 EURm], "€#,0m" ) & " – " & FORMAT ( [Cost P90 EURm], "€#,0m" ),
+            "€" & FORMAT ( [Cost P10 EURm], "#,0" ) & "m – €" & FORMAT ( [Cost P90 EURm], "#,0" ) & "m",
             "Pick one county"
         )
     MEASURE '_Measures'[Flex Saving EURm] =
