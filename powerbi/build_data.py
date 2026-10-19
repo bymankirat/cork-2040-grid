@@ -79,7 +79,9 @@ def main():
     write("fact_demand.csv", demand, list(demand[0]))
     write("fact_cost.csv", cost, list(cost[0]))
     write("dim_year.csv", [{"Year": y, "Decade": f"{y // 10 * 10}s"} for y in sorted(years)], ["Year", "Decade"])
-    write("dim_county.csv", [{"County": c} for c in COUNTIES], ["County"])
+    # a numeric column so Power BI recognises the first row as the header
+    write("dim_county.csv", [{"County": c, "CountyOrder": i + 1, "Stations": sum(st["County"] == c for st in stations)}
+                             for i, c in enumerate(COUNTIES)], ["County", "CountyOrder", "Stations"])
 
 
 if __name__ == "__main__":
