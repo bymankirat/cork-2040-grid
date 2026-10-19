@@ -69,7 +69,7 @@ Peak Growth % =
 DIVIDE ( [Peak 2040 MW] - [Peak 2025 MW], [Peak 2025 MW] )
 
 Extra Demand MW =
-CALCULATE ( [Peak MW], fact_demand[Driver] <> "Existing demand" )
+CALCULATE ( [Peak MW], KEEPFILTERS ( fact_demand[Driver] <> "Existing demand" ) )
 
 Driver Share % =
 DIVIDE ( [Extra Demand MW], CALCULATE ( [Extra Demand MW], ALL ( fact_demand[Driver] ) ) )

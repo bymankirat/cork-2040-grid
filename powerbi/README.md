@@ -89,6 +89,7 @@ dim_county ──┬── dim_station ─── fact_esbn_headroom ─── di
 
 - **Percentiles do not add up.** Cork's P90 cost plus Dublin's P90 is not the P90 for both, so the cost measures only show a value when one county is selected.
 - **Two sources, two scenario sets.** ESB Networks' four scenarios and my model's three are kept in separate tables rather than forced into one.
+- **Missing is not zero.** ESB Networks' tables give 0 MW for every station in 2036–2038 under two scenarios; that is a gap in the source, so those rows are dropped instead of being counted as 'full'.
 - **Model vs operator.** ESB Networks' forecasts show 86–107 stations full by 2040 across both counties; my central case finds 122 short because it follows the faster heat-pump and EV uptake of the net-zero path and cannot see reinforcements already planned.
 
 Independent analysis on public CSO, Census 2022 and ESB Networks data; not an ESB Networks product.

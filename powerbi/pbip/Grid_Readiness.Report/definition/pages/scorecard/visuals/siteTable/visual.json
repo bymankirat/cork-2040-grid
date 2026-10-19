@@ -172,6 +172,19 @@
     },
     "drillFilterOtherVisuals": true,
     "objects": {
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
       "values": [
         {
           "properties": {

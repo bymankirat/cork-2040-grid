@@ -242,11 +242,11 @@ class Page:
                                            "visualContainerObjects": {
                                                "background": [{"properties": {"show": lit(False)}}]}})
 
-    def slicer(self, name, x, y, w, h, entity, prop, title, select=None, single=True, tiles=True):
+    def slicer(self, name, x, y, w, h, entity, prop, title, select=None, single=True, tiles=True, dropdown=False):
         general = {"orientation": lit(1 if tiles else 0)}
         if select:
             general["filter"] = {"filter": in_filter(entity, prop, select)}
-        objects = {"data": [{"properties": {"mode": lit("Basic")}}],
+        objects = {"data": [{"properties": {"mode": lit("Dropdown" if dropdown else "Basic")}}],
                    "general": [{"properties": general}],
                    "selection": [{"properties": {"singleSelect": lit(single), "strictSingleSelect": lit(single)}}],
                    "header": [{"properties": {"show": lit(True), "text": lit(title), "fontSize": lit(10)}}],
@@ -297,9 +297,8 @@ def build_pages():
 
     # ---------------------------------------------------------------- 1 Overview
     p = Page("overview", "Overview")
-    p.textbox("title", 20, 12, 700, 60, "Grid readiness to 2040",
-              sub="Cork and Dublin demand substations · winter peak · independent model on public CSO, Census 2022 "
-                  "and ESB Networks data")
+    p.textbox("title", 20, 8, 720, 76, "Grid readiness to 2040",
+              sub="Cork and Dublin demand substations · winter peak · public CSO, Census and ESB Networks data")
     county = p.slicer("countySlicer", 760, 14, 230, 62, C, "County", "County", select=["Dublin"])
     scen = p.slicer("scenarioSlicer", 1000, 14, 260, 62, D, "Scenario", "Model scenario", select=["Central"])
     cards = [("Peak 2025 MW", "Winter peak 2025 (MW)"), ("Peak 2040 MW", "Winter peak 2040 (MW)"),
@@ -307,7 +306,7 @@ def build_pages():
              ("New Stations Needed", "Need a new station"), ("Cost Range", "Station investment (P10–P90)")]
     w = (1240 - 5 * 12) / 6
     for i, (m, label) in enumerate(cards):
-        p.card(f"card{i + 1}", 20 + i * (w + 12), 92, w, 100, m, label, size=20 if m == "Cost Range" else 26)
+        p.card(f"card{i + 1}", 20 + i * (w + 12), 92, w, 100, m, label, size=15 if m == "Cost Range" else 26)
     line = p.chart("demandLine", 20, 210, 610, 490, "lineChart",
                    {"Category": [(col(Y, "Year"), "Year")], "Y": [(mea("_Measures", "Peak MW"), "Peak MW")],
                     "Series": [(col(D, "Scenario"), "Scenario")]},
@@ -329,10 +328,11 @@ def build_pages():
 
     # ---------------------------------------------------------------- 2 Readiness
     p = Page("readiness", "Readiness")
-    p.textbox("title", 20, 12, 700, 60, "Readiness: ESB Networks' own forecast",
+    p.textbox("title", 20, 8, 720, 76, "Readiness: ESB Networks' own forecast",
               sub="Spare capacity at each station under ESB Networks' four scenarios, against my model's 2040 result")
     p.slicer("countySlicer", 760, 14, 230, 62, C, "County", "County", select=["Dublin"])
-    esbn = p.slicer("esbnSlicer", 1000, 14, 260, 62, H, "Scenario", "ESB Networks scenario", select=["Base"])
+    esbn = p.slicer("esbnSlicer", 1000, 14, 260, 62, H, "Scenario", "ESB Networks scenario", select=["Base"],
+                    dropdown=True)
     p.card("cardModel", 20, 92, 300, 100, "Stations Short 2040", "My model: stations short by 2040")
     p.card("cardEsbn", 335, 92, 300, 100, "ESBN Stations Full", "ESB Networks: stations full by 2040",
            filters=visual_filter(Y, "Year", [2040], "year2040"))
@@ -350,7 +350,8 @@ def build_pages():
              "Values": [(mea("_Measures", "ESBN Headroom MW"), "Spare MW")]},
             "Spare capacity by station (MW): red = full, amber = under 5 MW",
             filters=visual_filter(Y, "Year", [2025, 2030, 2035, 2040, 2045, 2050], "yearsShown"),
-            objects={"values": [{"properties": {"backColor": {"solid": {"color": {"expr": mea("_Measures",
+            objects={"subTotals": [{"properties": {"rowSubtotals": lit(False), "columnSubtotals": lit(False)}}],
+                     "values": [{"properties": {"backColor": {"solid": {"color": {"expr": mea("_Measures",
                                                                                             "Headroom Colour")}}}},
                                  "selector": {"data": [{"dataViewWildcard": {"matchingOption": 1}}],
                                               "metadata": "_Measures.ESBN Headroom MW"}}]})
@@ -358,7 +359,7 @@ def build_pages():
 
     # ---------------------------------------------------------------- 3 Scorecard
     p = Page("scorecard", "Scorecard")
-    p.textbox("title", 20, 12, 700, 60, "Site scorecard",
+    p.textbox("title", 20, 8, 720, 76, "Site scorecard",
               sub="Which stations run short, by how much, from which year, and what they need")
     p.slicer("countySlicer", 760, 14, 230, 62, C, "County", "County", select=["Dublin"])
     p.slicer("actionSlicer", 1000, 14, 260, 62, S, "Action2040", "Action needed", single=False)
@@ -375,7 +376,8 @@ def build_pages():
     p.chart("siteTable", 555, 92, 705, 608, "tableEx",
             {"Values": [(col(S, c), d) for c, d in cols]}, "Station scorecard (sorted by shortfall)",
             sort=(col(S, "Shortfall2040MW"), "Descending"),
-            objects={"values": [{"properties": {"backColor": {"solid": {"color": {"expr": mea("_Measures",
+            objects={"total": [{"properties": {"totals": lit(False)}}],
+                     "values": [{"properties": {"backColor": {"solid": {"color": {"expr": mea("_Measures",
                                                                                             "Status Colour")}}},
                                                 "fontColor": {"solid": {"color": lit("#FFFFFF")}}},
                                  "selector": {"data": [{"dataViewWildcard": {"matchingOption": 1}}],

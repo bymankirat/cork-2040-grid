@@ -3,10 +3,10 @@
   "name": "title",
   "position": {
     "x": 20,
-    "y": 12,
+    "y": 8,
     "z": 1000,
-    "width": 700,
-    "height": 60,
+    "width": 720,
+    "height": 76,
     "tabOrder": 1000
   },
   "visual": {
@@ -31,7 +31,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Cork and Dublin demand substations · winter peak · independent model on public CSO, Census 2022 and ESB Networks data",
+                    "value": "Cork and Dublin demand substations · winter peak · public CSO, Census and ESB Networks data",
                     "textStyle": {
                       "fontSize": "10pt",
                       "color": "#5D6877"

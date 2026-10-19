@@ -74,6 +74,13 @@ def main():
         for p in ("10", "50", "90"):
             cost.append({"County": county, "Percentile": f"P{p}", "CostEURm": round(res["cost_m"][p], 1),
                          "CostWithFlexEURm": round(res["cost_m_flex"][p], 1)})
+    # ESB Networks' tables leave 2036-2038 empty (all zeros) for some scenarios: treat as missing, not full
+    blocks = {}
+    for r in headroom:
+        blocks.setdefault((r["StationID"][:3], r["Scenario"], r["Year"]), []).append(r["HeadroomMW"])
+    empty = {k for k, v in blocks.items() if all(x == 0 for x in v)}
+    headroom = [r for r in headroom if (r["StationID"][:3], r["Scenario"], r["Year"]) not in empty]
+    print("dropped empty ESB Networks blocks:", sorted(empty))
     write("dim_station.csv", stations, list(stations[0]))
     write("fact_esbn_headroom.csv", headroom, list(headroom[0]))
     write("fact_demand.csv", demand, list(demand[0]))
