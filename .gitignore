@@ -4,3 +4,7 @@ __pycache__/
 data/demo/
 data/raw/*
 !data/raw/.gitkeep
+
+# Power BI local files
+powerbi/pbip/**/.pbi/
+powerbi/pbip/**/cache.abf

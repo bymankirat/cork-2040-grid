@@ -1,0 +1,220 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "siteTable",
+  "position": {
+    "x": 555,
+    "y": 92,
+    "z": 5000,
+    "width": 705,
+    "height": 608,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_station"
+                    }
+                  },
+                  "Property": "Station"
+                }
+              },
+              "queryRef": "dim_station.Station",
+              "nativeQueryRef": "Station",
+              "displayName": "Station"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_station"
+                    }
+                  },
+                  "Property": "VoltageKV"
+                }
+              },
+              "queryRef": "dim_station.VoltageKV",
+              "nativeQueryRef": "VoltageKV",
+              "displayName": "kV"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_station"
+                    }
+                  },
+                  "Property": "HeadroomNowMW"
+                }
+              },
+              "queryRef": "dim_station.HeadroomNowMW",
+              "nativeQueryRef": "HeadroomNowMW",
+              "displayName": "Spare now (MW)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_station"
+                    }
+                  },
+                  "Property": "Extra2040MW"
+                }
+              },
+              "queryRef": "dim_station.Extra2040MW",
+              "nativeQueryRef": "Extra2040MW",
+              "displayName": "Extra by 2040 (MW)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_station"
+                    }
+                  },
+                  "Property": "Shortfall2040MW"
+                }
+              },
+              "queryRef": "dim_station.Shortfall2040MW",
+              "nativeQueryRef": "Shortfall2040MW",
+              "displayName": "Shortfall (MW)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_station"
+                    }
+                  },
+                  "Property": "Action2040"
+                }
+              },
+              "queryRef": "dim_station.Action2040",
+              "nativeQueryRef": "Action2040",
+              "displayName": "Action"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_station"
+                    }
+                  },
+                  "Property": "YearFull"
+                }
+              },
+              "queryRef": "dim_station.YearFull",
+              "nativeQueryRef": "YearFull",
+              "displayName": "Full from"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dim_station"
+                  }
+                },
+                "Property": "Shortfall2040MW"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Station scorecard (sorted by shortfall)'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "_Measures"
+                        }
+                      },
+                      "Property": "Status Colour"
+                    }
+                  }
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "dim_station.Action2040"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -33,7 +33,17 @@ dim_county ──┬── dim_station ─── fact_esbn_headroom ─── di
 
 `python powerbi/build_data.py` rebuilds every CSV from the model outputs, so the dashboard is reproducible.
 
-## Build it (about 2–3 hours in Power BI Desktop)
+## Open it (5 minutes)
+
+`pbip/` is a ready-made Power BI project: data, relationships, 27 measures with formats, theme and all three pages.
+`python powerbi/build_pbip.py` regenerates it.
+
+1. Download the repo (or the `pbip` folder) and open `pbip/Grid_Readiness.pbip` in Power BI Desktop.
+2. When asked, click **Refresh now**. For `raw.githubusercontent.com` choose **Anonymous → Connect**
+   (and **Ignore privacy levels** if asked). The tables load straight from the CSVs in this repo.
+3. File → Save as → `grid_readiness.pbix` if you want a single file.
+
+## Build it by hand (about 2–3 hours in Power BI Desktop)
 
 **1. Load the data**
 - Home → Get data → Text/CSV → load each file in `powerbi/data/` (Load, not Transform, except the next step).

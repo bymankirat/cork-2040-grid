@@ -1,0 +1,893 @@
+{
+  "compatibilityLevel": 1567,
+  "model": {
+    "culture": "en-US",
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "tables": [
+      {
+        "name": "_Measures",
+        "lineageTag": "ec3d9e2a-b5bd-4649-8b4b-432cdecc0243",
+        "columns": [
+          {
+            "name": "Value",
+            "dataType": "int64",
+            "sourceColumn": "Value",
+            "isHidden": true,
+            "summarizeBy": "none",
+            "lineageTag": "195c99c3-48b4-4abb-8e97-1d343d5af8da"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "_Measures",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #table(type table [Value = Int64.Type], {})",
+                "in",
+                "    Source"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Stations",
+            "expression": "DISTINCTCOUNT ( dim_station[StationID] )",
+            "lineageTag": "4fa5ff2d-5997-4a9d-8457-0bea5d71a5c6",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Stations Short 2040",
+            "expression": "CALCULATE ( [Stations], dim_station[Status2040] IN { \"Amber\", \"Red\" } )",
+            "lineageTag": "85b607f6-f1fa-4944-bce8-cc9ecbb4a8df",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Stations Ready 2040",
+            "expression": "CALCULATE ( [Stations], dim_station[Status2040] = \"Green\" )",
+            "lineageTag": "5fc1bcc9-765b-433c-81cc-b3ec94709c38",
+            "formatString": "#,0"
+          },
+          {
+            "name": "% Ready 2040",
+            "expression": "DIVIDE ( [Stations Ready 2040], [Stations] )",
+            "lineageTag": "35afcd03-a434-4fa1-a7de-0eca8e602d1f",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "New Stations Needed",
+            "expression": "CALCULATE ( [Stations], dim_station[Status2040] = \"Red\" )",
+            "lineageTag": "3592a234-4ae3-4b3c-95fd-111565624f67",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Shortfall 2040 MW",
+            "expression": "SUM ( dim_station[Shortfall2040MW] )",
+            "lineageTag": "2c77e8d1-6850-4463-97b4-ac9623d47b93",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Headroom Now MW",
+            "expression": "SUM ( dim_station[HeadroomNowMW] )",
+            "lineageTag": "36b9ac26-8cbe-408a-bb4b-08bb50ebde09",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Avg Years To Full",
+            "expression": [
+              "AVERAGEX (",
+              "    FILTER ( dim_station, NOT ISBLANK ( dim_station[YearFull] ) ),",
+              "    dim_station[YearFull] - 2025",
+              ")"
+            ],
+            "lineageTag": "ceb5f719-0091-4ce0-a4d5-1e28fa31d5f6",
+            "formatString": "0.0"
+          },
+          {
+            "name": "Status Colour",
+            "expression": [
+              "SWITCH (",
+              "    SELECTEDVALUE ( dim_station[Status2040] ),",
+              "    \"Green\", \"#1B8A5A\",",
+              "    \"Amber\", \"#E0A100\",",
+              "    \"Red\", \"#C2362F\",",
+              "    \"#9AA5B1\"",
+              ")"
+            ],
+            "lineageTag": "5d2615cc-33ac-439e-8802-f03f7cecbc33"
+          },
+          {
+            "name": "ESBN Stations Full",
+            "expression": [
+              "CALCULATE (",
+              "    DISTINCTCOUNT ( fact_esbn_headroom[StationID] ),",
+              "    fact_esbn_headroom[IsFull] = 1",
+              ")"
+            ],
+            "lineageTag": "5c2af50c-0140-40f0-a7fa-c7cfe536ad70",
+            "formatString": "#,0"
+          },
+          {
+            "name": "ESBN % Full",
+            "expression": "DIVIDE ( [ESBN Stations Full], DISTINCTCOUNT ( fact_esbn_headroom[StationID] ) )",
+            "lineageTag": "74d56a84-2e51-4861-9dc5-36ff4e030015",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "ESBN Headroom MW",
+            "expression": "SUM ( fact_esbn_headroom[HeadroomMW] )",
+            "lineageTag": "96bd5f9a-1f12-461e-a3d7-443529f09f98",
+            "formatString": "0.0"
+          },
+          {
+            "name": "ESBN First Year Full",
+            "expression": "CALCULATE ( MIN ( fact_esbn_headroom[Year] ), fact_esbn_headroom[IsFull] = 1 )",
+            "lineageTag": "7371972b-352e-4eb8-800e-70b80a230e0d",
+            "formatString": "0"
+          },
+          {
+            "name": "Peak MW",
+            "expression": "SUM ( fact_demand[MW] )",
+            "lineageTag": "4f832999-0a55-4570-b62f-ce5804332c15",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Peak 2025 MW",
+            "expression": "CALCULATE ( [Peak MW], dim_year[Year] = 2025 )",
+            "lineageTag": "556e56d8-e692-4489-ad63-8976b921ece0",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Peak 2040 MW",
+            "expression": "CALCULATE ( [Peak MW], dim_year[Year] = 2040 )",
+            "lineageTag": "4e106ee4-4738-44f8-a1c4-e4eb9562af30",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Peak Growth %",
+            "expression": "DIVIDE ( [Peak 2040 MW] - [Peak 2025 MW], [Peak 2025 MW] )",
+            "lineageTag": "ea6a5506-4757-4f4a-8c37-54f769accf65",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "Extra Demand MW",
+            "expression": "CALCULATE ( [Peak MW], fact_demand[Driver] <> \"Existing demand\" )",
+            "lineageTag": "2c026543-6866-4688-9b8c-19ee5269c42d",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Driver Share %",
+            "expression": "DIVIDE ( [Extra Demand MW], CALCULATE ( [Extra Demand MW], ALL ( fact_demand[Driver] ) ) )",
+            "lineageTag": "9b581128-2a5b-4fb7-af0c-55fea86c2031",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "Cost P10 EURm",
+            "expression": "IF ( HASONEVALUE ( dim_county[County] ), CALCULATE ( SUM ( fact_cost[CostEURm] ), fact_cost[Percentile] = \"P10\" ) )",
+            "lineageTag": "47aeb0d2-6f5f-46e8-b5db-cd3589d7f8ba",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Cost P50 EURm",
+            "expression": "IF ( HASONEVALUE ( dim_county[County] ), CALCULATE ( SUM ( fact_cost[CostEURm] ), fact_cost[Percentile] = \"P50\" ) )",
+            "lineageTag": "5cc1a92f-88f8-4386-b488-cf5760fa5a98",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Cost P90 EURm",
+            "expression": "IF ( HASONEVALUE ( dim_county[County] ), CALCULATE ( SUM ( fact_cost[CostEURm] ), fact_cost[Percentile] = \"P90\" ) )",
+            "lineageTag": "45de83f3-67d4-4557-8a2f-59586982107a",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Cost Range",
+            "expression": [
+              "IF (",
+              "    HASONEVALUE ( dim_county[County] ),",
+              "    \"€\" & FORMAT ( [Cost P10 EURm], \"#,0\" ) & \"m – €\" & FORMAT ( [Cost P90 EURm], \"#,0\" ) & \"m\",",
+              "    \"Pick one county\"",
+              ")"
+            ],
+            "lineageTag": "e4d085b9-ad27-4c05-8829-9664da43cfe8"
+          },
+          {
+            "name": "Flex Saving EURm",
+            "expression": [
+              "IF (",
+              "    HASONEVALUE ( dim_county[County] ),",
+              "    [Cost P50 EURm] - CALCULATE ( SUM ( fact_cost[CostWithFlexEURm] ), fact_cost[Percentile] = \"P50\" )",
+              ")"
+            ],
+            "lineageTag": "cf319eb0-e19f-4847-b5df-862ba96ed853",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Selected County",
+            "expression": "IF ( HASONEVALUE ( dim_county[County] ), VALUES ( dim_county[County] ), \"Cork + Dublin\" )",
+            "lineageTag": "0688fffe-3693-4252-ab9c-bfadc6e6ed5c"
+          },
+          {
+            "name": "Page Title",
+            "expression": "\"Grid readiness to 2040 · \" & [Selected County]",
+            "lineageTag": "f1e93b11-ecad-4915-898f-5f63672c1521"
+          },
+          {
+            "name": "Headroom Colour",
+            "expression": [
+              "VAR h = [ESBN Headroom MW]",
+              "RETURN",
+              "    IF ( ISBLANK ( h ), BLANK (),",
+              "        IF ( h <= 0, \"#F4C7C3\", IF ( h < 5, \"#FCE8B2\", \"#CDEBD8\" ) ) )"
+            ],
+            "lineageTag": "75f75f5d-4988-4be1-a8ce-ca3229e18d01"
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "dim_county",
+        "lineageTag": "82f4e39f-f2b0-42fa-be4e-9b44ad996fd3",
+        "columns": [
+          {
+            "name": "County",
+            "dataType": "string",
+            "sourceColumn": "County",
+            "summarizeBy": "none",
+            "lineageTag": "a75d5520-e167-4edb-9768-ef7a0ae99ba4",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "CountyOrder",
+            "dataType": "int64",
+            "sourceColumn": "CountyOrder",
+            "summarizeBy": "none",
+            "lineageTag": "8e2e6039-dc6a-4ce7-946d-784169e96b8f",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "isHidden": true
+          },
+          {
+            "name": "Stations",
+            "dataType": "int64",
+            "sourceColumn": "Stations",
+            "summarizeBy": "none",
+            "lineageTag": "f02d24a4-be56-475c-b361-da18e397dd3e",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "isHidden": true
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_county",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(Web.Contents(\"https://raw.githubusercontent.com/bymankirat/cork-2040-grid/main/powerbi/data/\", [RelativePath = \"dim_county.csv\"]),",
+                "        [Delimiter = \",\", Columns = 3, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),",
+                "    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),",
+                "    Typed = Table.TransformColumnTypes(Promoted, {{\"County\", type text}, {\"CountyOrder\", Int64.Type}, {\"Stations\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "dim_station",
+        "lineageTag": "3c18543a-075d-47ca-927f-3b92006c2ff7",
+        "columns": [
+          {
+            "name": "StationID",
+            "dataType": "string",
+            "sourceColumn": "StationID",
+            "summarizeBy": "none",
+            "lineageTag": "e39b1d75-2bd0-4a1d-b8a0-83bf630ebf99",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "Station",
+            "dataType": "string",
+            "sourceColumn": "Station",
+            "summarizeBy": "none",
+            "lineageTag": "4c7f161a-055b-4f53-b1b4-4545270ae5ef",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "County",
+            "dataType": "string",
+            "sourceColumn": "County",
+            "summarizeBy": "none",
+            "lineageTag": "86f6bf53-1a58-45b3-9b5b-50d710f4798b",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "VoltageKV",
+            "dataType": "int64",
+            "sourceColumn": "VoltageKV",
+            "summarizeBy": "none",
+            "lineageTag": "737873bb-e905-408e-a7b3-b79aee1c5577",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "Latitude",
+            "dataType": "double",
+            "sourceColumn": "Latitude",
+            "summarizeBy": "none",
+            "lineageTag": "0a5431bf-a784-45d8-927b-7d30825c5623",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Latitude"
+          },
+          {
+            "name": "Longitude",
+            "dataType": "double",
+            "sourceColumn": "Longitude",
+            "summarizeBy": "none",
+            "lineageTag": "abb381ca-b121-49cb-bfeb-dd878ad55219",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "Longitude"
+          },
+          {
+            "name": "HeadroomNowMW",
+            "dataType": "double",
+            "sourceColumn": "HeadroomNowMW",
+            "summarizeBy": "sum",
+            "lineageTag": "414fa192-496d-4600-a487-51d6bd9534ca",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "formatString": "0.0"
+          },
+          {
+            "name": "Extra2040MW",
+            "dataType": "double",
+            "sourceColumn": "Extra2040MW",
+            "summarizeBy": "sum",
+            "lineageTag": "88470113-82ff-4670-8b01-b5a90e331cca",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "formatString": "0.0"
+          },
+          {
+            "name": "Shortfall2040MW",
+            "dataType": "double",
+            "sourceColumn": "Shortfall2040MW",
+            "summarizeBy": "sum",
+            "lineageTag": "4f852a0d-749e-409e-bb64-2cfb6a3fc4bb",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "formatString": "0.0"
+          },
+          {
+            "name": "Action2040",
+            "dataType": "string",
+            "sourceColumn": "Action2040",
+            "summarizeBy": "none",
+            "lineageTag": "b12eed5a-8bd6-475c-8006-27d3fdd3b948",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "Status2040",
+            "dataType": "string",
+            "sourceColumn": "Status2040",
+            "summarizeBy": "none",
+            "lineageTag": "3e1c8d8d-7efc-4759-abf9-03b807656eab",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "YearFull",
+            "dataType": "int64",
+            "sourceColumn": "YearFull",
+            "summarizeBy": "none",
+            "lineageTag": "9bb9f479-ab8b-49f5-9caf-4cf4e68d41c5",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "formatString": "0"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_station",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(Web.Contents(\"https://raw.githubusercontent.com/bymankirat/cork-2040-grid/main/powerbi/data/\", [RelativePath = \"dim_station.csv\"]),",
+                "        [Delimiter = \",\", Columns = 12, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),",
+                "    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),",
+                "    Typed = Table.TransformColumnTypes(Promoted, {{\"StationID\", type text}, {\"Station\", type text}, {\"County\", type text}, {\"VoltageKV\", Int64.Type}, {\"Latitude\", type number}, {\"Longitude\", type number}, {\"HeadroomNowMW\", type number}, {\"Extra2040MW\", type number}, {\"Shortfall2040MW\", type number}, {\"Action2040\", type text}, {\"Status2040\", type text}, {\"YearFull\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "dim_year",
+        "lineageTag": "22cfabfa-aef3-4ade-88ca-e5b8e048c5fb",
+        "columns": [
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "Year",
+            "summarizeBy": "none",
+            "lineageTag": "33cc9713-1f85-4bcc-b90e-43b8f6072f4e",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "formatString": "0"
+          },
+          {
+            "name": "Decade",
+            "dataType": "string",
+            "sourceColumn": "Decade",
+            "summarizeBy": "none",
+            "lineageTag": "e3a1c0f6-1819-4982-b920-0bdf87a1ced0",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_year",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(Web.Contents(\"https://raw.githubusercontent.com/bymankirat/cork-2040-grid/main/powerbi/data/\", [RelativePath = \"dim_year.csv\"]),",
+                "        [Delimiter = \",\", Columns = 2, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),",
+                "    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),",
+                "    Typed = Table.TransformColumnTypes(Promoted, {{\"Year\", Int64.Type}, {\"Decade\", type text}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "fact_demand",
+        "lineageTag": "af3e9472-2d61-4557-b427-7971d5c1d05c",
+        "columns": [
+          {
+            "name": "County",
+            "dataType": "string",
+            "sourceColumn": "County",
+            "summarizeBy": "none",
+            "lineageTag": "8ad313e5-58d8-47e7-a80c-9981c3cea812",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "Scenario",
+            "dataType": "string",
+            "sourceColumn": "Scenario",
+            "summarizeBy": "none",
+            "lineageTag": "0a5af31f-bd48-462f-aa1b-7768990674ee",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "Year",
+            "summarizeBy": "none",
+            "lineageTag": "5302bfa2-f471-4c61-8ae2-344e7ea7b128",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "formatString": "0"
+          },
+          {
+            "name": "Driver",
+            "dataType": "string",
+            "sourceColumn": "Driver",
+            "summarizeBy": "none",
+            "lineageTag": "29c11183-fb91-46d1-8e03-36cf239bb2ef",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "MW",
+            "dataType": "double",
+            "sourceColumn": "MW",
+            "summarizeBy": "sum",
+            "lineageTag": "8116d9b7-b153-4fbb-bf98-20b07da5214d",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "formatString": "#,0"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "fact_demand",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(Web.Contents(\"https://raw.githubusercontent.com/bymankirat/cork-2040-grid/main/powerbi/data/\", [RelativePath = \"fact_demand.csv\"]),",
+                "        [Delimiter = \",\", Columns = 5, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),",
+                "    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),",
+                "    Typed = Table.TransformColumnTypes(Promoted, {{\"County\", type text}, {\"Scenario\", type text}, {\"Year\", Int64.Type}, {\"Driver\", type text}, {\"MW\", type number}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "fact_esbn_headroom",
+        "lineageTag": "d2a5be78-2611-4970-8f7d-9736993c6339",
+        "columns": [
+          {
+            "name": "StationID",
+            "dataType": "string",
+            "sourceColumn": "StationID",
+            "summarizeBy": "none",
+            "lineageTag": "4c94addd-52ed-42f4-9a79-4497eded0b78",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "Scenario",
+            "dataType": "string",
+            "sourceColumn": "Scenario",
+            "summarizeBy": "none",
+            "lineageTag": "21b1f0b1-ff81-4c7f-90d7-9dee4a38143f",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "Year",
+            "summarizeBy": "none",
+            "lineageTag": "d8974a28-2ebc-408b-a6bc-156881cc98e1",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "formatString": "0"
+          },
+          {
+            "name": "HeadroomMW",
+            "dataType": "double",
+            "sourceColumn": "HeadroomMW",
+            "summarizeBy": "sum",
+            "lineageTag": "3e56f0d6-5241-41e3-9412-bc798e04f3d1",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "formatString": "0.0"
+          },
+          {
+            "name": "IsFull",
+            "dataType": "int64",
+            "sourceColumn": "IsFull",
+            "summarizeBy": "none",
+            "lineageTag": "e39367fe-4869-4761-bbe6-b02c11866689",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "fact_esbn_headroom",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(Web.Contents(\"https://raw.githubusercontent.com/bymankirat/cork-2040-grid/main/powerbi/data/\", [RelativePath = \"fact_esbn_headroom.csv\"]),",
+                "        [Delimiter = \",\", Columns = 5, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),",
+                "    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),",
+                "    Typed = Table.TransformColumnTypes(Promoted, {{\"StationID\", type text}, {\"Scenario\", type text}, {\"Year\", Int64.Type}, {\"HeadroomMW\", type number}, {\"IsFull\", Int64.Type}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "fact_cost",
+        "lineageTag": "4fb5284d-06c3-4dba-a60d-641221c69127",
+        "columns": [
+          {
+            "name": "County",
+            "dataType": "string",
+            "sourceColumn": "County",
+            "summarizeBy": "none",
+            "lineageTag": "243cb9b8-a48a-46a4-a150-5b071465a3ce",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "Percentile",
+            "dataType": "string",
+            "sourceColumn": "Percentile",
+            "summarizeBy": "none",
+            "lineageTag": "a5fbd1b9-510c-4e5c-8790-634f71825ed9",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ]
+          },
+          {
+            "name": "CostEURm",
+            "dataType": "double",
+            "sourceColumn": "CostEURm",
+            "summarizeBy": "sum",
+            "lineageTag": "8a21658b-acd3-472d-a80c-12d3e92abf12",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "formatString": "#,0"
+          },
+          {
+            "name": "CostWithFlexEURm",
+            "dataType": "double",
+            "sourceColumn": "CostWithFlexEURm",
+            "summarizeBy": "sum",
+            "lineageTag": "b211565e-d7a9-4113-a538-d8f1194a7e82",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "formatString": "#,0"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "fact_cost",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(Web.Contents(\"https://raw.githubusercontent.com/bymankirat/cork-2040-grid/main/powerbi/data/\", [RelativePath = \"fact_cost.csv\"]),",
+                "        [Delimiter = \",\", Columns = 4, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),",
+                "    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),",
+                "    Typed = Table.TransformColumnTypes(Promoted, {{\"County\", type text}, {\"Percentile\", type text}, {\"CostEURm\", type number}, {\"CostWithFlexEURm\", type number}}, \"en-US\")",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "fa979eba-5898-4cdd-9e57-167698eb745e",
+        "fromTable": "dim_station",
+        "fromColumn": "County",
+        "toTable": "dim_county",
+        "toColumn": "County"
+      },
+      {
+        "name": "f5a26640-b976-481c-b4bd-21bffc705b59",
+        "fromTable": "fact_demand",
+        "fromColumn": "County",
+        "toTable": "dim_county",
+        "toColumn": "County"
+      },
+      {
+        "name": "1b947ca7-629c-4b14-bdc8-e7697b83e73d",
+        "fromTable": "fact_cost",
+        "fromColumn": "County",
+        "toTable": "dim_county",
+        "toColumn": "County"
+      },
+      {
+        "name": "9446e3f6-3409-4316-bbc3-e45eb1e7404f",
+        "fromTable": "fact_esbn_headroom",
+        "fromColumn": "StationID",
+        "toTable": "dim_station",
+        "toColumn": "StationID"
+      },
+      {
+        "name": "c819fafc-e25e-465d-af3e-e169fe20cca7",
+        "fromTable": "fact_esbn_headroom",
+        "fromColumn": "Year",
+        "toTable": "dim_year",
+        "toColumn": "Year"
+      },
+      {
+        "name": "a3db0b98-ac4f-4004-840e-d439c72fdc7f",
+        "fromTable": "fact_demand",
+        "fromColumn": "Year",
+        "toTable": "dim_year",
+        "toColumn": "Year"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"_Measures\", \"dim_county\", \"dim_station\", \"dim_year\", \"fact_demand\", \"fact_esbn_headroom\", \"fact_cost\"]"
+      },
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      }
+    ]
+  }
+}
