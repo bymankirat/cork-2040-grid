@@ -1,0 +1,85 @@
+// Grid Readiness: add ALL measures in one go (DAX query view)
+// 1) Home > Enter data > name the table _Measures > Load
+// 2) Left bar: DAX query view icon > paste this whole file > Run
+// 3) Click 'Update model with changes' (top ribbon) > Update model
+DEFINE
+    MEASURE '_Measures'[Stations] =
+        DISTINCTCOUNT ( dim_station[StationID] )
+    MEASURE '_Measures'[Stations Short 2040] =
+        CALCULATE ( [Stations], dim_station[Status2040] IN { "Amber", "Red" } )
+    MEASURE '_Measures'[Stations Ready 2040] =
+        CALCULATE ( [Stations], dim_station[Status2040] = "Green" )
+    MEASURE '_Measures'[% Ready 2040] =
+        DIVIDE ( [Stations Ready 2040], [Stations] )
+    MEASURE '_Measures'[New Stations Needed] =
+        CALCULATE ( [Stations], dim_station[Status2040] = "Red" )
+    MEASURE '_Measures'[Shortfall 2040 MW] =
+        SUM ( dim_station[Shortfall2040MW] )
+    MEASURE '_Measures'[Headroom Now MW] =
+        SUM ( dim_station[HeadroomNowMW] )
+    MEASURE '_Measures'[Avg Years To Full] =
+        AVERAGEX (
+            FILTER ( dim_station, NOT ISBLANK ( dim_station[YearFull] ) ),
+            dim_station[YearFull] - 2025
+        )
+    MEASURE '_Measures'[Status Colour] =
+        SWITCH (
+            SELECTEDVALUE ( dim_station[Status2040] ),
+            "Green", "#1B8A5A",
+            "Amber", "#E0A100",
+            "Red", "#C2362F",
+            "#9AA5B1"
+        )
+    MEASURE '_Measures'[ESBN Stations Full] =
+        CALCULATE (
+            DISTINCTCOUNT ( fact_esbn_headroom[StationID] ),
+            fact_esbn_headroom[IsFull] = 1
+        )
+    MEASURE '_Measures'[ESBN % Full] =
+        DIVIDE ( [ESBN Stations Full], DISTINCTCOUNT ( fact_esbn_headroom[StationID] ) )
+    MEASURE '_Measures'[ESBN Headroom MW] =
+        SUM ( fact_esbn_headroom[HeadroomMW] )
+    MEASURE '_Measures'[ESBN First Year Full] =
+        CALCULATE ( MIN ( fact_esbn_headroom[Year] ), fact_esbn_headroom[IsFull] = 1 )
+    MEASURE '_Measures'[Peak MW] =
+        SUM ( fact_demand[MW] )
+    MEASURE '_Measures'[Peak 2025 MW] =
+        CALCULATE ( [Peak MW], dim_year[Year] = 2025 )
+    MEASURE '_Measures'[Peak 2040 MW] =
+        CALCULATE ( [Peak MW], dim_year[Year] = 2040 )
+    MEASURE '_Measures'[Peak Growth %] =
+        DIVIDE ( [Peak 2040 MW] - [Peak 2025 MW], [Peak 2025 MW] )
+    MEASURE '_Measures'[Extra Demand MW] =
+        CALCULATE ( [Peak MW], fact_demand[Driver] <> "Existing demand" )
+    MEASURE '_Measures'[Driver Share %] =
+        DIVIDE ( [Extra Demand MW], CALCULATE ( [Extra Demand MW], ALL ( fact_demand[Driver] ) ) )
+    MEASURE '_Measures'[Cost P10 EURm] =
+        IF ( HASONEVALUE ( dim_county[County] ), CALCULATE ( SUM ( fact_cost[CostEURm] ), fact_cost[Percentile] = "P10" ) )
+    MEASURE '_Measures'[Cost P50 EURm] =
+        IF ( HASONEVALUE ( dim_county[County] ), CALCULATE ( SUM ( fact_cost[CostEURm] ), fact_cost[Percentile] = "P50" ) )
+    MEASURE '_Measures'[Cost P90 EURm] =
+        IF ( HASONEVALUE ( dim_county[County] ), CALCULATE ( SUM ( fact_cost[CostEURm] ), fact_cost[Percentile] = "P90" ) )
+    MEASURE '_Measures'[Cost Range] =
+        IF (
+            HASONEVALUE ( dim_county[County] ),
+            FORMAT ( [Cost P10 EURm], "€#,0m" ) & " – " & FORMAT ( [Cost P90 EURm], "€#,0m" ),
+            "Pick one county"
+        )
+    MEASURE '_Measures'[Flex Saving EURm] =
+        IF (
+            HASONEVALUE ( dim_county[County] ),
+            [Cost P50 EURm] - CALCULATE ( SUM ( fact_cost[CostWithFlexEURm] ), fact_cost[Percentile] = "P50" )
+        )
+    MEASURE '_Measures'[Selected County] =
+        IF ( HASONEVALUE ( dim_county[County] ), VALUES ( dim_county[County] ), "Cork + Dublin" )
+    MEASURE '_Measures'[Page Title] =
+        "Grid readiness to 2040 · " & [Selected County]
+
+EVALUATE
+ROW (
+    "Stations", [Stations],
+    "Stations Short 2040", [Stations Short 2040],
+    "New Stations Needed", [New Stations Needed],
+    "ESBN Stations Full 2040", CALCULATE ( [ESBN Stations Full], dim_year[Year] = 2040 ),
+    "Page Title", [Page Title]
+)
