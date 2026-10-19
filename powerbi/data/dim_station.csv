@@ -1,0 +1,179 @@
+StationID,Station,County,VoltageKV,Latitude,Longitude,HeadroomNowMW,Extra2040MW,Shortfall2040MW,Action2040,Status2040,YearFull
+COR-BALLINCOLLIG,Ballincollig,Cork,38,51.87683,-8.61787,7.1,2.4,0.0,No action,Green,
+COR-BALLYDEHOB,Ballydehob,Cork,38,51.56666,-9.47263,0.0,5.7,5.7,Upgrade,Amber,2026
+COR-BALLYLICKEY,Ballylickey,Cork,110,51.72411,-9.42961,41.5,2.4,0.0,No action,Green,
+COR-BANDON,Bandon,Cork,110,51.7738,-8.73383,1.7,13.4,11.8,Upgrade,Amber,2028
+COR-BANTRY,Bantry,Cork,38,51.68767,-9.4321,0.0,4.2,4.2,Upgrade,Amber,2026
+COR-BARRYMORE,Barrymore,Cork,110,52.09586,-8.25467,0.0,4.1,4.1,Upgrade,Amber,2026
+COR-BEALNABLATH,Bealnablath,Cork,38,51.83409,-8.87879,0.0,2.5,2.5,Upgrade,Amber,2026
+COR-BISHOPSTOWN,Bishopstown,Cork,38,51.88713,-8.5441,0.0,32.0,32.0,New station,Red,2026
+COR-BUTTEVANT,Buttevant,Cork,38,52.23777,-8.66422,2.0,5.3,3.3,Upgrade,Amber,2032
+COR-CAROLINE_STREET,Caroline Street,Cork,38,51.89862,-8.46944,0.0,8.0,8.0,Upgrade,Amber,2026
+COR-CARRIGALINE,Carrigaline,Cork,38,51.82731,-8.38191,0.0,4.9,4.9,Upgrade,Amber,2026
+COR-CARRIGSHANE,Carrigshane,Cork,38,51.90937,-8.14328,6.9,12.4,5.5,Upgrade,Amber,2034
+COR-CARRIGTWOHILL,Carrigtwohill,Cork,38,51.89704,-8.24797,10.0,0.0,0.0,No action,Green,
+COR-CASTLELYONS,Castlelyons,Cork,38,52.08401,-8.22283,0.2,3.6,3.4,Upgrade,Amber,2027
+COR-CASTLETOWNBERE,Castletownbere,Cork,38,51.6572,-9.89528,4.4,3.9,0.0,No action,Green,
+COR-CASTLETOWNROCHE,Castletownroche,Cork,38,52.16187,-8.45081,2.2,4.6,2.4,Upgrade,Amber,2033
+COR-CASTLEVIEW,Castleview,Cork,110,51.90069,-8.37005,10.1,3.9,0.0,No action,Green,
+COR-CHARLEVILLE,Charleville,Cork,38,52.33011,-8.69394,6.3,4.8,0.0,No action,Green,
+COR-CLONAKILTY,Clonakilty,Cork,38,51.638,-8.89481,0.0,8.3,8.3,Upgrade,Amber,2026
+COR-CLOONBANNIN,Cloonbannin,Cork,38,52.12897,-9.04055,4.6,4.2,0.0,No action,Green,
+COR-CLOONLOUGH,Cloonlough,Cork,38,52.25766,-8.27727,0.9,2.6,1.7,Upgrade,Amber,2032
+COR-CLOYNE,Cloyne,Cork,38,51.86411,-8.10633,0.0,10.3,10.3,New station,Red,2026
+COR-COOLCARRON,Coolcarron,Cork,38,52.12896,-8.27729,0.0,0.0,0.0,No action,Green,
+COR-COOLROE,Coolroe,Cork,110,51.88597,-8.63613,17.7,4.8,0.0,No action,Green,
+COR-COW_CROSS,Cow Cross,Cork,110,51.86515,-8.30127,10.9,18.8,7.9,Upgrade,Amber,2034
+COR-CURRAGLASS,Curraglass,Cork,38,52.09331,-8.07254,2.0,2.4,0.3,Upgrade,Amber,2038
+COR-CURRALEIGH,Curraleigh,Cork,38,51.90654,-8.67031,0.0,9.1,9.1,Upgrade,Amber,2026
+COR-DENNEHYS_CROSS,Dennehys Cross,Cork,38,51.88872,-8.50436,6.1,11.6,5.6,Upgrade,Amber,2033
+COR-DOUGLAS,Douglas,Cork,38,51.87853,-8.43661,0.0,32.8,32.8,New station,Red,2026
+COR-DUNMANWAY,Dunmanway,Cork,38,51.72337,-9.08956,10.3,1.7,0.0,No action,Green,
+COR-EASTMONT,Eastmont,Cork,110,51.89849,-8.36668,0.0,0.0,0.0,No action,Green,
+COR-ENNISKEANE,Enniskeane,Cork,38,51.73866,-8.93154,5.4,3.4,0.0,No action,Green,
+COR-FAIRHILL,Fairhill,Cork,38,51.90548,-8.47872,1.7,18.2,16.5,New station,Red,2028
+COR-FERMOY,Fermoy,Cork,110,52.14802,-8.26079,0.0,5.7,5.7,Upgrade,Amber,2026
+COR-FERMOY_NORTH,Fermoy North,Cork,38,52.14641,-8.28568,0.0,3.5,3.5,Upgrade,Amber,2026
+COR-FOXHOLE,Foxhole,Cork,38,51.97116,-7.86732,0.0,9.7,9.7,New station,Red,2026
+COR-GLENGARRIFF,Glengarriff,Cork,38,51.75823,-9.52094,3.3,2.2,0.0,No action,Green,
+COR-GLENLARA,Glenlara,Cork,110,52.20538,-9.02394,37.6,2.2,0.0,No action,Green,
+COR-HARTNETTS_CROSS,Hartnetts Cross,Cork,110,51.89352,-8.94579,13.5,6.5,0.0,No action,Green,
+COR-KANTURK,Kanturk,Cork,38,52.15453,-8.90453,0.0,7.2,7.2,Upgrade,Amber,2026
+COR-KILBARRY,Kilbarry,Cork,110,51.92072,-8.47573,0.0,7.6,7.6,Upgrade,Amber,2026
+COR-KILLACLOYNE,Killacloyne,Cork,110,51.91168,-8.27753,0.0,6.3,6.3,Upgrade,Amber,2026
+COR-KILMONEY,Kilmoney,Cork,38,51.81097,-8.41573,0.0,5.4,5.4,Upgrade,Amber,2026
+COR-KILNAP,Kilnap,Cork,110,51.92233,-8.47758,0.0,4.1,4.1,Upgrade,Amber,2026
+COR-KILSHANNY,Kilshanny,Cork,38,52.26755,-8.24266,0.2,4.6,4.4,Upgrade,Amber,2026
+COR-KINSALE,Kinsale,Cork,38,51.7266,-8.54488,7.3,12.1,4.8,Upgrade,Amber,2034
+COR-LAKE,Lake,Cork,38,51.72216,-9.10524,0.0,3.6,3.6,Upgrade,Amber,2026
+COR-LIBERTY_STREET,Liberty Street,Cork,110,51.89797,-8.47817,14.7,12.5,0.0,No action,Green,
+COR-MACROOM,Macroom,Cork,38,51.89572,-8.89216,0.6,3.1,2.5,Upgrade,Amber,2030
+COR-MALLOW,Mallow,Cork,38,52.143,-8.62078,4.6,11.1,6.5,Upgrade,Amber,2032
+COR-MARINA,Marina,Cork,110,51.90021,-8.44682,9.0,18.5,9.5,Upgrade,Amber,2033
+COR-MAYFIELD,Mayfield,Cork,38,51.91781,-8.42518,4.0,14.9,10.9,New station,Red,2031
+COR-MIDLETON,Midleton,Cork,110,51.93799,-8.18486,8.7,2.2,0.0,No action,Green,
+COR-MILFORD_(MWR),Milford (Mwr),Cork,38,52.33906,-8.8604,7.9,3.1,0.0,No action,Green,
+COR-NEWMARKET_(SR),Newmarket (Sr),Cork,38,52.21259,-9.00661,3.9,2.2,0.0,No action,Green,
+COR-RATHMORE,Rathmore,Cork,38,52.08478,-9.184,3.9,2.3,0.0,No action,Green,
+COR-RIVERSTOWN,Riverstown,Cork,38,51.93966,-8.37908,0.0,8.4,8.4,Upgrade,Amber,2026
+COR-ROSS_CARBERY,Ross Carbery,Cork,38,51.60158,-9.0222,1.7,4.4,2.7,Upgrade,Amber,2032
+COR-SCARTEEN,Scarteen,Cork,38,52.14251,-8.6756,0.0,6.8,6.8,Upgrade,Amber,2026
+COR-SKIBBEREEN,Skibbereen,Cork,38,51.55948,-9.24454,0.0,8.8,8.8,Upgrade,Amber,2026
+COR-TIMOLEAGUE,Timoleague,Cork,38,51.67196,-8.75817,0.0,4.9,4.9,Upgrade,Amber,2026
+COR-TOGHER,Togher,Cork,38,51.87677,-8.49534,3.1,9.2,6.2,Upgrade,Amber,2031
+COR-TRABEG,Trabeg,Cork,110,51.88266,-8.4597,10.1,12.7,2.6,Upgrade,Amber,2037
+COR-WHITECHURCH,Whitechurch,Cork,38,51.98328,-8.51071,1.8,6.6,4.7,Upgrade,Amber,2031
+COR-WILTON,Wilton,Cork,38,51.87823,-8.50848,0.0,9.6,9.6,New station,Red,2026
+DUB-ADAMSTOWN,Adamstown,Dublin,110,53.34031,-6.47892,17.2,15.7,0.0,No action,Green,
+DUB-ARTANE,Artane,Dublin,110,53.38235,-6.20951,12.7,18.6,5.9,Upgrade,Amber,2035
+DUB-BALBRIGGAN,Balbriggan,Dublin,38,53.60968,-6.18999,11.3,6.2,0.0,No action,Green,
+DUB-BALGADDY,Balgaddy,Dublin,38,53.33618,-6.43437,3.0,24.1,21.1,New station,Red,2028
+DUB-BALLINCLEA,Ballinclea,Dublin,38,53.27095,-6.12199,3.8,9.1,5.3,Upgrade,Amber,2032
+DUB-BALLYBODEN,Ballyboden,Dublin,38,53.27978,-6.28817,0.0,20.4,20.4,New station,Red,2026
+DUB-BALLYCOOLIN,Ballycoolin,Dublin,38,53.40429,-6.35633,5.1,0.0,0.0,No action,Green,
+DUB-BALLYMOUNT,Ballymount,Dublin,38,53.31466,-6.3454,0.2,6.9,6.8,Upgrade,Amber,2026
+DUB-BALLYMUN,Ballymun,Dublin,38,53.38934,-6.26401,6.1,11.0,4.9,Upgrade,Amber,2034
+DUB-BATTER_LANE,Batter Lane,Dublin,110,53.49071,-6.20616,0.0,10.0,10.0,Upgrade,Amber,2026
+DUB-BEDFORD_ROW,Bedford Row,Dublin,38,53.34581,-6.26144,14.1,0.0,0.0,No action,Green,
+DUB-BELFIELD,Belfield,Dublin,38,53.30622,-6.2131,3.5,8.8,5.3,Upgrade,Amber,2032
+DUB-BELGARD,Belgard,Dublin,38,53.29204,-6.3673,2.0,3.1,1.1,Upgrade,Amber,2035
+DUB-BELMAYNE,Belmayne,Dublin,38,53.40526,-6.18769,0.0,7.5,7.5,Upgrade,Amber,2026
+DUB-BLACKROCK,Blackrock,Dublin,110,53.29168,-6.17463,34.6,10.8,0.0,No action,Green,
+DUB-BLUNDELSTOWN,Blundelstown,Dublin,110,53.40404,-6.17036,0.0,8.5,8.5,Upgrade,Amber,2026
+DUB-BREWERY_ROAD,Brewery Road,Dublin,38,53.27954,-6.19864,2.4,5.9,3.5,Upgrade,Amber,2032
+DUB-CABRA,Cabra,Dublin,110,53.37255,-6.30045,6.1,9.2,3.1,Upgrade,Amber,2035
+DUB-CAMDEN_ROW,Camden Row,Dublin,38,53.33648,-6.26665,1.7,6.4,4.8,Upgrade,Amber,2030
+DUB-CARRICKMINES,Carrickmines,Dublin,38,53.2565,-6.19511,0.0,16.3,16.3,New station,Red,2026
+DUB-CASTLEKNOCK,Castleknock,Dublin,38,53.37126,-6.37748,3.2,17.3,14.1,New station,Red,2029
+DUB-CENTRAL_PARK,Central Park,Dublin,110,53.27023,-6.20609,17.0,0.0,0.0,No action,Green,
+DUB-CHERRYWOOD,Cherrywood,Dublin,110,53.24343,-6.15687,28.5,4.0,0.0,No action,Green,
+DUB-CITYWEST,Citywest,Dublin,110,53.28918,-6.41661,13.4,7.1,0.0,No action,Green,
+DUB-CLONDALKIN,Clondalkin,Dublin,38,53.32485,-6.39474,1.1,0.0,0.0,No action,Green,
+DUB-CLONSHAUGH,Clonshaugh,Dublin,38,53.40302,-6.22168,9.5,4.8,0.0,No action,Green,
+DUB-CLONTARF,Clontarf,Dublin,38,53.36933,-6.19383,0.4,14.2,13.7,New station,Red,2026
+DUB-COLLEGE_PARK,College Park,Dublin,110,53.41052,-6.37598,4.1,5.4,1.4,Upgrade,Amber,2036
+DUB-COLLINSTOWN,Collinstown,Dublin,38,53.42739,-6.22815,4.9,0.0,0.0,No action,Green,
+DUB-COOKSTOWN,Cookstown,Dublin,110,53.29321,-6.37814,13.0,8.8,0.0,No action,Green,
+DUB-COOLMINE,Coolmine,Dublin,38,53.38257,-6.40045,0.0,11.7,11.7,New station,Red,2026
+DUB-COOLOCK,Coolock,Dublin,38,53.39337,-6.1957,5.6,14.6,9.0,Upgrade,Amber,2032
+DUB-CORDUFF,Corduff,Dublin,110,53.41947,-6.36495,44.9,8.4,0.0,No action,Green,
+DUB-COURTLOUGH,Courtlough,Dublin,38,53.56436,-6.20756,0.0,10.3,10.3,New station,Red,2026
+DUB-CRUMLIN,Crumlin,Dublin,38,53.3255,-6.31592,5.2,18.2,12.9,New station,Red,2031
+DUB-DEANSGRANGE,Deansgrange,Dublin,38,53.27647,-6.16151,4.9,4.9,0.0,No action,Green,
+DUB-DODDER_ROAD,Dodder Road,Dublin,38,53.30403,-6.26755,2.6,10.7,8.1,Upgrade,Amber,2030
+DUB-DONORE_ROAD,Donore Road,Dublin,38,53.41321,-6.25053,0.0,3.8,3.8,Upgrade,Amber,2026
+DUB-DRUMCONDRA,Drumcondra,Dublin,38,53.363,-6.26041,4.9,10.8,5.8,Upgrade,Amber,2033
+DUB-DUNDRUM,Dundrum,Dublin,38,53.29241,-6.24439,0.0,7.4,7.4,Upgrade,Amber,2026
+DUB-DUN_LAOGHAIRE,Dun Laoghaire,Dublin,38,53.29336,-6.14144,4.7,6.6,1.9,Upgrade,Amber,2035
+DUB-DUNSINK,Dunsink,Dublin,110,53.38866,-6.34037,0.0,9.3,9.3,Upgrade,Amber,2026
+DUB-EAST_WALL_ROAD,East Wall Road,Dublin,38,53.35316,-6.22569,6.8,6.2,0.0,No action,Green,
+DUB-FAIRVIEW,Fairview,Dublin,38,53.3645,-6.2288,1.4,11.8,10.4,New station,Red,2028
+DUB-FINGLAS,Finglas,Dublin,110,53.4057,-6.31429,7.0,8.1,1.1,Upgrade,Amber,2038
+DUB-FORTUNESTOWN,Fortunestown,Dublin,110,53.28296,-6.41723,11.7,11.8,0.1,Upgrade,Amber,2040
+DUB-FRANCIS_STREET,Francis Street,Dublin,110,53.34148,-6.27579,31.4,6.2,0.0,No action,Green,
+DUB-GARVILLE_AVENUE,Garville Avenue,Dublin,38,53.31593,-6.27821,0.6,13.9,13.4,New station,Red,2027
+DUB-GLASMORE,Glasmore,Dublin,38,53.46784,-6.23817,0.0,20.2,20.2,New station,Red,2026
+DUB-GLASNEVIN,Glasnevin,Dublin,38,53.36889,-6.27238,1.8,9.9,8.2,Upgrade,Amber,2029
+DUB-GLOUCESTER_PLACE,Gloucester Place,Dublin,38,53.35441,-6.25478,2.0,5.4,3.4,Upgrade,Amber,2032
+DUB-GRANBY_ROW,Granby Row,Dublin,38,53.35199,-6.26541,4.9,3.5,0.0,No action,Green,
+DUB-GRANGE_CASTLE,Grange Castle,Dublin,110,53.32997,-6.44529,16.6,14.6,0.0,No action,Green,
+DUB-GRANGE_(DR),Grange (Dr),Dublin,38,53.39944,-6.15211,0.0,15.4,15.4,New station,Red,2026
+DUB-GREENHILLS,Greenhills,Dublin,38,53.31365,-6.32818,3.1,7.9,4.8,Upgrade,Amber,2032
+DUB-HAROLDS_CROSS,Harolds Cross,Dublin,110,53.32895,-6.27533,11.4,11.2,0.0,No action,Green,
+DUB-HEUSTON_SQUARE,Heuston Square,Dublin,110,53.34517,-6.29991,19.4,12.7,0.0,No action,Green,
+DUB-HOWTH_JUNCTION,Howth Junction,Dublin,38,53.38884,-6.15129,4.5,11.8,7.3,Upgrade,Amber,2032
+DUB-INCHICORE,Inchicore,Dublin,38,53.33381,-6.33867,2.5,10.3,7.8,Upgrade,Amber,2030
+DUB-KILMORE,Kilmore,Dublin,110,53.40297,-6.22753,22.8,1.3,0.0,No action,Green,
+DUB-KIMMAGE,Kimmage,Dublin,38,53.31138,-6.30251,0.0,10.7,10.7,New station,Red,2026
+DUB-KINGSBRIDGE,Kingsbridge,Dublin,38,53.34572,-6.29379,5.1,8.3,3.2,Upgrade,Amber,2034
+DUB-LEESON_STREET,Leeson Street,Dublin,38,53.33107,-6.25305,1.5,10.4,8.9,Upgrade,Amber,2029
+DUB-LEIXLIP,Leixlip,Dublin,38,53.36157,-6.48437,0.0,0.0,0.0,No action,Green,
+DUB-LIFFEY_VALLEY,Liffey Valley,Dublin,38,53.34805,-6.39425,3.8,7.4,3.6,Upgrade,Amber,2033
+DUB-LITTLE_BRAY,Little Bray,Dublin,38,53.20911,-6.12597,0.6,4.3,3.7,Upgrade,Amber,2029
+DUB-LOUGHLINSTOWN,Loughlinstown,Dublin,38,53.25521,-6.14371,0.4,10.8,10.4,New station,Red,2026
+DUB-LOUGHSHINNY,Loughshinny,Dublin,38,53.54745,-6.10667,0.8,18.2,17.5,New station,Red,2027
+DUB-LUCAN_EAST,Lucan East,Dublin,38,53.36087,-6.43879,0.0,5.3,5.3,Upgrade,Amber,2026
+DUB-MACETOWN,Macetown,Dublin,110,53.41416,-6.41427,0.0,32.2,32.2,New station,Red,2026
+DUB-MALAHIDE,Malahide,Dublin,38,53.44189,-6.15708,0.0,32.4,32.4,New station,Red,2026
+DUB-MARROWBONE_LANE,Marrowbone Lane,Dublin,38,53.33943,-6.28605,1.3,7.8,6.5,Upgrade,Amber,2029
+DUB-MCDERMOTT,Mcdermott,Dublin,110,53.35432,-6.2508,0.0,7.6,7.6,Upgrade,Amber,2026
+DUB-MERRION_SQUARE,Merrion Square,Dublin,38,53.33879,-6.24597,4.8,0.0,0.0,No action,Green,
+DUB-MERVILLE,Merville,Dublin,38,53.38174,-6.29179,3.7,10.3,6.6,Upgrade,Amber,2032
+DUB-MILLTOWN_(DR),Milltown (Dr),Dublin,110,53.31503,-6.25229,5.7,14.5,8.8,Upgrade,Amber,2032
+DUB-MISERY_HILL,Misery Hill,Dublin,110,53.34519,-6.23943,11.9,5.8,0.0,No action,Green,
+DUB-MONKSTOWN,Monkstown,Dublin,38,53.29501,-6.17021,1.9,5.9,4.0,Upgrade,Amber,2031
+DUB-MOUNTGORRY,Mountgorry,Dublin,38,53.45504,-6.20722,0.0,5.7,5.7,Upgrade,Amber,2026
+DUB-MOUNT_MERRION,Mount Merrion,Dublin,38,53.29689,-6.20535,2.7,10.9,8.2,Upgrade,Amber,2030
+DUB-NEWMARKET_(DR),Newmarket (Dr),Dublin,38,53.33768,-6.2763,1.3,4.2,2.9,Upgrade,Amber,2031
+DUB-NORTH_QUAYS,North Quays,Dublin,110,53.35043,-6.23542,7.1,0.0,0.0,No action,Green,
+DUB-NUTLEY_LANE,Nutley Lane,Dublin,110,53.31766,-6.21505,0.0,10.0,10.0,Upgrade,Amber,2026
+DUB-OLDBAWN,Oldbawn,Dublin,38,53.2781,-6.35713,0.0,20.1,20.1,New station,Red,2026
+DUB-PALMERSTOWN,Palmerstown,Dublin,38,53.35261,-6.37892,2.4,10.4,8.0,Upgrade,Amber,2030
+DUB-PELLETSTOWN,Pelletstown,Dublin,110,53.38153,-6.32762,12.8,12.7,0.0,No action,Green,
+DUB-PEMBROKE,Pembroke,Dublin,110,53.33915,-6.23069,7.7,9.4,1.7,Upgrade,Amber,2037
+DUB-PHIBSBORO,Phibsboro,Dublin,38,53.35856,-6.27242,0.0,6.7,6.7,Upgrade,Amber,2026
+DUB-POPPINTREE,Poppintree,Dublin,110,53.406,-6.272,2.3,6.3,4.0,Upgrade,Amber,2032
+DUB-POTTERY_ROAD,Pottery Road,Dublin,110,53.27342,-6.15199,15.8,3.8,0.0,No action,Green,
+DUB-RINGSEND,Ringsend,Dublin,110,53.34065,-6.20648,19.7,3.8,0.0,No action,Green,
+DUB-SAGGART,Saggart,Dublin,38,53.27527,-6.44988,0.0,8.6,8.6,Upgrade,Amber,2026
+DUB-SALLYNOGGIN_ROAD,Sallynoggin Road,Dublin,38,53.27842,-6.13757,0.8,14.5,13.7,New station,Red,2027
+DUB-SANDYFORD,Sandyford,Dublin,38,53.26813,-6.22989,0.0,17.0,17.0,New station,Red,2026
+DUB-SANTRY,Santry,Dublin,38,53.39628,-6.24329,2.7,10.5,7.7,Upgrade,Amber,2031
+DUB-SEMPERIT,Semperit,Dublin,38,53.33275,-6.35647,2.3,6.7,4.4,Upgrade,Amber,2032
+DUB-SHANKILL_(DART),Shankill (Dart),Dublin,38,53.23572,-6.11762,18.0,10.9,0.0,No action,Green,
+DUB-SHERIFF_STREET,Sheriff Street,Dublin,38,53.35067,-6.24509,8.3,2.8,0.0,No action,Green,
+DUB-SOUTH_KING_STREET,South King Street,Dublin,38,53.34009,-6.26302,1.3,3.9,2.6,Upgrade,Amber,2031
+DUB-STEEVENS_LANE,Steevens Lane,Dublin,110,53.34421,-6.29091,0.0,0.0,0.0,No action,Green,
+DUB-STEPHENSTOWN,Stephenstown,Dublin,110,53.60133,-6.18962,12.9,14.0,1.1,Upgrade,Amber,2039
+DUB-SUTTON,Sutton,Dublin,38,53.39139,-6.11916,3.9,12.0,8.1,Upgrade,Amber,2031
+DUB-SWORDS,Swords,Dublin,38,53.46391,-6.2198,1.6,2.1,0.6,Upgrade,Amber,2036
+DUB-TANEY,Taney,Dublin,110,53.28859,-6.24514,20.0,11.1,0.0,No action,Green,
+DUB-TEMPLEOGUE,Templeogue,Dublin,38,53.29632,-6.31152,4.0,17.6,13.6,New station,Red,2030
+DUB-TRINITY,Trinity,Dublin,110,53.34255,-6.2492,11.1,2.7,0.0,No action,Green,
+DUB-TYMON,Tymon,Dublin,38,53.3002,-6.3429,2.0,10.6,8.5,Upgrade,Amber,2030
+DUB-UNIDARE,Unidare,Dublin,38,53.39748,-6.29693,7.1,6.6,0.0,No action,Green,
+DUB-WATLING_STREET,Watling Street,Dublin,38,53.34493,-6.28526,8.2,3.2,0.0,No action,Green,
+DUB-WHITEHALL,Whitehall,Dublin,38,53.3766,-6.25105,1.4,9.0,7.6,Upgrade,Amber,2029
+DUB-WHITESTOWN,Whitestown,Dublin,38,53.28268,-6.38411,6.4,9.6,3.3,Upgrade,Amber,2035
+DUB-WOLFE_TONE_STREET,Wolfe Tone Street,Dublin,110,53.3497,-6.26798,4.0,1.9,0.0,No action,Green,
+DUB-YELLOWMEADOWS,Yellowmeadows,Dublin,110,53.33079,-6.38218,0.0,9.9,9.9,Upgrade,Amber,2026

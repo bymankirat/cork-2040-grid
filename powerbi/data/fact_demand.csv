@@ -1,0 +1,577 @@
+County,Scenario,Year,Driver,MW
+Cork,Low,2025,Existing demand,581.2
+Cork,Low,2025,New homes,0.0
+Cork,Low,2025,Business growth,0.0
+Cork,Low,2025,Heat pumps,0.0
+Cork,Low,2025,Electric cars,0.0
+Cork,Low,2025,Data centres & large users,0.0
+Cork,Low,2026,Existing demand,581.3
+Cork,Low,2026,New homes,0.1
+Cork,Low,2026,Business growth,1.9
+Cork,Low,2026,Heat pumps,3.4
+Cork,Low,2026,Electric cars,0.7
+Cork,Low,2026,Data centres & large users,0.0
+Cork,Low,2027,Existing demand,581.2
+Cork,Low,2027,New homes,0.1
+Cork,Low,2027,Business growth,3.8
+Cork,Low,2027,Heat pumps,7.5
+Cork,Low,2027,Electric cars,1.7
+Cork,Low,2027,Data centres & large users,0.0
+Cork,Low,2028,Existing demand,581.2
+Cork,Low,2028,New homes,0.1
+Cork,Low,2028,Business growth,5.7
+Cork,Low,2028,Heat pumps,12.4
+Cork,Low,2028,Electric cars,3.3
+Cork,Low,2028,Data centres & large users,0.0
+Cork,Low,2029,Existing demand,581.2
+Cork,Low,2029,New homes,0.2
+Cork,Low,2029,Business growth,7.6
+Cork,Low,2029,Heat pumps,18.6
+Cork,Low,2029,Electric cars,5.5
+Cork,Low,2029,Data centres & large users,0.0
+Cork,Low,2030,Existing demand,581.2
+Cork,Low,2030,New homes,0.1
+Cork,Low,2030,Business growth,9.5
+Cork,Low,2030,Heat pumps,26.1
+Cork,Low,2030,Electric cars,8.5
+Cork,Low,2030,Data centres & large users,0.0
+Cork,Low,2031,Existing demand,581.2
+Cork,Low,2031,New homes,0.1
+Cork,Low,2031,Business growth,11.4
+Cork,Low,2031,Heat pumps,35.2
+Cork,Low,2031,Electric cars,12.5
+Cork,Low,2031,Data centres & large users,0.0
+Cork,Low,2032,Existing demand,581.3
+Cork,Low,2032,New homes,0.1
+Cork,Low,2032,Business growth,13.4
+Cork,Low,2032,Heat pumps,45.5
+Cork,Low,2032,Electric cars,17.4
+Cork,Low,2032,Data centres & large users,0.0
+Cork,Low,2033,Existing demand,581.3
+Cork,Low,2033,New homes,-0.0
+Cork,Low,2033,Business growth,15.3
+Cork,Low,2033,Heat pumps,56.4
+Cork,Low,2033,Electric cars,22.9
+Cork,Low,2033,Data centres & large users,0.0
+Cork,Low,2034,Existing demand,581.2
+Cork,Low,2034,New homes,-0.1
+Cork,Low,2034,Business growth,17.3
+Cork,Low,2034,Heat pumps,67.0
+Cork,Low,2034,Electric cars,28.4
+Cork,Low,2034,Data centres & large users,0.0
+Cork,Low,2035,Existing demand,581.2
+Cork,Low,2035,New homes,-0.2
+Cork,Low,2035,Business growth,19.2
+Cork,Low,2035,Heat pumps,76.4
+Cork,Low,2035,Electric cars,33.4
+Cork,Low,2035,Data centres & large users,0.0
+Cork,Low,2036,Existing demand,581.2
+Cork,Low,2036,New homes,-0.3
+Cork,Low,2036,Business growth,21.2
+Cork,Low,2036,Heat pumps,84.2
+Cork,Low,2036,Electric cars,37.7
+Cork,Low,2036,Data centres & large users,0.0
+Cork,Low,2037,Existing demand,581.2
+Cork,Low,2037,New homes,-0.5
+Cork,Low,2037,Business growth,23.2
+Cork,Low,2037,Heat pumps,90.2
+Cork,Low,2037,Electric cars,41.1
+Cork,Low,2037,Data centres & large users,0.0
+Cork,Low,2038,Existing demand,581.2
+Cork,Low,2038,New homes,-0.6
+Cork,Low,2038,Business growth,25.2
+Cork,Low,2038,Heat pumps,94.6
+Cork,Low,2038,Electric cars,43.7
+Cork,Low,2038,Data centres & large users,0.0
+Cork,Low,2039,Existing demand,581.2
+Cork,Low,2039,New homes,-0.8
+Cork,Low,2039,Business growth,27.2
+Cork,Low,2039,Heat pumps,97.9
+Cork,Low,2039,Electric cars,45.6
+Cork,Low,2039,Data centres & large users,0.0
+Cork,Low,2040,Existing demand,581.3
+Cork,Low,2040,New homes,-1.0
+Cork,Low,2040,Business growth,29.2
+Cork,Low,2040,Heat pumps,100.3
+Cork,Low,2040,Electric cars,47.0
+Cork,Low,2040,Data centres & large users,0.0
+Cork,Central,2025,Existing demand,581.2
+Cork,Central,2025,New homes,0.0
+Cork,Central,2025,Business growth,0.0
+Cork,Central,2025,Heat pumps,0.0
+Cork,Central,2025,Electric cars,0.0
+Cork,Central,2025,Data centres & large users,0.0
+Cork,Central,2026,Existing demand,581.2
+Cork,Central,2026,New homes,1.6
+Cork,Central,2026,Business growth,4.5
+Cork,Central,2026,Heat pumps,8.5
+Cork,Central,2026,Electric cars,1.6
+Cork,Central,2026,Data centres & large users,4.0
+Cork,Central,2027,Existing demand,581.3
+Cork,Central,2027,New homes,3.1
+Cork,Central,2027,Business growth,9.1
+Cork,Central,2027,Heat pumps,18.6
+Cork,Central,2027,Electric cars,4.0
+Cork,Central,2027,Data centres & large users,8.0
+Cork,Central,2028,Existing demand,581.2
+Cork,Central,2028,New homes,4.7
+Cork,Central,2028,Business growth,13.7
+Cork,Central,2028,Heat pumps,30.9
+Cork,Central,2028,Electric cars,7.7
+Cork,Central,2028,Data centres & large users,12.0
+Cork,Central,2029,Existing demand,581.2
+Cork,Central,2029,New homes,6.2
+Cork,Central,2029,Business growth,18.4
+Cork,Central,2029,Heat pumps,46.1
+Cork,Central,2029,Electric cars,12.9
+Cork,Central,2029,Data centres & large users,16.0
+Cork,Central,2030,Existing demand,581.3
+Cork,Central,2030,New homes,7.7
+Cork,Central,2030,Business growth,23.1
+Cork,Central,2030,Heat pumps,64.9
+Cork,Central,2030,Electric cars,20.3
+Cork,Central,2030,Data centres & large users,20.0
+Cork,Central,2031,Existing demand,581.3
+Cork,Central,2031,New homes,9.1
+Cork,Central,2031,Business growth,27.9
+Cork,Central,2031,Heat pumps,87.5
+Cork,Central,2031,Electric cars,29.9
+Cork,Central,2031,Data centres & large users,24.0
+Cork,Central,2032,Existing demand,581.3
+Cork,Central,2032,New homes,10.6
+Cork,Central,2032,Business growth,32.7
+Cork,Central,2032,Heat pumps,113.3
+Cork,Central,2032,Electric cars,41.8
+Cork,Central,2032,Data centres & large users,28.0
+Cork,Central,2033,Existing demand,581.2
+Cork,Central,2033,New homes,12.0
+Cork,Central,2033,Business growth,37.6
+Cork,Central,2033,Heat pumps,140.7
+Cork,Central,2033,Electric cars,55.0
+Cork,Central,2033,Data centres & large users,32.0
+Cork,Central,2034,Existing demand,581.3
+Cork,Central,2034,New homes,13.4
+Cork,Central,2034,Business growth,42.6
+Cork,Central,2034,Heat pumps,167.7
+Cork,Central,2034,Electric cars,68.6
+Cork,Central,2034,Data centres & large users,36.0
+Cork,Central,2035,Existing demand,581.2
+Cork,Central,2035,New homes,14.8
+Cork,Central,2035,Business growth,47.6
+Cork,Central,2035,Heat pumps,191.9
+Cork,Central,2035,Electric cars,81.2
+Cork,Central,2035,Data centres & large users,40.0
+Cork,Central,2036,Existing demand,581.3
+Cork,Central,2036,New homes,16.1
+Cork,Central,2036,Business growth,52.7
+Cork,Central,2036,Heat pumps,212.2
+Cork,Central,2036,Electric cars,92.0
+Cork,Central,2036,Data centres & large users,44.0
+Cork,Central,2037,Existing demand,581.2
+Cork,Central,2037,New homes,17.4
+Cork,Central,2037,Business growth,57.9
+Cork,Central,2037,Heat pumps,228.3
+Cork,Central,2037,Electric cars,100.7
+Cork,Central,2037,Data centres & large users,48.0
+Cork,Central,2038,Existing demand,581.3
+Cork,Central,2038,New homes,18.7
+Cork,Central,2038,Business growth,63.1
+Cork,Central,2038,Heat pumps,240.6
+Cork,Central,2038,Electric cars,107.4
+Cork,Central,2038,Data centres & large users,52.0
+Cork,Central,2039,Existing demand,581.3
+Cork,Central,2039,New homes,20.0
+Cork,Central,2039,Business growth,68.3
+Cork,Central,2039,Heat pumps,249.9
+Cork,Central,2039,Electric cars,112.6
+Cork,Central,2039,Data centres & large users,56.0
+Cork,Central,2040,Existing demand,581.3
+Cork,Central,2040,New homes,21.2
+Cork,Central,2040,Business growth,73.7
+Cork,Central,2040,Heat pumps,257.1
+Cork,Central,2040,Electric cars,116.5
+Cork,Central,2040,Data centres & large users,60.0
+Cork,High,2025,Existing demand,581.2
+Cork,High,2025,New homes,0.0
+Cork,High,2025,Business growth,0.0
+Cork,High,2025,Heat pumps,0.0
+Cork,High,2025,Electric cars,0.0
+Cork,High,2025,Data centres & large users,0.0
+Cork,High,2026,Existing demand,581.2
+Cork,High,2026,New homes,3.1
+Cork,High,2026,Business growth,7.5
+Cork,High,2026,Heat pumps,15.8
+Cork,High,2026,Electric cars,3.8
+Cork,High,2026,Data centres & large users,10.0
+Cork,High,2027,Existing demand,581.2
+Cork,High,2027,New homes,6.1
+Cork,High,2027,Business growth,15.2
+Cork,High,2027,Heat pumps,34.5
+Cork,High,2027,Electric cars,9.7
+Cork,High,2027,Data centres & large users,20.0
+Cork,High,2028,Existing demand,581.2
+Cork,High,2028,New homes,9.1
+Cork,High,2028,Business growth,23.0
+Cork,High,2028,Heat pumps,57.4
+Cork,High,2028,Electric cars,18.5
+Cork,High,2028,Data centres & large users,30.0
+Cork,High,2029,Existing demand,581.2
+Cork,High,2029,New homes,12.1
+Cork,High,2029,Business growth,31.0
+Cork,High,2029,Heat pumps,86.0
+Cork,High,2029,Electric cars,31.3
+Cork,High,2029,Data centres & large users,40.0
+Cork,High,2030,Existing demand,581.3
+Cork,High,2030,New homes,15.1
+Cork,High,2030,Business growth,39.1
+Cork,High,2030,Heat pumps,121.4
+Cork,High,2030,Electric cars,49.3
+Cork,High,2030,Data centres & large users,50.0
+Cork,High,2031,Existing demand,581.2
+Cork,High,2031,New homes,18.1
+Cork,High,2031,Business growth,47.4
+Cork,High,2031,Heat pumps,164.3
+Cork,High,2031,Electric cars,73.1
+Cork,High,2031,Data centres & large users,60.0
+Cork,High,2032,Existing demand,581.2
+Cork,High,2032,New homes,21.1
+Cork,High,2032,Business growth,55.9
+Cork,High,2032,Heat pumps,213.7
+Cork,High,2032,Electric cars,102.4
+Cork,High,2032,Data centres & large users,70.0
+Cork,High,2033,Existing demand,581.2
+Cork,High,2033,New homes,24.0
+Cork,High,2033,Business growth,64.5
+Cork,High,2033,Heat pumps,266.8
+Cork,High,2033,Electric cars,135.5
+Cork,High,2033,Data centres & large users,80.0
+Cork,High,2034,Existing demand,581.2
+Cork,High,2034,New homes,26.9
+Cork,High,2034,Business growth,73.3
+Cork,High,2034,Heat pumps,319.4
+Cork,High,2034,Electric cars,169.5
+Cork,High,2034,Data centres & large users,90.0
+Cork,High,2035,Existing demand,581.3
+Cork,High,2035,New homes,29.8
+Cork,High,2035,Business growth,82.3
+Cork,High,2035,Heat pumps,367.3
+Cork,High,2035,Electric cars,201.4
+Cork,High,2035,Data centres & large users,100.0
+Cork,High,2036,Existing demand,581.2
+Cork,High,2036,New homes,32.7
+Cork,High,2036,Business growth,91.5
+Cork,High,2036,Heat pumps,408.1
+Cork,High,2036,Electric cars,229.1
+Cork,High,2036,Data centres & large users,110.0
+Cork,High,2037,Existing demand,581.3
+Cork,High,2037,New homes,35.5
+Cork,High,2037,Business growth,100.8
+Cork,High,2037,Heat pumps,440.9
+Cork,High,2037,Electric cars,251.7
+Cork,High,2037,Data centres & large users,120.0
+Cork,High,2038,Existing demand,581.3
+Cork,High,2038,New homes,38.3
+Cork,High,2038,Business growth,110.4
+Cork,High,2038,Heat pumps,466.6
+Cork,High,2038,Electric cars,269.5
+Cork,High,2038,Data centres & large users,130.0
+Cork,High,2039,Existing demand,581.2
+Cork,High,2039,New homes,41.2
+Cork,High,2039,Business growth,120.1
+Cork,High,2039,Heat pumps,486.7
+Cork,High,2039,Electric cars,283.3
+Cork,High,2039,Data centres & large users,140.0
+Cork,High,2040,Existing demand,581.2
+Cork,High,2040,New homes,44.0
+Cork,High,2040,Business growth,130.0
+Cork,High,2040,Heat pumps,502.7
+Cork,High,2040,Electric cars,294.1
+Cork,High,2040,Data centres & large users,150.0
+Dublin,Low,2025,Existing demand,1124.3
+Dublin,Low,2025,New homes,0.0
+Dublin,Low,2025,Business growth,0.0
+Dublin,Low,2025,Heat pumps,0.0
+Dublin,Low,2025,Electric cars,0.0
+Dublin,Low,2025,Data centres & large users,0.0
+Dublin,Low,2026,Existing demand,1124.3
+Dublin,Low,2026,New homes,-0.3
+Dublin,Low,2026,Business growth,3.7
+Dublin,Low,2026,Heat pumps,8.0
+Dublin,Low,2026,Electric cars,1.4
+Dublin,Low,2026,Data centres & large users,0.0
+Dublin,Low,2027,Existing demand,1124.3
+Dublin,Low,2027,New homes,-0.5
+Dublin,Low,2027,Business growth,7.3
+Dublin,Low,2027,Heat pumps,17.6
+Dublin,Low,2027,Electric cars,3.4
+Dublin,Low,2027,Data centres & large users,0.0
+Dublin,Low,2028,Existing demand,1124.2
+Dublin,Low,2028,New homes,-0.9
+Dublin,Low,2028,Business growth,11.0
+Dublin,Low,2028,Heat pumps,29.6
+Dublin,Low,2028,Electric cars,6.5
+Dublin,Low,2028,Data centres & large users,0.0
+Dublin,Low,2029,Existing demand,1124.2
+Dublin,Low,2029,New homes,-1.2
+Dublin,Low,2029,Business growth,14.8
+Dublin,Low,2029,Heat pumps,44.6
+Dublin,Low,2029,Electric cars,10.9
+Dublin,Low,2029,Data centres & large users,0.0
+Dublin,Low,2030,Existing demand,1124.3
+Dublin,Low,2030,New homes,-1.6
+Dublin,Low,2030,Business growth,18.5
+Dublin,Low,2030,Heat pumps,63.4
+Dublin,Low,2030,Electric cars,17.0
+Dublin,Low,2030,Data centres & large users,0.0
+Dublin,Low,2031,Existing demand,1124.3
+Dublin,Low,2031,New homes,-2.0
+Dublin,Low,2031,Business growth,22.3
+Dublin,Low,2031,Heat pumps,86.2
+Dublin,Low,2031,Electric cars,25.0
+Dublin,Low,2031,Data centres & large users,0.0
+Dublin,Low,2032,Existing demand,1124.2
+Dublin,Low,2032,New homes,-2.5
+Dublin,Low,2032,Business growth,26.0
+Dublin,Low,2032,Heat pumps,112.2
+Dublin,Low,2032,Electric cars,34.7
+Dublin,Low,2032,Data centres & large users,0.0
+Dublin,Low,2033,Existing demand,1124.2
+Dublin,Low,2033,New homes,-2.9
+Dublin,Low,2033,Business growth,29.8
+Dublin,Low,2033,Heat pumps,139.9
+Dublin,Low,2033,Electric cars,45.5
+Dublin,Low,2033,Data centres & large users,0.0
+Dublin,Low,2034,Existing demand,1124.3
+Dublin,Low,2034,New homes,-3.4
+Dublin,Low,2034,Business growth,33.6
+Dublin,Low,2034,Heat pumps,166.9
+Dublin,Low,2034,Electric cars,56.5
+Dublin,Low,2034,Data centres & large users,0.0
+Dublin,Low,2035,Existing demand,1124.3
+Dublin,Low,2035,New homes,-4.0
+Dublin,Low,2035,Business growth,37.5
+Dublin,Low,2035,Heat pumps,191.0
+Dublin,Low,2035,Electric cars,66.5
+Dublin,Low,2035,Data centres & large users,0.0
+Dublin,Low,2036,Existing demand,1124.2
+Dublin,Low,2036,New homes,-4.6
+Dublin,Low,2036,Business growth,41.3
+Dublin,Low,2036,Heat pumps,210.9
+Dublin,Low,2036,Electric cars,75.0
+Dublin,Low,2036,Data centres & large users,0.0
+Dublin,Low,2037,Existing demand,1124.2
+Dublin,Low,2037,New homes,-5.2
+Dublin,Low,2037,Business growth,45.2
+Dublin,Low,2037,Heat pumps,226.3
+Dublin,Low,2037,Electric cars,81.8
+Dublin,Low,2037,Data centres & large users,0.0
+Dublin,Low,2038,Existing demand,1124.3
+Dublin,Low,2038,New homes,-5.8
+Dublin,Low,2038,Business growth,49.1
+Dublin,Low,2038,Heat pumps,237.7
+Dublin,Low,2038,Electric cars,86.8
+Dublin,Low,2038,Data centres & large users,0.0
+Dublin,Low,2039,Existing demand,1124.3
+Dublin,Low,2039,New homes,-6.5
+Dublin,Low,2039,Business growth,53.0
+Dublin,Low,2039,Heat pumps,246.0
+Dublin,Low,2039,Electric cars,90.6
+Dublin,Low,2039,Data centres & large users,0.0
+Dublin,Low,2040,Existing demand,1124.2
+Dublin,Low,2040,New homes,-7.2
+Dublin,Low,2040,Business growth,56.9
+Dublin,Low,2040,Heat pumps,252.0
+Dublin,Low,2040,Electric cars,93.3
+Dublin,Low,2040,Data centres & large users,0.0
+Dublin,Central,2025,Existing demand,1124.3
+Dublin,Central,2025,New homes,0.0
+Dublin,Central,2025,Business growth,0.0
+Dublin,Central,2025,Heat pumps,0.0
+Dublin,Central,2025,Electric cars,0.0
+Dublin,Central,2025,Data centres & large users,0.0
+Dublin,Central,2026,Existing demand,1124.3
+Dublin,Central,2026,New homes,2.4
+Dublin,Central,2026,Business growth,8.8
+Dublin,Central,2026,Heat pumps,19.7
+Dublin,Central,2026,Electric cars,3.2
+Dublin,Central,2026,Data centres & large users,16.7
+Dublin,Central,2027,Existing demand,1124.3
+Dublin,Central,2027,New homes,4.7
+Dublin,Central,2027,Business growth,17.7
+Dublin,Central,2027,Heat pumps,43.4
+Dublin,Central,2027,Electric cars,8.0
+Dublin,Central,2027,Data centres & large users,33.3
+Dublin,Central,2028,Existing demand,1124.2
+Dublin,Central,2028,New homes,6.9
+Dublin,Central,2028,Business growth,26.7
+Dublin,Central,2028,Heat pumps,72.8
+Dublin,Central,2028,Electric cars,15.2
+Dublin,Central,2028,Data centres & large users,50.0
+Dublin,Central,2029,Existing demand,1124.2
+Dublin,Central,2029,New homes,9.2
+Dublin,Central,2029,Business growth,35.8
+Dublin,Central,2029,Heat pumps,109.6
+Dublin,Central,2029,Electric cars,25.7
+Dublin,Central,2029,Data centres & large users,66.7
+Dublin,Central,2030,Existing demand,1124.3
+Dublin,Central,2030,New homes,11.4
+Dublin,Central,2030,Business growth,45.0
+Dublin,Central,2030,Heat pumps,155.6
+Dublin,Central,2030,Electric cars,40.3
+Dublin,Central,2030,Data centres & large users,83.3
+Dublin,Central,2031,Existing demand,1124.3
+Dublin,Central,2031,New homes,13.5
+Dublin,Central,2031,Business growth,54.3
+Dublin,Central,2031,Heat pumps,211.4
+Dublin,Central,2031,Electric cars,59.5
+Dublin,Central,2031,Data centres & large users,100.0
+Dublin,Central,2032,Existing demand,1124.3
+Dublin,Central,2032,New homes,15.7
+Dublin,Central,2032,Business growth,63.8
+Dublin,Central,2032,Heat pumps,275.5
+Dublin,Central,2032,Electric cars,82.9
+Dublin,Central,2032,Data centres & large users,116.7
+Dublin,Central,2033,Existing demand,1124.3
+Dublin,Central,2033,New homes,17.7
+Dublin,Central,2033,Business growth,73.3
+Dublin,Central,2033,Heat pumps,344.1
+Dublin,Central,2033,Electric cars,109.2
+Dublin,Central,2033,Data centres & large users,133.3
+Dublin,Central,2034,Existing demand,1124.3
+Dublin,Central,2034,New homes,19.8
+Dublin,Central,2034,Business growth,83.0
+Dublin,Central,2034,Heat pumps,411.6
+Dublin,Central,2034,Electric cars,135.9
+Dublin,Central,2034,Data centres & large users,150.0
+Dublin,Central,2035,Existing demand,1124.2
+Dublin,Central,2035,New homes,21.8
+Dublin,Central,2035,Business growth,92.8
+Dublin,Central,2035,Heat pumps,472.5
+Dublin,Central,2035,Electric cars,160.8
+Dublin,Central,2035,Data centres & large users,166.7
+Dublin,Central,2036,Existing demand,1124.3
+Dublin,Central,2036,New homes,23.7
+Dublin,Central,2036,Business growth,102.7
+Dublin,Central,2036,Heat pumps,523.5
+Dublin,Central,2036,Electric cars,182.1
+Dublin,Central,2036,Data centres & large users,183.3
+Dublin,Central,2037,Existing demand,1124.2
+Dublin,Central,2037,New homes,25.7
+Dublin,Central,2037,Business growth,112.7
+Dublin,Central,2037,Heat pumps,563.9
+Dublin,Central,2037,Electric cars,199.2
+Dublin,Central,2037,Data centres & large users,200.0
+Dublin,Central,2038,Existing demand,1124.3
+Dublin,Central,2038,New homes,27.6
+Dublin,Central,2038,Business growth,122.9
+Dublin,Central,2038,Heat pumps,594.6
+Dublin,Central,2038,Electric cars,212.4
+Dublin,Central,2038,Data centres & large users,216.7
+Dublin,Central,2039,Existing demand,1124.2
+Dublin,Central,2039,New homes,29.4
+Dublin,Central,2039,Business growth,133.1
+Dublin,Central,2039,Heat pumps,617.9
+Dublin,Central,2039,Electric cars,222.4
+Dublin,Central,2039,Data centres & large users,233.3
+Dublin,Central,2040,Existing demand,1124.3
+Dublin,Central,2040,New homes,31.2
+Dublin,Central,2040,Business growth,143.5
+Dublin,Central,2040,Heat pumps,635.5
+Dublin,Central,2040,Electric cars,229.9
+Dublin,Central,2040,Data centres & large users,250.0
+Dublin,High,2025,Existing demand,1124.3
+Dublin,High,2025,New homes,0.0
+Dublin,High,2025,Business growth,0.0
+Dublin,High,2025,Heat pumps,0.0
+Dublin,High,2025,Electric cars,0.0
+Dublin,High,2025,Data centres & large users,0.0
+Dublin,High,2026,Existing demand,1124.2
+Dublin,High,2026,New homes,4.9
+Dublin,High,2026,Business growth,14.6
+Dublin,High,2026,Heat pumps,36.0
+Dublin,High,2026,Electric cars,7.6
+Dublin,High,2026,Data centres & large users,40.0
+Dublin,High,2027,Existing demand,1124.3
+Dublin,High,2027,New homes,9.7
+Dublin,High,2027,Business growth,29.6
+Dublin,High,2027,Heat pumps,79.3
+Dublin,High,2027,Electric cars,19.2
+Dublin,High,2027,Data centres & large users,80.0
+Dublin,High,2028,Existing demand,1124.3
+Dublin,High,2028,New homes,14.5
+Dublin,High,2028,Business growth,44.8
+Dublin,High,2028,Heat pumps,133.0
+Dublin,High,2028,Electric cars,36.6
+Dublin,High,2028,Data centres & large users,120.0
+Dublin,High,2029,Existing demand,1124.3
+Dublin,High,2029,New homes,19.3
+Dublin,High,2029,Business growth,60.4
+Dublin,High,2029,Heat pumps,200.7
+Dublin,High,2029,Electric cars,62.1
+Dublin,High,2029,Data centres & large users,160.0
+Dublin,High,2030,Existing demand,1124.3
+Dublin,High,2030,New homes,24.1
+Dublin,High,2030,Business growth,76.2
+Dublin,High,2030,Heat pumps,285.5
+Dublin,High,2030,Electric cars,97.6
+Dublin,High,2030,Data centres & large users,200.0
+Dublin,High,2031,Existing demand,1124.3
+Dublin,High,2031,New homes,28.8
+Dublin,High,2031,Business growth,92.4
+Dublin,High,2031,Heat pumps,389.0
+Dublin,High,2031,Electric cars,144.6
+Dublin,High,2031,Data centres & large users,240.0
+Dublin,High,2032,Existing demand,1124.2
+Dublin,High,2032,New homes,33.5
+Dublin,High,2032,Business growth,108.9
+Dublin,High,2032,Heat pumps,508.9
+Dublin,High,2032,Electric cars,202.3
+Dublin,High,2032,Data centres & large users,280.0
+Dublin,High,2033,Existing demand,1124.3
+Dublin,High,2033,New homes,38.2
+Dublin,High,2033,Business growth,125.7
+Dublin,High,2033,Heat pumps,638.3
+Dublin,High,2033,Electric cars,267.4
+Dublin,High,2033,Data centres & large users,320.0
+Dublin,High,2034,Existing demand,1124.2
+Dublin,High,2034,New homes,42.8
+Dublin,High,2034,Business growth,142.9
+Dublin,High,2034,Heat pumps,766.9
+Dublin,High,2034,Electric cars,334.2
+Dublin,High,2034,Data centres & large users,360.0
+Dublin,High,2035,Existing demand,1124.3
+Dublin,High,2035,New homes,47.4
+Dublin,High,2035,Business growth,160.4
+Dublin,High,2035,Heat pumps,884.5
+Dublin,High,2035,Electric cars,396.7
+Dublin,High,2035,Data centres & large users,400.0
+Dublin,High,2036,Existing demand,1124.2
+Dublin,High,2036,New homes,51.9
+Dublin,High,2036,Business growth,178.3
+Dublin,High,2036,Heat pumps,984.6
+Dublin,High,2036,Electric cars,450.8
+Dublin,High,2036,Data centres & large users,440.0
+Dublin,High,2037,Existing demand,1124.2
+Dublin,High,2037,New homes,56.5
+Dublin,High,2037,Business growth,196.5
+Dublin,High,2037,Heat pumps,1065.4
+Dublin,High,2037,Electric cars,494.8
+Dublin,High,2037,Data centres & large users,480.0
+Dublin,High,2038,Existing demand,1124.2
+Dublin,High,2038,New homes,61.0
+Dublin,High,2038,Business growth,215.1
+Dublin,High,2038,Heat pumps,1128.7
+Dublin,High,2038,Electric cars,529.3
+Dublin,High,2038,Data centres & large users,520.0
+Dublin,High,2039,Existing demand,1124.2
+Dublin,High,2039,New homes,65.5
+Dublin,High,2039,Business growth,234.0
+Dublin,High,2039,Heat pumps,1177.8
+Dublin,High,2039,Electric cars,556.0
+Dublin,High,2039,Data centres & large users,560.0
+Dublin,High,2040,Existing demand,1124.3
+Dublin,High,2040,New homes,69.9
+Dublin,High,2040,Business growth,253.3
+Dublin,High,2040,Heat pumps,1216.4
+Dublin,High,2040,Electric cars,576.7
+Dublin,High,2040,Data centres & large users,600.0

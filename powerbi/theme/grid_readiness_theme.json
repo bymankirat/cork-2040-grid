@@ -1,0 +1,19 @@
+{
+  "name": "Grid Readiness",
+  "dataColors": ["#0E5A8A", "#E0A100", "#C2362F", "#1B8A5A", "#7A4FBF", "#00A3AD", "#8C96A3", "#D96C2C"],
+  "background": "#FFFFFF",
+  "foreground": "#1C2433",
+  "tableAccent": "#0E5A8A",
+  "good": "#1B8A5A",
+  "neutral": "#E0A100",
+  "bad": "#C2362F",
+  "maximum": "#C2362F",
+  "center": "#F4D35E",
+  "minimum": "#1B8A5A",
+  "textClasses": {
+    "callout": { "fontSize": 28, "fontFace": "Segoe UI Semibold", "color": "#1C2433" },
+    "title": { "fontSize": 12, "fontFace": "Segoe UI Semibold", "color": "#1C2433" },
+    "header": { "fontSize": 11, "fontFace": "Segoe UI Semibold", "color": "#1C2433" },
+    "label": { "fontSize": 10, "fontFace": "Segoe UI", "color": "#5D6877" }
+  }
+}

@@ -1,0 +1,107 @@
+// Grid Readiness dashboard: DAX measures
+// Create a blank table called _Measures (Home > Enter data > OK), then add each measure below to it
+// (Modeling > New measure, paste one block at a time).
+
+// ---------------------------------------------------------------- site readiness (model, 2040)
+Stations = DISTINCTCOUNT ( dim_station[StationID] )
+
+Stations Short 2040 =
+CALCULATE ( [Stations], dim_station[Status2040] IN { "Amber", "Red" } )
+
+Stations Ready 2040 =
+CALCULATE ( [Stations], dim_station[Status2040] = "Green" )
+
+% Ready 2040 =
+DIVIDE ( [Stations Ready 2040], [Stations] )
+
+New Stations Needed =
+CALCULATE ( [Stations], dim_station[Status2040] = "Red" )
+
+Shortfall 2040 MW =
+SUM ( dim_station[Shortfall2040MW] )
+
+Headroom Now MW =
+SUM ( dim_station[HeadroomNowMW] )
+
+Avg Years To Full =
+AVERAGEX (
+    FILTER ( dim_station, NOT ISBLANK ( dim_station[YearFull] ) ),
+    dim_station[YearFull] - 2025
+)
+
+// Colour for conditional formatting (Format > Cell elements > Background colour > Field value)
+Status Colour =
+SWITCH (
+    SELECTEDVALUE ( dim_station[Status2040] ),
+    "Green", "#1B8A5A",
+    "Amber", "#E0A100",
+    "Red", "#C2362F",
+    "#9AA5B1"
+)
+
+// ---------------------------------------------------------------- ESB Networks' own forecast
+ESBN Stations Full =
+CALCULATE (
+    DISTINCTCOUNT ( fact_esbn_headroom[StationID] ),
+    fact_esbn_headroom[IsFull] = 1
+)
+
+ESBN % Full =
+DIVIDE ( [ESBN Stations Full], DISTINCTCOUNT ( fact_esbn_headroom[StationID] ) )
+
+ESBN Headroom MW =
+SUM ( fact_esbn_headroom[HeadroomMW] )
+
+ESBN First Year Full =
+CALCULATE ( MIN ( fact_esbn_headroom[Year] ), fact_esbn_headroom[IsFull] = 1 )
+
+// ---------------------------------------------------------------- demand (model)
+Peak MW =
+SUM ( fact_demand[MW] )
+
+Peak 2025 MW =
+CALCULATE ( [Peak MW], dim_year[Year] = 2025 )
+
+Peak 2040 MW =
+CALCULATE ( [Peak MW], dim_year[Year] = 2040 )
+
+Peak Growth % =
+DIVIDE ( [Peak 2040 MW] - [Peak 2025 MW], [Peak 2025 MW] )
+
+Extra Demand MW =
+CALCULATE ( [Peak MW], fact_demand[Driver] <> "Existing demand" )
+
+Driver Share % =
+DIVIDE ( [Extra Demand MW], CALCULATE ( [Extra Demand MW], ALL ( fact_demand[Driver] ) ) )
+
+// ---------------------------------------------------------------- cost (Monte Carlo, 5,000 runs)
+// Percentiles of two counties cannot be added (P90 Cork + P90 Dublin is not the P90 of both),
+// so cost measures only show a value when exactly one county is selected.
+Cost P10 EURm =
+IF ( HASONEVALUE ( dim_county[County] ), CALCULATE ( SUM ( fact_cost[CostEURm] ), fact_cost[Percentile] = "P10" ) )
+
+Cost P50 EURm =
+IF ( HASONEVALUE ( dim_county[County] ), CALCULATE ( SUM ( fact_cost[CostEURm] ), fact_cost[Percentile] = "P50" ) )
+
+Cost P90 EURm =
+IF ( HASONEVALUE ( dim_county[County] ), CALCULATE ( SUM ( fact_cost[CostEURm] ), fact_cost[Percentile] = "P90" ) )
+
+Cost Range =
+IF (
+    HASONEVALUE ( dim_county[County] ),
+    FORMAT ( [Cost P10 EURm], "€#,0m" ) & " – " & FORMAT ( [Cost P90 EURm], "€#,0m" ),
+    "Pick one county"
+)
+
+Flex Saving EURm =
+IF (
+    HASONEVALUE ( dim_county[County] ),
+    [Cost P50 EURm] - CALCULATE ( SUM ( fact_cost[CostWithFlexEURm] ), fact_cost[Percentile] = "P50" )
+)
+
+// ---------------------------------------------------------------- titles that react to slicers
+Selected County =
+IF ( HASONEVALUE ( dim_county[County] ), VALUES ( dim_county[County] ), "Cork + Dublin" )
+
+Page Title =
+"Grid readiness to 2040 · " & [Selected County]
