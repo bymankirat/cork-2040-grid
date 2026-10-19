@@ -10,6 +10,11 @@ flexibility. Dublin adds **data centres and other large energy users** as their 
 | **Cork** | [Cork 2040 report →](https://bymankirat.github.io/cork-2040-grid/) | [Cork capacity heatmap →](https://bymankirat.github.io/cork-2040-grid/map.html) |
 | **Dublin** | [Dublin 2040 report →](https://bymankirat.github.io/cork-2040-grid/dublin/) | [Dublin capacity heatmap →](https://bymankirat.github.io/cork-2040-grid/dublin/map.html) |
 
+**Power BI dashboard:** three pages (overview, readiness against ESB Networks' forecasts, site scorecard) on a star-schema
+model with DAX measures. [See it and download the .pbix →](powerbi/)
+
+![Power BI dashboard, overview page](powerbi/dashboard_overview.png)
+
 ![Map of new demand and substations](reports/figures/04_map.png)
 
 > Independent analysis of public data. Not an ESB or ESB Networks publication.

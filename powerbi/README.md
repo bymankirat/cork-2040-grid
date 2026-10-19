@@ -9,11 +9,13 @@ against ESB Networks' own forecasts, and a site scorecard with red/amber/green s
 | 2 Readiness | Year by year, how many stations run out of spare capacity under each ESB Networks scenario, and how does my model compare? |
 | 3 Scorecard | Which sites are short, by how much, from which year, and what action they need |
 
-Target layout (Dublin selected):
+**Download:** [Grid_Readiness.pbix](Grid_Readiness.pbix) (open in Power BI Desktop) · [PDF of all three pages](Grid_Readiness_Dashboard.pdf)
 
-![Overview](preview_page1.png)
-![Readiness](preview_page2.png)
-![Scorecard](preview_page3.png)
+Dublin selected, central scenario:
+
+![Overview: peak demand, drivers and station status](dashboard_overview.png)
+![Readiness: ESB Networks' four scenarios and spare capacity by station](dashboard_readiness.png)
+![Scorecard: where the short stations are and what they need](dashboard_scorecard.png)
 
 ## Data model (star schema)
 
